@@ -1,0 +1,25 @@
+{
+  "task_id": "mcpmark_github_info",
+  "task_name": "MCPMark GitHub Info Search",
+  "category_id": "web_search",
+  "category_name": "Web Search",
+  "description": "Search for academic and license information about MCPMark project from its GitHub repository.",
+  "author": "Task Author",
+  "created_at": "2026-03-14",
+  "difficulty": "L3",
+  "tags": [
+    "search aggregation",
+    "data extraction",
+    "GitHub",
+    "academic info"
+  ],
+  "mcp": [
+    "playwright"
+  ],
+  "meta_data": {
+    "stateType": null,
+    "stateContent": null,
+    "stateUrl": null,
+    "stateOriginalUrl": null
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "task_id": "jasminum_nudiflorum_info",
+  "task_name": "Botanical Garden Plant ID (v35)",
+  "category_id": "web_search",
+  "category_name": "Web Search",
+  "description": "Volunteer observes 5-6 separate petals. Must investigate 20 candidates across multiple genera, verify Henan native distribution, distinguish corolla morphology (fused vs separate), and identify correct species through multi-source verification.",
+  "author": "beth",
+  "created_at": "2026-03-17",
+  "difficulty": "L3",
+  "tags": ["volunteer", "cognitive-trap", "multi-layer-trap", "genus-exploration", "cross-reference", "geographic-constraint", "corolla-morphology"],
+  "mcp": ["playwright"],
+  "meta_data": {"stateOriginalUrl": "https://en.wikipedia.org/wiki/Forsythia_suspensa"}
+}
