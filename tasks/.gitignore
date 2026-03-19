@@ -12,6 +12,9 @@ venv/
 # Node.js
 node_modules/
 
+#notion
+notion/
+
 # 日志
 *.log
 logs/

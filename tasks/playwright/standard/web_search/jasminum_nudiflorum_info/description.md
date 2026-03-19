@@ -130,7 +130,7 @@ Plant name (Latin binomial)
 ## Allowed Sources
 
 - Wikipedia
-- Baidu Baike (百度百科)
+- Baidu Baike (baike.baidu.com)
 - Kew POWO (powo.science.kew.org)
 - Missouri Botanical Garden (missouribotanicalgarden.org)
 - RHS (rhs.org.uk)
