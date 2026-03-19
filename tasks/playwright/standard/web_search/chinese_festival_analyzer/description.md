@@ -1,306 +1,199 @@
-# Chinese Traditional Festival Cross-Analyzer
+# Chinese Traditional Festival Identification Challenge
 
 ## Task
+
 Identify the Chinese traditional festival that meets ALL criteria for a documentary about "Family Traditions with Sweet Foods in First Half of 2024".
 
 ## Tools
+
 IMPORTANT: The Playwright MCP server is pre-configured and already registered. Use the available `browser_*` tools directly.
 
 ---
 
 ## Scenario
-A documentary researcher needs to identify Chinese festivals for a film about "Family Traditions with Sweet Foods in First Half of 2024".
 
-**Filming Requirements:**
-1. Festival must occur within **First Half of 2024 (January 1 - June 30, 2024)** (filming window)
-2. Festival must feature a traditional sweet food **eaten by families as a meal** (not just candy/snack, not just offering to deities)
-3. Festival must be a **standalone celebration or culmination day** (not the first day of a longer period)
-4. Festival must have **family gathering** as a core tradition
+You are a cultural consultant for a documentary film crew. The crew is planning a shoot about "Family Traditions with Sweet Foods in First Half of 2024".
 
-**CRITICAL NEGATIVE CONSTRAINTS:**
-- **Food CANNOT be**: dumpling/dumpling-like food, porridge/congee, or food primarily used as offering to deities
-- **Festival CANNOT involve**: mourning rituals, ancestor worship ceremonies, or memorial activities
+## Preliminary Research Summary
 
-**CRITICAL**: Chinese festivals follow the **lunar calendar**, which means their Gregorian dates shift each year. You must verify the EXACT 2024 Gregorian date for each festival by consulting a lunar calendar conversion resource.
+**Scouting Team's Field Notes**:
+> **Observation Period**: January 1 - June 30, 2024
+>
+> **Key Observation**: During the **Spring Festival period** (农历正月), our team observed families gathering to eat **sweet glutinous rice balls** (汤圆/元宵). The festival appears to have ancient origins, with historical texts referring to it as **"上元节" (Shangyuan Festival)**.
+>
+> **Initial Assessment**: This appears to be a perfect match - sweet food, family gathering, celebration nature. The Spring Festival period falls within our observation window.
 
----
-
-## Initial Observation (from location scouting team)
-
-"Our preliminary research identified several promising candidates for the documentary:
-
-1. **Qingming Festival** - April 4, 2024
-   - Has qingtuan (green glutinous rice balls)
-   - Families gather together
-   - Date falls nicely in the first half of 2024
-   - CONCERN: Need to verify if qingtuan is classified as sweet food or dumpling
-
-2. **Dragon Boat Festival** - June 10, 2024
-   - Has zongzi (sticky rice wrapped in bamboo leaves)
-   - Strong family reunion traditions
-   - Date is right at the end of our filming window
-   - CONCERN: Need to verify food classification and fillings
-
-3. **Chinese New Year** - February 10, 2024
-   - The most important family reunion festival
-   - Features sweet niangao (rice cake)
-   - CONCERN: Need to verify if this is a standalone day or first day of longer period
-
-Based on initial screening, Qingming and Dragon Boat appear most promising since their dates fall clearly in the first half. However, our team has made serious classification errors before - you must verify each criterion yourself."
+**HOWEVER**, the director has concerns: "The scouting team has made classification errors before. They once confused a Taoist ritual day with a folk celebration, and misidentified deity offerings as family foods. I need you to verify everything systematically."
 
 ---
 
-## CRITICAL WARNING
+## Filming Criteria
 
-Our location scouting team has made **systematic errors** in past projects:
+The festival must meet ALL of the following:
 
-1. **Food Classification Errors**:
-   - Called zongzi 'sweet food' when it's actually a **dumpling** (dumpling-like food does NOT qualify)
-   - Called qingtuan 'sweet dessert' when it's a **dumpling** (glutinous rice wrapper)
-   - Called zaotang 'family food' when it's primarily an **offering to deities**
-   - Called laba porridge 'dessert' when it's primarily a **porridge/congee**
-
-2. **Festival Position Misunderstanding**:
-   - They confuse 'first day of multi-day period' with 'standalone day'
-   - The **first day** of a multi-day celebration FAILS Criterion C
-   - The **culmination/final day** of a multi-day celebration PASSES Criterion C
-
-3. **Mourning Ritual Oversight**:
-   - They have included festivals that involve **ancestor worship** or **memorial ceremonies**
-   - Any festival with mourning/remembrance of deceased does NOT qualify
-
-4. **Date Boundary Errors**:
-   - They sometimes forget that "first half of year" means **January 1 to June 30**
-   - Festivals in July or later FAIL Criterion A
-
-**DO NOT TRUST the initial observations without verification!**
+| Criterion | Requirement | Exclusions |
+|-----------|-------------|------------|
+| A | Date within **January 1 - June 30, 2024** | Festivals in July-December or 2025 |
+| B | Traditional **sweet food eaten by families** as meal | Deity offerings, dumplings, porridge/congee, savory dishes |
+| C | **Standalone or culmination day** | First day of multi-day period |
+| D | **Family gathering** as core tradition | Individual or temple-only events |
+| E | **Celebration nature** | Mourning, ancestor worship, memorial ceremonies |
 
 ---
 
-## MANDATORY VERIFICATION PROTOCOL (4-Phase Process)
+## Candidate Festivals (18 festivals)
 
-**CRITICAL**: You must complete ALL four phases sequentially. Skipping phases will result in incomplete analysis.
+You must systematically verify ALL of the following candidates. **Lunar dates are provided where applicable; you must convert to 2024 Gregorian dates to verify Criterion A.**
 
-### Phase 1: Date Screening
-For EACH festival, you MUST:
+### Group A: Spring Festival Period (农历正月)
+| ID | Festival | Chinese | Lunar Date | Wikipedia URL |
+|----|----------|---------|------------|---------------|
+| 1 | Spring Festival | 春节 | 正月初一 | /wiki/Chinese_New_Year |
+| 2 | Lantern Festival | 元宵节 | 正月十五 | /wiki/Lantern_Festival |
+| 3 | Kitchen God Festival | 祭灶/小年 | 腊月廿三/廿四 | /wiki/Kitchen_God_Festival |
+| 4 | Renri (Human Day) | 人日 | 正月初七 | /wiki/Renri |
+| 5 | Shangyuan Festival | 上元节 | 正月十五 | /wiki/Shangyuan_Festival |
+
+### Group B: Spring-Early Summer
+| ID | Festival | Chinese | Date Info | Wikipedia URL |
+|----|----------|---------|-----------|---------------|
+| 6 | Zhonghe Festival | 中和节 | 二月初二 | /wiki/Zhonghe_Festival |
+| 7 | Tianchuan Festival | 天穿节 | 正月二十 | /wiki/Tianchuan_Festival |
+| 8 | Qingming Festival | 清明节 | Solar term (Apr) | /wiki/Qingming_Festival |
+| 9 | Cold Food Festival | 寒食节 | Before Qingming | /wiki/Cold_Food_Festival |
+| 10 | Shangsi Festival | 上巳节 | 三月初三 | /wiki/Shangsi_Festival |
+
+### Group C: Summer
+| ID | Festival | Chinese | Lunar Date | Wikipedia URL |
+|----|----------|---------|------------|---------------|
+| 11 | Dragon Boat Festival | 端午节 | 五月初五 | /wiki/Dragon_Boat_Festival |
+| 12 | Tianfu Festival | 天贶节 | 六月初六 | /wiki/Tianfu_Festival |
+
+### Group D: Autumn-Winter (Verify Date Range!)
+| ID | Festival | Chinese | Date Info | Wikipedia URL |
+|----|----------|---------|-----------|---------------|
+| 13 | Ghost Festival | 中元节 | 七月十五 | /wiki/Ghost_Festival |
+| 14 | Mid-Autumn Festival | 中秋节 | 八月十五 | /wiki/Mid-Autumn_Festival |
+| 15 | Double Ninth Festival | 重阳节 | 九月初九 | /wiki/Double_Ninth_Festival |
+| 16 | Xiayuan Festival | 下元节 | 十月十五 | /wiki/Xiayuan_Festival |
+| 17 | Dongzhi Festival | 冬至 | Solar term (Dec) | /wiki/Dongzhi_Festival |
+| 18 | Laba Festival | 腊八节 | 腊月初八 | /wiki/Laba_Festival |
+
+---
+
+## Verification Protocol
+
+### Step 1: Date Verification (Critical!)
+For EACH candidate festival:
 1. Visit the festival's Wikipedia page
-2. Find the lunar calendar date (e.g., "15th day of 1st lunar month")
-3. Convert to 2024 Gregorian date using a lunar calendar resource
-4. Determine if date falls within January 1 - June 30, 2024
+2. Find the **lunar date** or **solar term date**
+3. **Convert to 2024 Gregorian date** using:
+   - Chinese calendar conversion tools
+   - 2024 calendar references
+4. Record: Does it fall within **Jan 1 - Jun 30, 2024**?
 
-**CROSS-VERIFICATION REQUIRED**: You must verify the 2024 date using at least TWO different sources:
-- Wikipedia festival page
-- A lunar calendar conversion page (e.g., Wikipedia's Chinese calendar article, or a dedicated lunar calendar site)
+**IMPORTANT**: Lunar dates vary each year! Do not assume fixed Gregorian dates.
 
-### Phase 2: Food Classification
-For each festival that passes Phase 1, you MUST:
-1. Identify the traditional food from the festival page
-2. Visit the food's dedicated Wikipedia page
-3. Find EXPLICIT classification (dessert/dumpling/porridge/offering)
-4. Determine if it's "eaten by families as a meal" or "primarily an offering"
+### Step 2: Food Classification Investigation
+For each candidate that passes Step 1:
+1. Find the **traditional food name** on the festival page
+2. **Visit the food's DEDICATED Wikipedia page** (not just the festival page!)
+3. Record:
+   - Is it classified as **dessert/sweet** or **savory/vegetable**?
+   - Is it eaten by **families as a meal** or primarily as **offering to deities**?
+   - Is it **dumpling-like** (wrapper + filling) or **porridge/congee**?
 
-**CROSS-VERIFICATION REQUIRED**: For borderline cases, check BOTH Wikipedia and Baidu Baike
+### Step 3: Festival Nature & Position Analysis
+For each candidate that passes Steps 1-2:
+1. Determine the festival's **primary nature**: celebration vs. memorial/ancestor worship
+2. Check if the festival involves **mourning rituals** or **tomb sweeping**
+3. Verify festival **position**: first day vs. culmination/standalone
 
-### Phase 3: Festival Nature Analysis
-For each festival that passes Phase 2, you MUST:
-1. Determine if festival is "first day", "standalone day", or "culmination day"
-2. Check for ANY mention of mourning, ancestor worship, or memorial activities
-3. Verify family gathering is a CORE tradition (not just mentioned)
-
-### Phase 4: Final Validation
-For each remaining candidate, you MUST:
-1. Re-verify ALL criteria with a second source
-2. Document the specific exclusion reason for each rejected candidate
-3. Confirm the final answer meets ALL five criteria
+### Step 4: Cultural Context Verification
+For all candidates that pass Steps 1-3:
+1. Verify ancient names and aliases (e.g., 上元节 vs 元宵节)
+2. Check Taoist/Buddhist origins vs. folk traditions
+3. Verify on at least **TWO sources**
 
 ---
 
-## Candidate Festivals (15 festivals)
+## Common Classification Errors (From Past Projects)
 
-You must verify ALL of the following candidates systematically:
+### Error Type 1: Date Confusion
+- **Spring Festival (正月初一)**: First day of 15-day period - FAILS Criterion C
+- **Lantern Festival (正月十五)**: Culmination of Spring Festival period - PASSES Criterion C
+- **Autumn/Winter festivals**: Outside Jan-Jun 2024 window - FAIL Criterion A
 
-### Spring Festival Period (January - February)
-| ID | Festival | Wikipedia URL |
-|----|----------|---------------|
-| 1 | Laba Festival | /wiki/Laba_Festival |
-| 2 | Kitchen God Festival | /wiki/Kitchen_God_Festival |
-| 3 | Chinese New Year | /wiki/Chinese_New_Year |
-| 4 | Lantern Festival | /wiki/Lantern_Festival |
-| 5 | Renri (Human Day) | /wiki/Renri |
-| 6 | Tianchuan Festival | /wiki/Tianchuan_Festival |
+### Error Type 2: Offering vs Family Food
+- **Zaotang (灶糖)**: Used to "seal Kitchen God's mouth" - it's an **OFFERING**, not family food
+- **Taiyanggao (太阳糕)**: Offered to the sun deity, not primarily eaten by families
 
-### Spring Season (March - May)
-| ID | Festival | Wikipedia URL |
-|----|----------|---------------|
-| 7 | Zhonghe Festival | /wiki/Zhonghe_Festival |
-| 8 | Qingming Festival | /wiki/Qingming_Festival |
-| 9 | Cold Food Festival | /wiki/Cold_Food_Festival |
+### Error Type 3: Savory vs Sweet Confusion
+- **Qicaigeng (七菜羹)**: A **SAVORY** seven-vegetable soup, NOT a sweet dessert
+- **Zongzi (粽子)**: A **DUMPLING** with wrapper and filling, NOT a dessert
 
-### Summer Season (June)
-| ID | Festival | Wikipedia URL |
-|----|----------|---------------|
-| 10 | Dragon Boat Festival | /wiki/Dragon_Boat_Festival |
+### Error Type 4: Nature Confusion
+- **Qingming**: Tomb sweeping and ancestor worship - FAILS Criterion E
+- **Ghost Festival**: Ancestor worship ceremonies - FAILS Criterion E
+- **Dragon Boat**: Memorial for Qu Yuan's death - has memorial aspects
 
-### Autumn-Winter Season (July - December)
-| ID | Festival | Wikipedia URL |
-|----|----------|---------------|
-| 11 | Qixi Festival | /wiki/Qixi_Festival |
-| 12 | Ghost Festival | /wiki/Ghost_Festival |
-| 13 | Mid-Autumn Festival | /wiki/Mid-Autumn_Festival |
-| 14 | Double Ninth Festival | /wiki/Double_Ninth_Festival |
-| 15 | Dongzhi Festival | /wiki/Dongzhi_Festival |
+### Error Type 5: Name Confusion
+- **上元节 (Shangyuan)** = 元宵节 (Lantern Festival) - Same festival, different names
+- **元宵 (yuanxiao)** can mean the festival OR the food - Visit separate pages
+
+### Error Type 6: Calendar Type Confusion (CRITICAL!)
+- **Solar festivals (阳历节日)**: Fixed Gregorian date each year
+  - 清明 (Qingming): April 4-6 (varies slightly within this range)
+  - 元旦 (New Year): Always January 1
+- **Lunar festivals (阴历节日)**: Fixed lunar date, varying Gregorian date
+  - 春节 (Spring Festival): 正月初一 - varies Jan 21 - Feb 20
+  - 元宵 (Lantern Festival): 正月十五 - varies Feb 5 - Mar 5
+  - 端午 (Dragon Boat): 五月初五 - varies May 27 - Jun 26
+- **CRITICAL**: A festival on "正月十五" does NOT occur on the same Gregorian date each year!
+  - 2024: Feb 24
+  - 2025: Feb 12
+  - 2023: Feb 5
+- **Verification Required**: For lunar festivals, MUST convert to 2024 Gregorian date specifically
 
 ---
 
 ## Allowed Sources
 - Wikipedia (primary)
-- Baidu Baike (baike.baidu.com) - for cross-verification of food classification
-- Lunar calendar resources (for date verification)
-
----
-
-## Selection Criteria
-
-Find the festival that meets **ALL** conditions:
-
-- **A**: Date falls within **First Half of 2024 (January 1 - June 30, 2024)**
-- **B**: Has traditional sweet food **eaten by families as a meal** (NOT dumpling, NOT porridge, NOT offering to deities)
-- **C**: Festival must be a **standalone day or culmination day** (NOT the first day of a multi-day celebration period)
-- **D**: Must have **family eating together** as a core tradition
-- **E**: Festival must NOT involve **mourning, ancestor worship, or memorial ceremonies**
-
----
-
-## Food Classification Requirements
-
-**CRITICAL**: For each festival's food, you MUST:
-
-1. **Visit the food's Wikipedia page** (e.g., /wiki/Tangyuan, /wiki/Zongzi, etc.)
-2. **Determine the food's classification**:
-   - Is it explicitly classified as a **dessert** or **sweet dish** in the article?
-   - Is it classified as a **dumpling**, **porridge**, or **savory dish**?
-   - Is it primarily described as an **offering** to deities?
-3. **Only foods explicitly classified as desserts/sweet dishes eaten by families** qualify under Criterion B
-
-**Key Classification Rules**:
-- **Dumplings** (zongzi, qingtuan, jiaozi, etc.) = Do NOT qualify (dumpling-like)
-  - A "dumpling" has a distinct wrapper/skin and filling structure
-  - Zongzi: sticky rice WRAPPED in bamboo/reed leaves = dumpling-like
-  - Qingtuan: glutinous rice WRAPPER with filling = dumpling-like
-- **Porridge/Congee** (laba porridge, etc.) = Do NOT qualify (not dessert)
-- **Offerings** (zaotang, etc.) = Do NOT qualify (not family meal)
-- **Sweet rice balls** (tangyuan, yuanxiao) = **May qualify** - these are NOT dumplings
-  - Tangyuan/yuanxiao are made from glutinous rice flour mixed with water to form a dough, NOT a wrapper + filling structure
-  - They are solid spheres, not wrapped items
-
-**What counts as "eaten by families as a meal"**:
-- The food must be traditionally consumed by families together during the festival
-- It does NOT need to be a "main course" - traditional festival foods eaten together count
-- Families gathering to share the traditional food is sufficient
-- What does NOT count: foods primarily used as offerings to deities/ancestors
-
----
-
-## Festival Nature Verification
-
-**CRITICAL**: For each festival, you MUST verify:
-
-1. **Does the festival involve mourning or ancestor worship?**
-   - Check if the festival involves tomb sweeping, ancestor memorials, or remembrance of deceased
-   - Festivals with mourning components FAIL Criterion E
-
-2. **Is the festival the first day or culmination of a period?**
-   - First day of multi-day celebration FAILS Criterion C
-   - Culmination/final day PASSES Criterion C
-   - Standalone day PASSES Criterion C
-
----
-
-## Verification Checklist
-
-For EACH of the 15 festivals, complete this verification:
-
-1. [ ] **Lunar Date**: What is the lunar calendar date?
-2. [ ] **Gregorian Date 2024**: What is the 2024 Gregorian date? Is it within Jan 1 - Jun 30, 2024?
-3. [ ] **Date Cross-Check**: Did you verify with a second source?
-4. [ ] **Food Identification**: What is the traditional food? Visit its Wikipedia page.
-5. [ ] **Food Classification**: Is the food dessert/sweet dish, dumpling, porridge, or offering?
-6. [ ] **Food Purpose**: Is it eaten by families as a meal, or primarily used as offering?
-7. [ ] **Festival Position**: Is this the first day of a multi-day period, or a standalone/culmination day?
-8. [ ] **Festival Nature**: Does this festival involve mourning, ancestor worship, or memorial ceremonies?
-9. [ ] **Family Tradition**: Is family gathering a core tradition?
-10. [ ] **Exclusion Reason**: If rejected, what is the SPECIFIC reason?
+- Baidu Baike (baike.baidu.com) - for cross-verification
+- Chinese calendar conversion tools
 
 ---
 
 ## Output Format
 
-**CRITICAL**: You MUST output BOTH sections in the exact order below:
-
 <answer>
-<FESTIVALS>
-[List ALL qualifying festival names, one per line - if none, write "NONE"]
-</FESTIVALS>
-<DATES>
-[List 2024 dates in YYYY-MM-DD format for each qualifying festival]
-</DATES>
-<FOODS>
-[List the sweet food for each qualifying festival]
-</FOODS>
+[Festival name(s) - list ALL qualifying festivals. If none, write "NONE"]
 </answer>
 
-<verification>
-## Phase 1: Date Screening Results
-[For each of the 15 festivals:
-- Festival name
-- Lunar calendar date
-- 2024 Gregorian date
-- Source 1 (festival page)
-- Source 2 (lunar calendar resource)
-- Within H1 2024? (Y/N)]
+<reasoning>
+## Step 1: Date Verification
+[List ALL 18 festivals with their 2024 Gregorian dates and whether they pass Criterion A]
 
-## Phase 2: Food Classification Results
-[For each festival passing Phase 1:
-- Festival name
-- Food name
-- Food Wikipedia page URL
-- Classification from Wikipedia (dessert/dumpling/porridge/offering)
-- Cross-check from Baidu Baike (if applicable)
-- Purpose: family meal/offering to deities
-- PASSES Criterion B? (Y/N)]
+## Step 2: Food Classification
+[List festivals passing Step 1 with their traditional food, food classification, and purpose]
 
-## Phase 3: Festival Nature Analysis
-[For each festival passing Phase 2:
-- Festival name
-- Position: first day/standalone/culmination
-- Mourning/ancestor worship? (Y/N)
-- Family gathering core? (Y/N)
-- PASSES Criteria C, D, E? (Y/N)]
+## Step 3: Nature and Position
+[Which festivals are celebrations (not memorials)? What are their positions?]
 
-## Phase 4: Exclusion Summary
-[For ALL 15 festivals, document the SPECIFIC exclusion reason:]
-
-| Festival | Date | In H1? | Food | Food OK? | Position OK? | Nature OK? | Family OK? | EXCLUSION REASON |
-|----------|------|--------|------|----------|--------------|------------|------------|------------------|
-| ... | YYYY-MM-DD | Y/N | food name | Y/N | Y/N | Y/N | Y/N | [Specific criterion failed] |
+## Step 4: Cultural Context
+[Multi-source verification with specific URLs and cultural context]
 
 ## Final Determination
-[List the qualifying festival(s) and explain why they meet ALL criteria]
-</verification>
-
-**IMPORTANT**: The `<verification>` section MUST appear AFTER the `</answer>` tag. Do NOT place analysis before the answer.
+[Why this festival is correct and others are wrong]
+</reasoning>
 
 ---
 
 ## Important Notes
-- **Mandatory 4-phase verification**: You MUST complete ALL four phases sequentially
-- **Minimum page visits**: You must visit at least 7 festival pages, at least 3 food pages, and at least 1 lunar calendar resource
-- **Cross-verification required**: Dates must be verified with 2 sources; borderline foods must be cross-checked with Baidu Baike
-- **Date verification**: "First Half 2024" means January 1 - June 30
-- **Dumpling exclusion**: Dumpling-like foods (zongzi, qingtuan, jiaozi) do NOT qualify as sweet food
-- **Porridge exclusion**: Porridge/congee (laba porridge) do NOT qualify as dessert
-- **Offering exclusion**: Foods primarily offered to deities do NOT qualify as family meal
-- **Mourning exclusion**: Festivals involving ancestor worship or memorial ceremonies do NOT qualify
-- **Festival position**: Distinguish between "first day of period" vs "standalone/culmination day"
-- **Exclusion documentation**: You MUST provide a specific exclusion reason for each rejected candidate
-- **Trap awareness**: The initial observation contains ERRORS - verify everything yourself!
+- Lunar calendar dates vary each year - verify for 2024 specifically
+- The scouting team's observations may contain classification errors
+- "Geng" (羹) is typically a savory soup, not a sweet dessert
+- "Offering to deities" does NOT count as "eaten by families"
+- First day of a multi-day period FAILS Criterion C
+- Ancestor worship and memorial ceremonies FAIL Criterion E
+- Include URLs for all sources used
