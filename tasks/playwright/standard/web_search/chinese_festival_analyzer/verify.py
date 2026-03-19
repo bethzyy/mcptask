@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
-Verification script for Chinese Traditional Festival Multi-Trap Analysis v36.
+Verification script for Chinese Traditional Festival Multi-Trap Analysis v43.
 Correct answer: Lantern Festival (元宵节/上元节) ONLY
 
 Key features:
-- 18 candidates (increased from 12)
-- Multi-layer traps (date, food, nature, position, culture, calendar type)
-- Strict page visit requirements
+- 18 candidates with hidden answer name
+- Generic Criterion C explanation (NO direct hints about specific festivals)
+- Misleading initial observation (points to Dragon Boat Festival)
+- STRICT page visit requirements (10 festivals, 4 foods, 1 Baidu)
+- Phase completion required (Phase 1-4 tables)
 - 2024-specific date verification
+- Baidu Baike visit required
 
 Correct answer validation:
 - Date: Feb 24, 2024 (正月十五) - within Jan-Jun 2024 ✅
@@ -23,9 +26,15 @@ L3: Renri - qicaigeng is SAVORY vegetable soup (FAILS B)
 L4: Zhonghe - taiyanggao is RITUAL OFFERING (FAILS B)
 L5: Qingming - TOMB SWEEPING, ancestor worship (FAILS E)
 L6: Cold Food - MEMORIAL nature (FAILS E)
-L7: Dragon Boat - zongzi is DUMPLING (FAILS B)
+L7: Dragon Boat - zongzi is DUMPLING, MEMORIAL nature (FAILS B and E)
 L8: Autumn/Winter festivals - OUTSIDE Jan-Jun 2024 (FAILS A)
 L9: Calendar Type - Must verify 2024 date specifically (lunar varies each year)
+
+v43:
+- Generic Criterion C explanation (NO透题)
+- Hidden answer name retained
+- 10 festival pages, 4 food pages required
+- Phase completion strictly enforced
 """
 import sys
 import json
@@ -39,10 +48,12 @@ CORRECT = {
     "元宵节", "上元节", "灯节"
 }
 
-# Required festival pages (18 candidates)
+# Required festival pages (expanded list for search-based approach)
 REQUIRED_FESTIVAL_PAGES = [
     "Chinese_New_Year",
+    "Spring_Festival",
     "Lantern_Festival",
+    "Yuanxiao",
     "Kitchen_God",
     "Kitchen_God_Festival",
     "Xiaonian",
@@ -54,15 +65,20 @@ REQUIRED_FESTIVAL_PAGES = [
     "Cold_Food_Festival",
     "Shangsi_Festival",
     "Dragon_Boat_Festival",
+    "Duanwu",
     "Tianfu_Festival",
     "Ghost_Festival",
+    "Zhongyuan",
     "Mid-Autumn_Festival",
     "Double_Ninth_Festival",
     "Xiayuan_Festival",
     "Dongzhi_Festival",
     "Laba_Festival",
+    "Chinese_traditional_festivals",
+    "Public_holidays_in_China",
+    "List_of_festivals_in_China",
 ]
-MIN_REQUIRED_FESTIVAL_PAGES = 4  # Minimum reasonable threshold
+MIN_REQUIRED_FESTIVAL_PAGES = 10  # Increased to force extensive exploration
 
 # Required food pages (must visit to verify classification)
 REQUIRED_FOOD_PAGES = [
@@ -80,7 +96,7 @@ REQUIRED_FOOD_PAGES = [
     "Taiyanggao",
     "Sun_cake",
 ]
-MIN_REQUIRED_FOOD_PAGES = 1  # Must visit at least 1 food page
+MIN_REQUIRED_FOOD_PAGES = 4  # Increased to force food verification
 
 # Calendar/date verification pages
 CALENDAR_PAGES = [
@@ -92,6 +108,25 @@ CALENDAR_PAGES = [
     "2024",
 ]
 MIN_REQUIRED_CALENDAR_PAGES = 1  # At least 1 calendar reference
+
+# Specific required pages for cross-verification
+REQUIRED_SPECIFIC_PAGES = [
+    "Chinese_New_Year",
+    "Lantern_Festival",
+    "Tangyuan",
+    "Yuanxiao",
+]
+MIN_REQUIRED_SPECIFIC_PAGES = 3
+
+# Baidu Baike pages (required for Phase 4)
+BAIDU_PAGES = [
+    "baidu",
+    "baike",
+    "元宵节",
+    "春节",
+    "上元",
+]
+MIN_BAIDU_PAGES = 1  # Must visit at least 1 Baidu page
 
 # Wrong answers (trap answers with rejection reasons)
 WRONG = {
@@ -122,7 +157,7 @@ WRONG = {
     "shangsi", "上巳节",
 }
 
-# Keyword groups for verification (7 groups, need 5/7)
+# Keyword groups for verification (8 groups, need 6/8)
 KEYWORD_GROUPS = [
     # Group 1: Date verification (2024 specific)
     ["2024", "february", "january", "june", "first half", "jan-jun"],
@@ -141,11 +176,14 @@ KEYWORD_GROUPS = [
     # Group 6: Cultural context (ancient names, origins)
     ["shangyuan", "上元", "taoist", "buddhist", "ancient", "historical",
      "alias", "also known", "originally"],
-    # Group 7: Verification & calendar type terms
+    # Group 7: Verification & cross-check terms
     ["converted", "verified", "cross-check", "sources", "wikipedia",
-     "baidu", "calendar", "gregorian", "fixed date", "varying", "varies"],
+     "baidu", "baike", "calendar", "gregorian", "fixed date", "varying", "varies"],
+    # Group 8: Phase completion indicators (NEW for v37)
+    ["phase 1", "phase 2", "phase 3", "phase 4", "table complete",
+     "date conversion", "food classification", "nature", "cross-verif"],
 ]
-MIN_KEYWORD_GROUPS = 4  # Reasonable threshold
+MIN_KEYWORD_GROUPS = 6  # Increased from 4 to 6
 
 
 def get_work_dir():
@@ -229,7 +267,7 @@ def check_wrong(fests, wrong_set):
     return found
 
 
-def check_explanation(explanation, groups, min_groups=5):
+def check_explanation(explanation, groups, min_groups=6):
     if not explanation:
         return False, "No reasoning/verification provided"
     exp_lower = explanation.lower()
@@ -237,7 +275,7 @@ def check_explanation(explanation, groups, min_groups=5):
     details = []
     for i, g in enumerate(groups):
         for kw in g:
-            if kw in exp_lower:
+            if kw.lower() in exp_lower:
                 matched += 1
                 details.append(f"Group {i+1}: '{kw}'")
                 break
@@ -255,7 +293,7 @@ def check_page_visits(wd, pages, min_req, ptype="festival"):
             content = f.read()
         visited = set()
         for p in pages:
-            if p in content:
+            if p.lower() in content.lower():
                 visited.add(p)
         if len(visited) >= min_req:
             return True, f"Visited {len(visited)} {ptype} pages (required: {min_req})"
@@ -264,9 +302,63 @@ def check_page_visits(wd, pages, min_req, ptype="festival"):
         return False, f"Error: {e}"
 
 
+def check_phase_completion(reasoning):
+    """Check if the reasoning includes evidence of phased completion."""
+    if not reasoning:
+        return False, "No reasoning to check phase completion"
+
+    exp_lower = reasoning.lower()
+    phases_found = []
+
+    # Check for Phase 1 indicators
+    phase1_indicators = ["phase 1", "date conversion", "2024 gregorian", "date table"]
+    if any(ind in exp_lower for ind in phase1_indicators):
+        phases_found.append("Phase 1")
+
+    # Check for Phase 2 indicators
+    phase2_indicators = ["phase 2", "food classification", "sweet/savory", "food table"]
+    if any(ind in exp_lower for ind in phase2_indicators):
+        phases_found.append("Phase 2")
+
+    # Check for Phase 3 indicators
+    phase3_indicators = ["phase 3", "nature", "position", "celebration/memorial"]
+    if any(ind in exp_lower for ind in phase3_indicators):
+        phases_found.append("Phase 3")
+
+    # Check for Phase 4 indicators
+    phase4_indicators = ["phase 4", "cross-verif", "baidu", "baike"]
+    if any(ind in exp_lower for ind in phase4_indicators):
+        phases_found.append("Phase 4")
+
+    if len(phases_found) >= 3:
+        return True, f"Found {len(phases_found)} phases: {phases_found}"
+    return False, f"Only {len(phases_found)} phases found: {phases_found}"
+
+
+def check_table_format(reasoning):
+    """Check if the reasoning includes properly formatted tables."""
+    if not reasoning:
+        return False, "No reasoning to check table format"
+
+    exp_lower = reasoning.lower()
+
+    # Check for table indicators
+    table_indicators = 0
+    if "|" in reasoning:  # Markdown table separator
+        table_indicators += 1
+    if re.search(r'\|.*\|.*\|', reasoning):  # At least 3 columns
+        table_indicators += 1
+    if "id" in exp_lower and "festival" in exp_lower:
+        table_indicators += 1
+
+    if table_indicators >= 2:
+        return True, f"Found {table_indicators} table indicators"
+    return False, f"Only {table_indicators} table indicators found"
+
+
 def verify(wd):
     print("=" * 70)
-    print("| VERIFICATION: Chinese Festival Multi-Trap Analysis (v36)")
+    print("| VERIFICATION: Chinese Festival Multi-Trap Analysis (v43)")
     print("=" * 70)
 
     msgs = parse_msgs(wd)
@@ -305,6 +397,43 @@ def verify(wd):
     else:
         print(f"| [PASSED] Calendar pages: {cal_msg}")
 
+    # Check specific page visits
+    spec_ok, spec_msg = check_page_visits(wd, REQUIRED_SPECIFIC_PAGES, MIN_REQUIRED_SPECIFIC_PAGES, "specific")
+    if not spec_ok:
+        print(f"| [FAILED] Specific pages: {spec_msg}")
+        ok = False
+    else:
+        print(f"| [PASSED] Specific pages: {spec_msg}")
+
+    # Check Baidu Baike visit (required for Phase 4)
+    baidu_ok, baidu_msg = check_page_visits(wd, BAIDU_PAGES, MIN_BAIDU_PAGES, "Baidu Baike")
+    if not baidu_ok:
+        print(f"| [FAILED] Baidu Baike: {baidu_msg}")
+        print("|          Phase 4 requires Baidu Baike cross-verification!")
+        ok = False
+    else:
+        print(f"| [PASSED] Baidu Baike: {baidu_msg}")
+
+    print("| " + "-" * 68)
+
+    # Check phase completion
+    phase_ok, phase_msg = check_phase_completion(ans["e"])
+    if not phase_ok:
+        print(f"| [FAILED] Phase completion: {phase_msg}")
+        print("|          Expected evidence of Phase 1-4 completion in reasoning")
+        ok = False
+    else:
+        print(f"| [PASSED] Phase completion: {phase_msg}")
+
+    # Check table format
+    table_ok, table_msg = check_table_format(ans["e"])
+    if not table_ok:
+        print(f"| [FAILED] Table format: {table_msg}")
+        print("|          Expected markdown tables with | separators")
+        ok = False
+    else:
+        print(f"| [PASSED] Table format: {table_msg}")
+
     print("| " + "-" * 68)
 
     # Check correct answer
@@ -338,7 +467,7 @@ def verify(wd):
     else:
         print("| [PASSED] No wrong festivals (traps avoided)")
 
-    # Check reasoning (5/7 groups required)
+    # Check reasoning (6/8 groups required)
     exp_ok, exp_msg = check_explanation(ans["e"], KEYWORD_GROUPS, min_groups=MIN_KEYWORD_GROUPS)
     if not exp_ok:
         print(f"| [FAILED] Reasoning: {exp_msg}")

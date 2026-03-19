@@ -3,7 +3,7 @@
   "task_name": "Chinese Traditional Festival Multi-Trap Analysis",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "Identify Chinese festivals meeting criteria for documentary about family traditions with sweet foods. Features 18 candidates with 9-layer trap system including date, food, nature, position, and calendar type traps.",
+  "description": "Identify Chinese festivals meeting criteria for documentary about family traditions with sweet foods. Features 18 candidates with 9-layer trap system and phased verification (Phase 1-4 tables required). Forces multi-turn reasoning with date conversion, food classification, nature analysis, and Baidu Baike cross-verification.",
   "author": "mcpmark",
   "created_at": "2026-03-18",
   "difficulty": "L3",
@@ -27,7 +27,22 @@
     "lunar-calendar-conversion",
     "cultural-depth",
     "calendar-type-trap",
-    "v36"
+    "phased-verification",
+    "phase-1-date-conversion",
+    "phase-2-food-classification",
+    "phase-3-nature-analysis",
+    "phase-4-cross-verification",
+    "baidu-baike-required",
+    "table-output-required",
+    "v43",
+    "no-spoilers",
+    "generic-criterion-c",
+    "hidden-answer-name",
+    "misleading-initial-observation",
+    "dragon-boat-trap",
+    "10-festival-pages-required",
+    "4-food-pages-required",
+    "phase-completion-required"
   ],
   "mcp": [
     "playwright"
