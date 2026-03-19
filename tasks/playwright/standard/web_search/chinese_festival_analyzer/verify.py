@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
 """
-Verification script for Chinese Traditional Festival Multi-Trap Analysis v43.
+Verification script for Chinese Traditional Festival Multi-Trap Analysis v47.
 Correct answer: Lantern Festival (元宵节/上元节) ONLY
 
 Key features:
 - 18 candidates with hidden answer name
 - Generic Criterion C explanation (NO direct hints about specific festivals)
 - Misleading initial observation (points to Dragon Boat Festival)
-- STRICT page visit requirements (10 festivals, 4 foods, 1 Baidu)
+- EXACT 19 page visit requirements (ALL 19 pages mandatory, no flexibility)
+- Checkpoint completion required (Checkpoint 1-4 outputs)
 - Phase completion required (Phase 1-4 tables)
 - 2024-specific date verification
 - Baidu Baike visit required
+- Festival coverage check (15+ festivals in reasoning)
+- Trap verification check (Dragon Boat Festival must be visited)
+
+v47 Changes:
+- Changed from "minimum X pages" to "ALL 19 specific pages required"
+- Added REQUIRED_PAGES list with exact page names
+- Added check_all_required_pages() function
+- Removed flexibility - ALL 19 pages must be visited, no exceptions
 
 Correct answer validation:
 - Date: Feb 24, 2024 (正月十五) - within Jan-Jun 2024 ✅
@@ -29,12 +38,6 @@ L6: Cold Food - MEMORIAL nature (FAILS E)
 L7: Dragon Boat - zongzi is DUMPLING, MEMORIAL nature (FAILS B and E)
 L8: Autumn/Winter festivals - OUTSIDE Jan-Jun 2024 (FAILS A)
 L9: Calendar Type - Must verify 2024 date specifically (lunar varies each year)
-
-v43:
-- Generic Criterion C explanation (NO透题)
-- Hidden answer name retained
-- 10 festival pages, 4 food pages required
-- Phase completion strictly enforced
 """
 import sys
 import json
@@ -47,6 +50,32 @@ CORRECT = {
     "lantern festival", "yuanxiao festival", "shangyuan festival",
     "元宵节", "上元节", "灯节"
 }
+
+# v47: EXACT 19 pages that MUST be visited (no flexibility)
+REQUIRED_PAGES = [
+    # Festival pages (16)
+    "Chinese_New_Year",
+    "Lantern_Festival",
+    "Kitchen_God",
+    "Renri",
+    "Shangyuan_Festival",
+    "Zhonghe_Festival",
+    "Tianchuan_Festival",
+    "Qingming_Festival",
+    "Cold_Food_Festival",
+    "Shangsi_Festival",
+    "Dragon_Boat_Festival",
+    "Ghost_Festival",
+    "Mid-Autumn_Festival",
+    "Double_Ninth_Festival",
+    "Dongzhi",
+    "Laba_Festival",
+    # Food pages (2)
+    "Tangyuan",
+    "Zongzi",
+    # Baidu Baike (1)
+    "baike.baidu.com",
+]
 
 # Required festival pages (expanded list for search-based approach)
 REQUIRED_FESTIVAL_PAGES = [
@@ -78,7 +107,7 @@ REQUIRED_FESTIVAL_PAGES = [
     "Public_holidays_in_China",
     "List_of_festivals_in_China",
 ]
-MIN_REQUIRED_FESTIVAL_PAGES = 10  # Increased to force extensive exploration
+MIN_REQUIRED_FESTIVAL_PAGES = 15  # Increased to force extensive exploration
 
 # Required food pages (must visit to verify classification)
 REQUIRED_FOOD_PAGES = [
@@ -109,14 +138,21 @@ CALENDAR_PAGES = [
 ]
 MIN_REQUIRED_CALENDAR_PAGES = 1  # At least 1 calendar reference
 
-# Specific required pages for cross-verification
+# Specific required pages for cross-verification (v46: added more obscure festivals)
 REQUIRED_SPECIFIC_PAGES = [
     "Chinese_New_Year",
     "Lantern_Festival",
     "Tangyuan",
     "Yuanxiao",
+    # v46: Added obscure festivals to force exploration
+    "Tianchuan_Festival",
+    "Xiayuan_Festival",
+    "Tianfu_Festival",
+    "Shangsi_Festival",
+    "Kitchen_God",
+    "Zhonghe_Festival",
 ]
-MIN_REQUIRED_SPECIFIC_PAGES = 3
+MIN_REQUIRED_SPECIFIC_PAGES = 8  # Increased from 3 to 8
 
 # Baidu Baike pages (required for Phase 4)
 BAIDU_PAGES = [
@@ -356,9 +392,167 @@ def check_table_format(reasoning):
     return False, f"Only {table_indicators} table indicators found"
 
 
+def check_checkpoint_completion(reasoning):
+    """Check if all 4 checkpoints are completed."""
+    if not reasoning:
+        return False, "No reasoning to check checkpoint completion"
+
+    exp_lower = reasoning.lower()
+    checkpoints_found = []
+
+    # Check for Checkpoint 1: Date Table
+    checkpoint1_indicators = [
+        "checkpoint 1", "complete date table", "date conversion table",
+        "all 18 festivals", "2024 gregorian"
+    ]
+    if any(ind in exp_lower for ind in checkpoint1_indicators):
+        checkpoints_found.append("Checkpoint 1")
+
+    # Check for Checkpoint 2: Food Analysis
+    checkpoint2_indicators = [
+        "checkpoint 2", "food analysis", "food classification",
+        "sweet/savory", "family/offering"
+    ]
+    if any(ind in exp_lower for ind in checkpoint2_indicators):
+        checkpoints_found.append("Checkpoint 2")
+
+    # Check for Checkpoint 3: Nature Analysis
+    checkpoint3_indicators = [
+        "checkpoint 3", "nature analysis", "celebration/memorial",
+        "position", "first day/culmination"
+    ]
+    if any(ind in exp_lower for ind in checkpoint3_indicators):
+        checkpoints_found.append("Checkpoint 3")
+
+    # Check for Checkpoint 4: Cross-Verification
+    checkpoint4_indicators = [
+        "checkpoint 4", "cross-verif", "baidu", "baike",
+        "two different sources"
+    ]
+    if any(ind in exp_lower for ind in checkpoint4_indicators):
+        checkpoints_found.append("Checkpoint 4")
+
+    if len(checkpoints_found) >= 3:
+        return True, f"Found {len(checkpoints_found)} checkpoints: {checkpoints_found}"
+    return False, f"Only {len(checkpoints_found)} checkpoints found: {checkpoints_found}"
+
+
+def check_festival_coverage(reasoning):
+    """Check if the reasoning mentions at least 15 different festivals."""
+    if not reasoning:
+        return False, "No reasoning to check festival coverage"
+
+    exp_lower = reasoning.lower()
+
+    # List of festival names to check for
+    festival_names = [
+        "spring festival", "chinese new year", "lunar new year",
+        "lantern festival", "yuanxiao", "shangyuan",
+        "kitchen god", "xiaonian", "little new year",
+        "renri", "human day",
+        "zhonghe",
+        "tianchuan",
+        "qingming", "tomb sweeping",
+        "cold food", "hanshi",
+        "shangsi",
+        "dragon boat", "duanwu",
+        "tianfu",
+        "ghost festival", "zhongyuan",
+        "mid-autumn", "moon festival",
+        "double ninth", "chongyang",
+        "xiayuan",
+        "dongzhi", "winter solstice",
+        "laba",
+    ]
+
+    found_festivals = set()
+    for name in festival_names:
+        if name in exp_lower:
+            found_festivals.add(name)
+
+    min_festivals = 15
+    if len(found_festivals) >= min_festivals:
+        return True, f"Found {len(found_festivals)} festivals in reasoning (required: {min_festivals})"
+    return False, f"Only {len(found_festivals)} festivals in reasoning (required: {min_festivals}): {sorted(found_festivals)[:10]}"
+
+
+def check_trap_verification(wd):
+    """Check if the model verified multiple trap festivals."""
+    try:
+        log_file = wd / "execution.log"
+        if not log_file.exists():
+            return False, "execution.log not found"
+        with open(log_file, 'r', encoding='utf-8') as f:
+            content = f.read().lower()
+
+        # Check for Dragon Boat Festival page visit (trap #1)
+        dragon_boat_indicators = [
+            "dragon_boat_festival",
+            "duanwu",
+            "dragon boat",
+            "端午",
+        ]
+        dragon_boat_found = any(ind in content for ind in dragon_boat_indicators)
+
+        # Check for Qingming Festival page visit (trap #2)
+        qingming_indicators = [
+            "qingming_festival",
+            "qingming",
+            "tomb sweeping",
+            "清明节",
+        ]
+        qingming_found = any(ind in content for ind in qingming_indicators)
+
+        # Check for Kitchen God Festival page visit (trap #3)
+        kitchen_god_indicators = [
+            "kitchen_god",
+            "xiaonian",
+            "zaotang",
+            "祭灶",
+            "小年",
+        ]
+        kitchen_god_found = any(ind in content for ind in kitchen_god_indicators)
+
+        traps_verified = []
+        if dragon_boat_found:
+            traps_verified.append("Dragon Boat")
+        if qingming_found:
+            traps_verified.append("Qingming")
+        if kitchen_god_found:
+            traps_verified.append("Kitchen God")
+
+        # Must verify at least 2 out of 3 trap festivals
+        if len(traps_verified) >= 2:
+            return True, f"Verified {len(traps_verified)} trap festivals: {traps_verified}"
+        return False, f"Only verified {len(traps_verified)} trap festivals (required: 2): {traps_verified}"
+    except Exception as e:
+        return False, f"Error: {e}"
+
+
+def check_all_required_pages(wd):
+    """Check if ALL 19 required pages were visited (v47)."""
+    try:
+        log_file = wd / "execution.log"
+        if not log_file.exists():
+            return False, "execution.log not found"
+        with open(log_file, 'r', encoding='utf-8') as f:
+            content = f.read().lower()
+
+        missing = []
+        for page in REQUIRED_PAGES:
+            if page.lower() not in content:
+                missing.append(page)
+
+        if missing:
+            return False, f"Missing {len(missing)} required pages: {missing}"
+        return True, f"All {len(REQUIRED_PAGES)} required pages visited"
+    except Exception as e:
+        return False, f"Error: {e}"
+
+
 def verify(wd):
     print("=" * 70)
-    print("| VERIFICATION: Chinese Festival Multi-Trap Analysis (v43)")
+    print("| VERIFICATION: Chinese Festival Multi-Trap Analysis (v47)")
     print("=" * 70)
 
     msgs = parse_msgs(wd)
@@ -373,46 +567,14 @@ def verify(wd):
 
     ok = True
 
-    # Check page visits - Festival pages
-    fest_ok, fest_msg = check_page_visits(wd, REQUIRED_FESTIVAL_PAGES, MIN_REQUIRED_FESTIVAL_PAGES, "festival")
-    if not fest_ok:
-        print(f"| [FAILED] Festival pages: {fest_msg}")
+    # v47: Check ALL 19 required pages (mandatory, no flexibility)
+    pages_ok, pages_msg = check_all_required_pages(wd)
+    if not pages_ok:
+        print(f"| [FAILED] Required pages: {pages_msg}")
+        print("|          You MUST visit ALL 19 pages listed in description.md")
         ok = False
     else:
-        print(f"| [PASSED] Festival pages: {fest_msg}")
-
-    # Check page visits - Food pages
-    food_ok, food_msg = check_page_visits(wd, REQUIRED_FOOD_PAGES, MIN_REQUIRED_FOOD_PAGES, "food")
-    if not food_ok:
-        print(f"| [FAILED] Food pages: {food_msg}")
-        ok = False
-    else:
-        print(f"| [PASSED] Food pages: {food_msg}")
-
-    # Check page visits - Calendar pages
-    cal_ok, cal_msg = check_page_visits(wd, CALENDAR_PAGES, MIN_REQUIRED_CALENDAR_PAGES, "calendar")
-    if not cal_ok:
-        print(f"| [FAILED] Calendar pages: {cal_msg}")
-        ok = False
-    else:
-        print(f"| [PASSED] Calendar pages: {cal_msg}")
-
-    # Check specific page visits
-    spec_ok, spec_msg = check_page_visits(wd, REQUIRED_SPECIFIC_PAGES, MIN_REQUIRED_SPECIFIC_PAGES, "specific")
-    if not spec_ok:
-        print(f"| [FAILED] Specific pages: {spec_msg}")
-        ok = False
-    else:
-        print(f"| [PASSED] Specific pages: {spec_msg}")
-
-    # Check Baidu Baike visit (required for Phase 4)
-    baidu_ok, baidu_msg = check_page_visits(wd, BAIDU_PAGES, MIN_BAIDU_PAGES, "Baidu Baike")
-    if not baidu_ok:
-        print(f"| [FAILED] Baidu Baike: {baidu_msg}")
-        print("|          Phase 4 requires Baidu Baike cross-verification!")
-        ok = False
-    else:
-        print(f"| [PASSED] Baidu Baike: {baidu_msg}")
+        print(f"| [PASSED] Required pages: {pages_msg}")
 
     print("| " + "-" * 68)
 
@@ -433,6 +595,33 @@ def verify(wd):
         ok = False
     else:
         print(f"| [PASSED] Table format: {table_msg}")
+
+    # Check checkpoint completion (NEW v44)
+    checkpoint_ok, checkpoint_msg = check_checkpoint_completion(ans["e"])
+    if not checkpoint_ok:
+        print(f"| [FAILED] Checkpoint completion: {checkpoint_msg}")
+        print("|          Expected evidence of Checkpoint 1-4 completion")
+        ok = False
+    else:
+        print(f"| [PASSED] Checkpoint completion: {checkpoint_msg}")
+
+    # Check festival coverage (NEW v44)
+    coverage_ok, coverage_msg = check_festival_coverage(ans["e"])
+    if not coverage_ok:
+        print(f"| [FAILED] Festival coverage: {coverage_msg}")
+        print("|          Must mention at least 15 different festivals in reasoning")
+        ok = False
+    else:
+        print(f"| [PASSED] Festival coverage: {coverage_msg}")
+
+    # Check trap verification (NEW v44)
+    trap_ok, trap_msg = check_trap_verification(wd)
+    if not trap_ok:
+        print(f"| [FAILED] Trap verification: {trap_msg}")
+        print("|          Must verify Dragon Boat Festival (the misleading initial observation)")
+        ok = False
+    else:
+        print(f"| [PASSED] Trap verification: {trap_msg}")
 
     print("| " + "-" * 68)
 
