@@ -1,187 +1,149 @@
-# Treasure Hunt Task: v105 - Wikipedia Link Chain
+# Chinese Festival Navigator: v109 - Step-by-Step Output Required
 
-## CRITICAL: Follow the Chain - NO Direct Searching
+## CRITICAL: Step-by-Step Navigation with IMMEDIATE Output
 
-**This task is different from typical web search tasks.**
+**After EVERY browser action, you MUST output what you found before proceeding.**
 
-You CANNOT search directly for the final answer.
-You MUST follow a specific chain of links starting from a given URL.
-
----
-
-## How This Task Works
-
-1. Start at the given URL
-2. Find a specific link on that page
-3. Navigate to that link
-4. Find another link on the new page
-5. Repeat until you reach the final answer
-
-**Each step depends on the previous step. You cannot skip steps.**
+You CANNOT execute multiple browser actions in one turn. Each turn must contain:
+1. ONE browser action (navigate or click)
+2. IMMEDIATE output of what you found on that page
+3. Your next decision
 
 ---
 
-## Starting Point
+## Task Overview
 
-**Navigate to:** https://en.wikipedia.org/wiki/List_of_festivals_in_China
+Starting from https://en.wikipedia.org/wiki/List_of_festivals_in_China, find a traditional Chinese festival meeting ALL 6 conditions:
 
-This is your ONLY starting point. Do not search for other pages.
-
----
-
-## Stage 1: Find the Festival (Follow Links)
-
-### Task
-Starting from the "List of festivals in China" page:
-1. Find a festival that meets ALL conditions below
-2. You MUST find this festival by following links from the starting page
-3. You CANNOT search directly for "festival with green food"
-
-### 6 Conditions
 | # | Condition | Requirement |
 |---|-----------|-------------|
-| 1 | Appearance | Green |
-| 2 | Taste | NOT sweet (savory or bitter) |
-| 3 | Symbolism | Health or purification |
-| 4 | Geographic | Jiangnan OR North China Plain |
-| 5 | Historical | Before Tang Dynasty (618 CE) |
-| 6 | Poet Connection | Associated with a famous poet |
+| 1 | Food Color | Green |
+| 2 | Food Taste | NOT sweet (savory or bitter) |
+| 3 | Symbolism | Health, purification, or warding off evil |
+| 4 | Region | Jiangnan OR North China Plain |
+| 5 | Era | Before Tang Dynasty (618 CE) |
+| 6 | Poet Connection | POLITICAL DEMOTION (not suicide) |
 
-### Link Chain Requirement
-Document your navigation path:
+### TRAPS (DO NOT SELECT)
+
+| Festival | Why Wrong |
+|----------|-----------|
+| Dragon Boat | Qu Yuan SUICIDE by drowning |
+| Qingming | Qingtuan is SWEET |
+| Lantern | Yuanxiao is SWEET |
+
+---
+
+## Step-by-Step Navigation Pattern
+
+**Each turn MUST follow this format:**
+
 ```
-<stage1>
-Starting URL: https://en.wikipedia.org/wiki/List_of_festivals_in_China
+=== TURN [N] ===
 
-Navigation Path:
-1. [Page 1 URL] - [Link text you clicked]
-2. [Page 2 URL] - [Link text you clicked]
-3. ... continue until you find the festival
+ACTION: [navigate to URL] OR [click on "link text"]
 
-Festival Found: [Name]
-Final URL: [URL where you found this festival]
+RESULT:
+- Page title: [Title]
+- URL: [Current URL]
+- Key findings: [What you found]
+- Relevant info: [Specific quotes]
 
-Conditions Verification:
-1. Appearance: Green - [Quote] - [URL]
-2. Taste: NOT sweet - [Quote] - [URL]
-3. Symbolism: Health/purification - [Quote] - [URL]
-4. Geographic: [Quote] - [URL]
-5. Historical: [Quote] - [URL]
-6. Poet Connection: [Name] - [Evidence] - [URL]
-
-Link on this page to poet information:
-Poet Link URL: [URL found on the festival page]
-</stage1>
+DECISION:
+- Does this meet criteria? [Yes/No/Partial]
+- Which criteria met? [List]
+- Which criteria failed? [List]
+- Next step: [What you will do next]
 ```
 
 ---
 
-## Stage 2: Find the Poem (Follow Links)
+## Required Sequence
 
-### Task
-Starting from the festival page you found in Stage 1:
-1. Find a link on that page to the poet's page
-2. Navigate to the poet's page
-3. Find a poem about the festival where the poet expresses **political frustration**
-
-### CRITICAL
-- You MUST navigate to the poet's page using a link from the festival page
-- You CANNOT search directly for the poet
-
-### Output Format
+### Step 1: Navigate to List of Festivals
 ```
-<stage2>
-From Festival Page: [Festival URL from Stage 1]
-Poet Link Found: [Link text] - [URL]
-Navigated to Poet Page: [URL]
-
-Poem Found:
-Title: [Title]
-Political Frustration Evidence: [Quote] - [URL]
-
-Link on this page to biography:
-Biography Link URL: [URL found on the poet page]
-</stage2>
+=== TURN 1 ===
+ACTION: navigate to https://en.wikipedia.org/wiki/List_of_festivals_in_China
+[Output findings and decision]
 ```
 
----
-
-## Stage 3: Find the Event (Follow Links)
-
-### Task
-Starting from the poet's page:
-1. Find a link to the poet's biography or life story
-2. Navigate to that page
-3. Find information about the poet's **political demotion**
-
-### CRITICAL
-- You MUST use a link from the poet's page
-- You CANNOT search directly for "demotion event"
-
-### Output Format
+### Step 2-6: Explore 5 Different Festivals
 ```
-<stage3>
-From Poet Page: [Poet URL from Stage 2]
-Biography Link Found: [Link text] - [URL]
-Navigated to Biography: [URL]
+=== TURN 2 ===
+ACTION: click on "[Festival 1 name]" link
+[Output findings and decision]
 
-Demotion Event Found:
-Description: [Quote]
-Year: [YYYY]
-Evidence: [Quote] - [URL]
-</stage3>
+=== TURN 3 ===
+ACTION: click on "[Festival 2 name]" link (go back first if needed)
+[Output findings and decision]
+
+... (continue for 5 festivals)
+```
+
+### Step 7-12: Deep Dive into Best Candidate
+```
+=== TURN 7 ===
+ACTION: click on "[food name]" link on festival page
+[Output findings and decision]
+
+=== TURN 8 ===
+ACTION: click on "[poet name]" link
+[Output findings and decision]
+
+... (continue exploring)
+```
+
+### Step 13-18: Verify Demotion Event
+```
+=== TURN 13 ===
+ACTION: click on "[biography]" link
+[Output findings and decision]
+
+... (continue verifying)
+```
+
+### Step 19-20: Final Verification
+```
+=== TURN 19 ===
+ACTION: navigate to cross-reference page
+[Output findings and decision]
+
+=== TURN 20 ===
+[Final answer]
 ```
 
 ---
 
-## Stage 4: Verification
-
-### Task
-Verify the entire chain by checking consistency.
-
-```
-<stage4>
-Complete Link Chain:
-1. https://en.wikipedia.org/wiki/List_of_festivals_in_China
-2. -> [Festival page URL]
-3. -> [Poet page URL]
-4. -> [Biography page URL]
-
-Chain Consistency:
-- Festival: [Name]
-- Poet: [Name]
-- Event: [Description]
-- Year: [YYYY]
-
-All links followed (not searched): [YES/NO]
-</stage4>
-```
-
----
-
-## Final Answer
+## Final Answer Format
 
 ```
 <answer>
-Treasure Hunt Complete!
+Complete Turn-by-Turn Summary:
 
-Link Chain:
-1. List of festivals -> [Festival]
-2. [Festival] -> [Poet]
-3. [Poet] -> [Event in Year]
+Turn 1: [URL] - [Finding]
+Turn 2: [URL] - [Finding]
+Turn 3: [URL] - [Finding]
+... (list all turns)
 
-Total pages visited: [count]
-Direct searches performed: 0 (requirement)
+Final Chain:
+Festival: [Name]
+Food: [Name] - Green, NOT sweet
+Poet: [Name]
+Demotion Event: [Description]
+Year: [YYYY]
+
+Total turns: [MUST BE 20+]
 </answer>
 ```
 
 ---
 
-## Scoring
+## Verification
 
-Your answer will be evaluated on:
-1. **Link chain integrity** - Did you follow links, not search directly?
-2. **Correct festival** - Does it meet all 6 conditions?
-3. **Chain consistency** - Does poet match festival? Does event match poet?
+Your answer will be checked for:
+1. **20+ turns** with step-by-step documentation
+2. **Correct festival** meeting all 6 conditions
+3. **Traps avoided** (Dragon Boat, Qingming, Lantern)
+4. **Valid demotion event** (not suicide)
 
-**IMPORTANT:** If you search directly instead of following links, you will FAIL.
+**If you output fewer than 20 documented turns, you will FAIL.**

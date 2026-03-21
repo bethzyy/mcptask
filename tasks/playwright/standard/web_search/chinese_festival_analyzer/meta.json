@@ -1,22 +1,18 @@
 {
   "task_id": "chinese_festival_analyzer",
-  "task_name": "Treasure Hunt v105",
+  "task_name": "Step-by-Step v109",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v105: Treasure hunt design. Must follow Wikipedia link chain starting from List of Festivals. Cannot search directly. Forces sequential navigation: List -> Festival -> Poet -> Event. Target: 15+ turns through forced navigation.",
+  "description": "v109: Requires 20+ documented turns with step-by-step output after EACH browser action. Forces sequential execution by requiring immediate output after each navigation.",
   "author": "mcpmark",
   "created_at": "2026-03-21",
   "difficulty": "L3",
   "tags": [
     "multi-stage",
-    "treasure-hunt",
-    "link-chain",
-    "sequential-navigation",
-    "no-direct-search",
-    "chain-dependency",
-    "v105",
-    "4-stages",
-    "6-conditions"
+    "step-by-step",
+    "20-turns-minimum",
+    "v109",
+    "sequential-execution"
   ],
   "mcp": [
     "playwright"
@@ -26,18 +22,17 @@
     "stateContent": null,
     "stateUrl": null,
     "stateOriginalUrl": "https://en.wikipedia.org/wiki/List_of_festivals_in_China",
-    "version": "v105",
-    "stage_count": 4,
+    "version": "v109",
+    "min_turns": 20,
     "conditions": [
       "appearance_green",
       "taste_not_sweet",
       "symbolism_health",
       "geographic_jiangnan_or_north_china",
       "historical_pre_tang",
-      "poet_connection"
+      "poet_demotion"
     ],
-    "trap_candidates": ["F1", "F5"],
-    "required_start_url": "en.wikipedia.org/wiki/List_of_festivals_in_China",
-    "expected_turns": "15+"
+    "trap_candidates": ["dragon_boat", "qingming", "lantern"],
+    "expected_turns": "20+"
   }
 }
