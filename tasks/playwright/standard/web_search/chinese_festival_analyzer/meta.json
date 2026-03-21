@@ -1,21 +1,22 @@
 {
   "task_id": "chinese_festival_analyzer",
-  "task_name": "Chain with Geographic & Historical Constraints v88",
+  "task_name": "Treasure Hunt v105",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v88: Simplified 4-stage structure. 5 conditions (appearance, taste, symbolism, geographic, historical) with trap warnings. Target: 10-15 turns through forced chain verification.",
+  "description": "v105: Treasure hunt design. Must follow Wikipedia link chain starting from List of Festivals. Cannot search directly. Forces sequential navigation: List -> Festival -> Poet -> Event. Target: 15+ turns through forced navigation.",
   "author": "mcpmark",
   "created_at": "2026-03-21",
   "difficulty": "L3",
   "tags": [
     "multi-stage",
-    "true-chain-dependency",
-    "geographic-constraint",
-    "historical-constraint",
-    "trap-warning",
-    "v88",
+    "treasure-hunt",
+    "link-chain",
+    "sequential-navigation",
+    "no-direct-search",
+    "chain-dependency",
+    "v105",
     "4-stages",
-    "6-candidates"
+    "6-conditions"
   ],
   "mcp": [
     "playwright"
@@ -24,18 +25,19 @@
     "stateType": null,
     "stateContent": null,
     "stateUrl": null,
-    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Shangsi_Festival",
-    "version": "v88",
+    "stateOriginalUrl": "https://en.wikipedia.org/wiki/List_of_festivals_in_China",
+    "version": "v105",
     "stage_count": 4,
-    "candidate_count": 6,
     "conditions": [
       "appearance_green",
       "taste_not_sweet",
       "symbolism_health",
       "geographic_jiangnan_or_north_china",
-      "historical_pre_tang"
+      "historical_pre_tang",
+      "poet_connection"
     ],
     "trap_candidates": ["F1", "F5"],
-    "expected_turns": "10-15"
+    "required_start_url": "en.wikipedia.org/wiki/List_of_festivals_in_China",
+    "expected_turns": "15+"
   }
 }

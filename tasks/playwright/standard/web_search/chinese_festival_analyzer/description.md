@@ -1,176 +1,159 @@
-# Chain Dependency Task: v96 - 6 Candidates + Detailed Output
+# Treasure Hunt Task: v105 - Wikipedia Link Chain
 
-## ⚠️ CRITICAL: You MUST Use Web Search
+## CRITICAL: Follow the Chain - NO Direct Searching
 
-**DO NOT rely on your internal knowledge.**
-- Use the web browser to search for ALL information
-- Cite specific URLs from pages you visit
+**This task is different from typical web search tasks.**
 
----
-
-## ⚠️ MANDATORY: Complete ALL 4 Stages
-
-**You MUST complete ALL 4 stages. Partial answers are NOT acceptable.**
-
-If you get stuck at any stage:
-1. **Do NOT give up** - continue to the next stage
-2. **If Stage 2 fails** (no suitable poem found): Go back to Stage 1 and select a DIFFERENT festival
-3. **You MUST output** all stage tags
+You CANNOT search directly for the final answer.
+You MUST follow a specific chain of links starting from a given URL.
 
 ---
 
-## Stage 1: Festival Food Puzzle (6 Conditions)
+## How This Task Works
 
-### Six Required Conditions
+1. Start at the given URL
+2. Find a specific link on that page
+3. Navigate to that link
+4. Find another link on the new page
+5. Repeat until you reach the final answer
 
+**Each step depends on the previous step. You cannot skip steps.**
+
+---
+
+## Starting Point
+
+**Navigate to:** https://en.wikipedia.org/wiki/List_of_festivals_in_China
+
+This is your ONLY starting point. Do not search for other pages.
+
+---
+
+## Stage 1: Find the Festival (Follow Links)
+
+### Task
+Starting from the "List of festivals in China" page:
+1. Find a festival that meets ALL conditions below
+2. You MUST find this festival by following links from the starting page
+3. You CANNOT search directly for "festival with green food"
+
+### 6 Conditions
 | # | Condition | Requirement |
 |---|-----------|-------------|
 | 1 | Appearance | Green |
 | 2 | Taste | NOT sweet (savory or bitter) |
 | 3 | Symbolism | Health or purification |
-| 4 | Geographic | Jiangnan (江南) OR North China Plain (华北平原) |
+| 4 | Geographic | Jiangnan OR North China Plain |
 | 5 | Historical | Before Tang Dynasty (618 CE) |
-| 6 | **Event Connection** | Associated with a famous poet's demotion event |
+| 6 | Poet Connection | Associated with a famous poet |
 
-### Candidate Festivals (6)
-
-| ID | Festival | Date | Food |
-|----|----------|------|------|
-| F1 | Qingming Festival | Early April | Green glutinous rice balls |
-| F2 | Renri (Human Day) | 7th day of 1st lunar month | Seven vegetable soup |
-| F3 | Shangsi Festival | 3rd day of 3rd lunar month | Purification herb dishes |
-| F4 | Hanshi Festival | Before Qingming | Cold food |
-| F5 | Dragon Boat Festival | 5th day of 5th lunar month | Wrapped rice dumplings |
-| F6 | Chunlong Festival | 2nd day of 2nd lunar month | Dragon whisker noodles |
-
----
-
-### Sub-Stage 1a: Research All Candidates
-
-Visit pages for ALL **6** candidates and record food information.
-
+### Link Chain Requirement
+Document your navigation path:
 ```
-<stage1a>
-| ID | Festival | Food | Appearance | Taste | Region | Era |
-| F1 | ... | ... | ... | ... | ... | ... |
-... (all 6)
-Pages visited: [number]
-</stage1a>
-```
+<stage1>
+Starting URL: https://en.wikipedia.org/wiki/List_of_festivals_in_China
 
----
+Navigation Path:
+1. [Page 1 URL] - [Link text you clicked]
+2. [Page 2 URL] - [Link text you clicked]
+3. ... continue until you find the festival
 
-### Sub-Stage 1b: Geographic & Historical Verification
+Festival Found: [Name]
+Final URL: [URL where you found this festival]
 
-Verify geographic origin and historical era.
-
-```
-<stage1b>
-Geographic: [Quote] - [URL]
-Historical: [Quote] - [URL]
-</stage1b>
-```
-
----
-
-### Sub-Stage 1c: Final Selection
-
-```
-<stage1c>
-Festival: [Name]
-Food: [Name]
-
-All 6 Conditions:
+Conditions Verification:
 1. Appearance: Green - [Quote] - [URL]
 2. Taste: NOT sweet - [Quote] - [URL]
 3. Symbolism: Health/purification - [Quote] - [URL]
 4. Geographic: [Quote] - [URL]
 5. Historical: [Quote] - [URL]
-6. Event Connection: [Which poet's demotion is connected?] - [URL]
+6. Poet Connection: [Name] - [Evidence] - [URL]
 
-Why others failed: [Brief explanation]
-</stage1c>
+Link on this page to poet information:
+Poet Link URL: [URL found on the festival page]
+</stage1>
 ```
 
 ---
 
-## Stage 2: Poem Emotion Analysis (2 Sub-Stages)
+## Stage 2: Find the Poem (Follow Links)
 
-Using the **festival from Stage 1**, find a poem where the poet expresses **political frustration**.
+### Task
+Starting from the festival page you found in Stage 1:
+1. Find a link on that page to the poet's page
+2. Navigate to the poet's page
+3. Find a poem about the festival where the poet expresses **political frustration**
 
-### Emotion Types
+### CRITICAL
+- You MUST navigate to the poet's page using a link from the festival page
+- You CANNOT search directly for the poet
 
-| Type | Keywords | Valid? |
-|------|----------|--------|
-| Political frustration | Demotion, exile, dismissed, satire | ✅ YES |
-| Personal nostalgia | Homesick, missing home | ❌ NO |
-| Romantic loss | Lovesickness, heartbreak | ❌ NO |
-
----
-
-### Sub-Stage 2a: Search
-
+### Output Format
 ```
-<stage2a>
-| Poem Title | Poet | Dynasty | Source URL | Emotion Type |
-...
-</stage2a>
-```
+<stage2>
+From Festival Page: [Festival URL from Stage 1]
+Poet Link Found: [Link text] - [URL]
+Navigated to Poet Page: [URL]
 
----
-
-### Sub-Stage 2b: Selection
-
-```
-<stage2b>
-Poem Title: [Title]
-Poet: [Name]
-Festival Connection: [Quote] - [URL]
+Poem Found:
+Title: [Title]
 Political Frustration Evidence: [Quote] - [URL]
-</stage2b>
+
+Link on this page to biography:
+Biography Link URL: [URL found on the poet page]
+</stage2>
 ```
 
 ---
 
-## Stage 3: Historical Event (2 Sub-Stages)
+## Stage 3: Find the Event (Follow Links)
 
-Using the **poet from Stage 2**, find their **political demotion** event.
+### Task
+Starting from the poet's page:
+1. Find a link to the poet's biography or life story
+2. Navigate to that page
+3. Find information about the poet's **political demotion**
 
----
+### CRITICAL
+- You MUST use a link from the poet's page
+- You CANNOT search directly for "demotion event"
 
-### Sub-Stage 3a: Research
-
+### Output Format
 ```
-<stage3a>
-| Event | Year | Type | Source URL |
-...
-</stage3a>
-```
+<stage3>
+From Poet Page: [Poet URL from Stage 2]
+Biography Link Found: [Link text] - [URL]
+Navigated to Biography: [URL]
 
----
-
-### Sub-Stage 3b: Selection
-
-```
-<stage3b>
-Event: [Description]
+Demotion Event Found:
+Description: [Quote]
 Year: [YYYY]
-Poet: [Must match Stage 2]
-Evidence of Demotion: [Quote] - [URL]
-</stage3b>
+Evidence: [Quote] - [URL]
+</stage3>
 ```
 
 ---
 
-## Stage 4: Chain Verification
+## Stage 4: Verification
+
+### Task
+Verify the entire chain by checking consistency.
 
 ```
 <stage4>
-Chain: [Festival] → [Poem by Poet] → [Event in Year]
+Complete Link Chain:
+1. https://en.wikipedia.org/wiki/List_of_festivals_in_China
+2. -> [Festival page URL]
+3. -> [Poet page URL]
+4. -> [Biography page URL]
 
-Consistency:
-- Festival-Poem match: ✓/✗
-- Poet-Event match: ✓/✗
+Chain Consistency:
+- Festival: [Name]
+- Poet: [Name]
+- Event: [Description]
+- Year: [YYYY]
+
+All links followed (not searched): [YES/NO]
 </stage4>
 ```
 
@@ -180,11 +163,25 @@ Consistency:
 
 ```
 <answer>
-Chain: [Festival] → [Poem by Poet] → [Event in Year]
+Treasure Hunt Complete!
 
-Stage 1: [Festival] - Geographic: [Region], Historical: [Pre-Tang era]
-Stage 2: [Poem] by [Poet] (political frustration)
-Stage 3: [Event] in [Year] (demotion)
-Stage 4: Chain verified
+Link Chain:
+1. List of festivals -> [Festival]
+2. [Festival] -> [Poet]
+3. [Poet] -> [Event in Year]
+
+Total pages visited: [count]
+Direct searches performed: 0 (requirement)
 </answer>
 ```
+
+---
+
+## Scoring
+
+Your answer will be evaluated on:
+1. **Link chain integrity** - Did you follow links, not search directly?
+2. **Correct festival** - Does it meet all 6 conditions?
+3. **Chain consistency** - Does poet match festival? Does event match poet?
+
+**IMPORTANT:** If you search directly instead of following links, you will FAIL.
