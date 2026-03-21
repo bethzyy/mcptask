@@ -19,18 +19,6 @@ If you get stuck at any stage:
 
 ---
 
-## ⚠️ TRAP WARNING
-
-| Candidate | Appearance | ACTUAL Taste | Status |
-|-----------|------------|--------------|--------|
-| **Qingming (qingtuan)** | Green | **SWEET** (red bean paste) | ❌ TRAP |
-| **Lantern (yuanxiao)** | White | **SWEET** | ❌ TRAP |
-| **Dragon Boat (zongzi)** | Wrapped | Mixed (ambiguous) | ❌ TRAP |
-
-**Verify the ACTUAL taste by checking ingredients, NOT just appearance!**
-
----
-
 ## Stage 1: Festival Food Puzzle (5 Sub-Stages)
 
 ### Five Required Conditions
