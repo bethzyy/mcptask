@@ -64,6 +64,9 @@ STAGE3_CORRECT = {
 STAGE3_WRONG = {
     "rebellion was the", "war was the", "battle of",
     "death of", "died of", "illness caused",
+    # Qu Yuan's suicide is NOT demotion
+    "suicide", "drowned", "drown", "committed suicide", "投江", "自沉",
+    "278 bc", "miluo river", "汨罗江",
 }
 
 # Stage tags that must be present (v88 has 4 stages)

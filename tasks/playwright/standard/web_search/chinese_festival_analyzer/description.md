@@ -1,4 +1,4 @@
-# Chain Dependency Task: v99 - 6 Candidates (No Trap Warning)
+# Chain Dependency Task: v96 - 6 Candidates + Detailed Output
 
 ## ⚠️ CRITICAL: You MUST Use Web Search
 
@@ -47,7 +47,7 @@ If you get stuck at any stage:
 
 ### Sub-Stage 1a: Research All Candidates
 
-Visit pages for ALL 6 candidates and record food information.
+Visit pages for ALL **6** candidates and record food information.
 
 ```
 <stage1a>
