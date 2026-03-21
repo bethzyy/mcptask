@@ -1,4 +1,4 @@
-# Chain Dependency Task: Geographic & Historical Constraints v89
+# Chain Dependency Task: v93 - 6 Conditions
 
 ## ⚠️ CRITICAL: You MUST Use Web Search
 
@@ -19,17 +19,30 @@ If you get stuck at any stage:
 
 ---
 
-## Stage 1: Festival Food Puzzle (5 Sub-Stages)
+## ⚠️ TRAP WARNING
 
-### Five Required Conditions
+**Many candidates are TRAPS! Verify ACTUAL taste by checking INGREDIENTS!**
 
-| # | Condition | Requirement | Sources Needed |
-|---|-----------|-------------|----------------|
-| 1 | Appearance | Green | 1 |
-| 2 | Taste | NOT sweet (savory or bitter) | 1 |
-| 3 | Symbolism | Health or purification | 1 |
-| 4 | **Geographic** | Jiangnan (江南) OR North China Plain (华北平原) | **2+** |
-| 5 | **Historical** | Before Tang Dynasty (618 CE) | **2+** |
+| Candidate | Appearance | ACTUAL Taste | Why TRAP |
+|-----------|------------|--------------|----------|
+| **Qingming (qingtuan)** | Green | **SWEET** (red bean paste) | Green ≠ savory |
+| **Lantern (yuanxiao)** | White | **SWEET** | Dessert |
+| **Dragon Boat (zongzi)** | Wrapped | Mixed (ambiguous) | Can be sweet OR savory |
+
+---
+
+## Stage 1: Festival Food Puzzle (6 Conditions)
+
+### Six Required Conditions
+
+| # | Condition | Requirement |
+|---|-----------|-------------|
+| 1 | Appearance | Green |
+| 2 | Taste | NOT sweet (savory or bitter) |
+| 3 | Symbolism | Health or purification |
+| 4 | Geographic | Jiangnan (江南) OR North China Plain (华北平原) |
+| 5 | Historical | Before Tang Dynasty (618 CE) |
+| 6 | **Event Connection** | Associated with a famous poet's demotion event |
 
 ### Candidate Festivals (6)
 
@@ -52,84 +65,58 @@ Visit pages for ALL 6 candidates and record food information.
 <stage1a>
 | ID | Festival | Food | Appearance | Taste | Region | Era |
 | F1 | ... | ... | ... | ... | ... | ... |
-| F2 | ... | ... | ... | ... | ... | ... |
-...
+... (all 6)
 Pages visited: [number]
 </stage1a>
 ```
 
 ---
 
-### Sub-Stage 1b: Geographic Verification (2+ Sources Required)
+### Sub-Stage 1b: Geographic & Historical Verification
 
-For promising candidates, find **2 independent sources** confirming geographic origin.
+Verify geographic origin and historical era.
 
 ```
 <stage1b>
-Geographic Origin (need 2+ sources):
-| ID | Festival | Source 1 (URL + Quote) | Source 2 (URL + Quote) |
-| F2 | Renri | [URL] "..." | [URL] "..." |
-...
+Geographic: [Quote] - [URL]
+Historical: [Quote] - [URL]
 </stage1b>
 ```
 
 ---
 
-### Sub-Stage 1c: Historical Verification (2+ Sources Required)
-
-Find **2 independent sources** confirming pre-Tang records.
+### Sub-Stage 1c: Final Selection
 
 ```
 <stage1c>
-Historical Record (need 2+ sources):
-| ID | Festival | Source 1 (URL + Quote) | Source 2 (URL + Quote) |
-| F2 | Renri | [URL] "..." | [URL] "..." |
-...
-</stage1c>
-```
-
----
-
-### Sub-Stage 1d: Taste & Symbolism Check
-
-Verify taste is NOT sweet and symbolism is health/purification.
-
-```
-<stage1d>
-Taste (NOT sweet): [Quote] - [URL]
-Symbolism: [Quote] - [URL]
-</stage1d>
-```
-
----
-
-### Sub-Stage 1e: Final Selection
-
-```
-<stage1e>
 Festival: [Name]
 Food: [Name]
 
-All 5 Conditions:
+All 6 Conditions:
 1. Appearance: Green - [Quote] - [URL]
 2. Taste: NOT sweet - [Quote] - [URL]
 3. Symbolism: Health/purification - [Quote] - [URL]
-4. Geographic (2+ sources): [Quote 1] - [URL 1] | [Quote 2] - [URL 2]
-5. Historical (2+ sources): [Quote 1] - [URL 1] | [Quote 2] - [URL 2]
-</stage1e>
+4. Geographic: [Quote] - [URL]
+5. Historical: [Quote] - [URL]
+6. Event Connection: [Which poet's demotion is connected?] - [URL]
+
+Why others failed: [Brief explanation]
+</stage1c>
 ```
 
 ---
 
 ## Stage 2: Poem Emotion Analysis (2 Sub-Stages)
 
-Using the **festival from Stage 1**, find a poem where the poet expresses **political frustration** (NOT personal emotions).
+Using the **festival from Stage 1**, find a poem where the poet expresses **political frustration**.
 
-| Emotion Type | Valid? |
-|--------------|--------|
-| Political frustration (demotion, exile, satire) | ✅ YES |
-| Personal nostalgia (homesick, missing home) | ❌ NO |
-| Romantic loss (lovesickness, heartbreak) | ❌ NO |
+### Emotion Types
+
+| Type | Keywords | Valid? |
+|------|----------|--------|
+| Political frustration | Demotion, exile, dismissed, satire | ✅ YES |
+| Personal nostalgia | Homesick, missing home | ❌ NO |
+| Romantic loss | Lovesickness, heartbreak | ❌ NO |
 
 ---
 
@@ -138,7 +125,7 @@ Using the **festival from Stage 1**, find a poem where the poet expresses **poli
 ```
 <stage2a>
 | Poem Title | Poet | Dynasty | Source URL | Emotion Type |
-| ... | ... | ... | ... | ... |
+...
 </stage2a>
 ```
 
@@ -168,7 +155,7 @@ Using the **poet from Stage 2**, find their **political demotion** event.
 ```
 <stage3a>
 | Event | Year | Type | Source URL |
-| ... | ... | ... | ... |
+...
 </stage3a>
 ```
 

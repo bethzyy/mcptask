@@ -355,7 +355,15 @@ def verify(wd):
     print("|    5. Historical: Before Tang Dynasty (618 CE)")
     print("|    Trap: Qingtuan/Yuanxiao are SWEET")
 
-    stage1_content = ans["stages"].get(1, ans["full_answer"])
+    # Combine all stage 1 sub-stages for checking
+    stage1_parts = []
+    for key in ["stage1a", "stage1b", "stage1c", "stage1d", "stage1e"]:
+        if key in ans.get("substages", {}):
+            stage1_parts.append(ans["substages"][key])
+    if ans["stages"].get(1):
+        stage1_parts.append(ans["stages"][1])
+    stage1_content = " ".join(stage1_parts) if stage1_parts else ans["full_answer"]
+
     s1_ok, s1_msg, s1_correct, s1_wrong = check_content(
         stage1_content, STAGE1_CORRECT, STAGE1_WRONG
     )
