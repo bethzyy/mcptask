@@ -1,4 +1,4 @@
-# Chain Dependency Task: v93 - 6 Conditions
+# Chain Dependency Task: v94 - 6 Conditions (No Trap Warning)
 
 ## ⚠️ CRITICAL: You MUST Use Web Search
 
@@ -16,18 +16,6 @@ If you get stuck at any stage:
 1. **Do NOT give up** - continue to the next stage
 2. **If Stage 2 fails** (no suitable poem found): Go back to Stage 1 and select a DIFFERENT festival
 3. **You MUST output** all stage tags
-
----
-
-## ⚠️ TRAP WARNING
-
-**Many candidates are TRAPS! Verify ACTUAL taste by checking INGREDIENTS!**
-
-| Candidate | Appearance | ACTUAL Taste | Why TRAP |
-|-----------|------------|--------------|----------|
-| **Qingming (qingtuan)** | Green | **SWEET** (red bean paste) | Green ≠ savory |
-| **Lantern (yuanxiao)** | White | **SWEET** | Dessert |
-| **Dragon Boat (zongzi)** | Wrapped | Mixed (ambiguous) | Can be sweet OR savory |
 
 ---
 
