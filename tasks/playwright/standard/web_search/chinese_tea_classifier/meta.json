@@ -1,0 +1,32 @@
+{
+  "task_id": "chinese_tea_classifier",
+  "task_name": "Chinese Tea Classification",
+  "category_id": "web_search",
+  "category_name": "Web Search",
+  "description": "Identify a mystery tea sample from 20 candidates. v3: REMOVED rock rhyme hints, model must discover. Multi-source verification required (Wikipedia + Baidu Baike). Information dependency chain. Correct: Da Hong Pao.",
+  "author": "mcpmark",
+  "created_at": "2026-03-20",
+  "difficulty": "L3",
+  "tags": [
+    "multi-page",
+    "constraint-satisfaction",
+    "tea-classification",
+    "oxidation-level",
+    "trap-answer-design",
+    "apprentice-error",
+    "professional-knowledge",
+    "v3",
+    "20-candidates",
+    "color-misleading",
+    "wuyi-rock-tea"
+  ],
+  "mcp": [
+    "playwright"
+  ],
+  "meta_data": {
+    "stateType": null,
+    "stateContent": null,
+    "stateUrl": null,
+    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Da_Hong_Pao"
+  }
+}

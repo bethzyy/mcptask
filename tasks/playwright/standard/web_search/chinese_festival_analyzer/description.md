@@ -1,146 +1,280 @@
-# Chinese Traditional Festival Identification Challenge
+# Chain Dependency Task: Festival → Poem → History → Verification v84
 
-## Task
-Identify the Chinese traditional festival that meets all criteria for a documentary about "Family Traditions with Sweet Foods in First Half of 2024".
+## 重要：这是一个四阶段链式依赖任务
 
-## CRITICAL WARNING
-**YOU MUST VISIT ALL 19 REQUIRED PAGES.** The verify.py script will check your execution.log. If ANY page is missing, the task will FAIL immediately.
-
-## Tools
-IMPORTANT: The Playwright MCP server is pre-configured. Use `browser_*` tools directly.
+**每个阶段必须使用上一阶段的答案：**
+- Stage 2 必须使用 Stage 1 的节日
+- Stage 3 必须使用 Stage 2 的诗人
+- Stage 4 必须验证整个链条的一致性
 
 ---
 
-## Scenario
-You are a cultural consultant for a documentary about "Family Traditions with Sweet Foods in First Half of 2024".
+## ⚠️ 强制完成规则
 
-**Scouting Team's Field Notes**:
-> **Observation Period**: January 1 - June 30, 2024
-> **Key Observation**: During summer months (June), families eat wrapped rice dishes with sweet fillings. The festival honors a historical figure.
-> **Initial Assessment**: Appears to match criteria - sweet food, family gathering, historical significance.
-> **DIRECTOR'S WARNING**: "The scouting team has made CRITICAL errors before - confusing memorial festivals with celebrations, misidentifying dumplings as desserts. Verify EVERYTHING!"
+**你必须给出完整答案！不允许不完整或"无法找到"的答案。**
 
----
+如果某个阶段遇到困难（例如找不到合适的诗歌）：
+1. **立即回到阶段1重新选择**其他节日
+2. 不要停留在某个阶段停滞不前
+3. 你**必须**找到一个完整的四阶段链条
 
-## Filming Criteria
-The festival must meet ALL:
-| Criterion | Requirement | Exclusions |
-|-----------|-------------|------------|
-| A | Date within **Jan 1 - Jun 30, 2024** | Jul-Dec 2024 or 2025 |
-| B | **Sweet food eaten by families** | Offerings, dumplings, porridge, savory |
-| C | **Standalone or culmination day** | First day of multi-day period |
-| D | **Family gathering** core tradition | Temple-only events |
-| E | **Celebration nature** | Mourning, ancestor worship, memorial |
-
-**Criterion C Clarification**:
-- "Culmination" = FINAL day of multi-day period (e.g., 15th day of Spring Festival)
-- "First day" does NOT qualify
+**示例**：
+- ❌ 错误："[需要进一步研究]" 或 "[找不到相关诗歌]"
+- ✅ 正确：回到阶段1，选择另一个节日，重新构建链条
 
 ---
 
-## Candidate Festivals (18)
+## 阶段1：节日食物谜题（详细验证版）
 
-| ID | Festival | Chinese | Date Info |
-|----|----------|---------|-----------|
-| 1 | Spring Festival | 春节 | 正月初一 |
-| 2 | Lantern Festival | 元宵节 | 正月十五 |
-| 3 | Kitchen God Festival | 祭灶 | 腊月廿三 |
-| 4 | Renri | 人日 | 正月初七 |
-| 5 | Shangyuan Festival | 上元节 | 正月十五 |
-| 6 | Zhonghe Festival | 中和节 | 二月初二 |
-| 7 | Tianchuan Festival | 天穿节 | 正月二十 |
-| 8 | Qingming Festival | 清明节 | Solar term (Apr) |
-| 9 | Cold Food Festival | 寒食节 | Before Qingming |
-| 10 | Shangsi Festival | 上巳节 | 三月初三 |
-| 11 | Dragon Boat Festival | 端午节 | 五月初五 |
-| 12 | Tianfu Festival | 天贶节 | 六月初六 |
-| 13 | Ghost Festival | 中元节 | 七月十五 |
-| 14 | Mid-Autumn Festival | 中秋节 | 八月十五 |
-| 15 | Double Ninth Festival | 重阳节 | 九月初九 |
-| 16 | Xiayuan Festival | 下元节 | 十月十五 |
-| 17 | Dongzhi | 冬至 | Solar term (Dec) |
-| 18 | Laba Festival | 腊八节 | 腊月初八 |
+### 问题
 
-**NOTE**: IDs 2 and 5 share the same lunar date (正月十五). Visit BOTH pages to determine if they are the same festival.
+一位研究中国传统饮食文化的学者正在寻找符合以下**所有三个条件**的节日：
 
-**SCOUTING RECOMMENDATION**: Based on field notes, Candidate #11 (Dragon Boat Festival) appears strongest. However, verify ALL criteria carefully due to past classification errors.
+| 条件 | 要求 | 如何验证 |
+|------|------|----------|
+| **外观** | 绿色 | 视觉描述 |
+| **口味** | 非甜（咸或苦） | 配料成分 |
+| **象征** | 健康或净化 | 文化含义 |
 
----
+### 参考信息
 
-## Required Pages (19 - ALL MANDATORY)
+根据中国饮食文化的一般规律：
 
-### Festival Pages (16):
-1. `/wiki/Chinese_New_Year`
-2. `/wiki/Lantern_Festival`
-3. `/wiki/Kitchen_God`
-4. `/wiki/Renri`
-5. `/wiki/Shangyuan_Festival`
-6. `/wiki/Zhonghe_Festival`
-7. `/wiki/Tianchuan_Festival`
-8. `/wiki/Qingming_Festival`
-9. `/wiki/Cold_Food_Festival`
-10. `/wiki/Shangsi_Festival`
-11. `/wiki/Dragon_Boat_Festival`
-12. `/wiki/Ghost_Festival`
-13. `/wiki/Mid-Autumn_Festival`
-14. `/wiki/Double_Ninth_Festival`
-15. `/wiki/Dongzhi`
-16. `/wiki/Laba_Festival`
+> **"绿色食物通常是蔬菜制作的，因此口味偏咸。** 以青菜、草药为主要原料的食物很少是甜的。"
 
-### Food Pages (2):
-17. `/wiki/Tangyuan_(food)`
-18. `/wiki/Zongzi`
+### 候选节日
 
-### Cross-Verification (1):
-19. `baike.baidu.com/item/元宵节`
+| 编号 | 节日 | 日期 | 食物描述 |
+|------|------|------|----------|
+| F1 | 清明节 | 四月初 | 用艾草制作的绿色糯米团子 |
+| F2 | 人日 | 正月初七 | 七种蔬菜煮的汤 |
+| F3 | 元宵节 | 正月十五 | 圆形糯米团子 |
+| F4 | 上巳节 | 三月初三 | 传统春季净化草药料理 |
+| F5 | 端午节 | 五月初五 | 包裹的糯米粽子 |
+| F6 | 寒食节 | 清明前一两天 | 冷食（不生火） |
+| F7 | 乞巧节 | 七月初七 | 巧果、乞巧果子 |
+| F8 | 花朝节 | 二月初二 | 百花糕 |
+| F9 | 春龙节 | 二月初二 | 龙须面、炒豆 |
+| F10 | 中和节 | 二月初一 | 太阳糕 |
 
-**CRITICAL**: verify.py checks ALL 19 pages. Missing ANY page = FAIL.
+### 你的任务
 
----
+**警告**：上述"一般规律"可能不完全准确，请务必通过实际研究验证每个候选。
 
-## Common Classification Errors
+**必须完成以下步骤：**
 
-| Error Type | Example | Issue |
-|------------|---------|-------|
-| Date Confusion | Spring Festival = FIRST day of 15-day period | FAILS Criterion C |
-| Offering vs Family | Zaotang = offered to Kitchen God | FAILS Criterion B |
-| Savory vs Sweet | Qicaigeng = savory soup, Zongzi = dumpling | FAILS Criterion B |
-| Nature Confusion | Qingming = tomb sweeping, Dragon Boat = memorial | FAILS Criterion E |
-| Calendar Type | Lunar dates vary each year | Must verify 2024 date specifically |
+1. **逐一验证每个候选**：
+   - 访问至少一个权威来源（维基百科、百度百科等）
+   - 记录食物的具体名称和主要配料
+   - 验证口味（甜/咸/苦/混合）
+   - 验证象征意义（健康/净化/其他）
 
-**Lunar Date Examples (正月十五)**:
-- 2024: Feb 24
-- 2025: Feb 12
-- 2023: Feb 5
+2. **填写完整排除表格**：
+
+| 编号 | 节日 | 食物名称 | 主要配料 | 口味 | 象征 | 是否符合 | 排除原因 |
+|------|------|----------|----------|------|------|----------|----------|
+| F1 | 清明节 | ... | ... | ... | ... | 是/否 | ... |
+| F2 | 人日 | ... | ... | ... | ... | ... | ... |
+| ... | ... | ... | ... | ... | ... | ... | ... |
+| F10 | 中和节 | ... | ... | ... | ... | ... | ... |
+
+3. **确定最终答案**：
+   - 选择**唯一一个**符合所有三个条件的节日
+   - 如果有多个符合，选择象征意义最明确的
+
+```
+<stage1>
+节日: [名称]
+食物: [你发现的具体名称]
+主要配料: [列出关键配料]
+口味验证: [什么配料证明它不是甜的？]
+象征意义: [如何与健康/净化相关？]
+排除过程: [简要说明为什么排除了其他9个候选]
+</stage1>
+```
 
 ---
 
-## Output Format
+## 阶段2：诗歌情感分析（详细验证版）
+
+### 问题
+
+使用**阶段1的节日**，找到一首关于该节日的诗，其中诗人表达了**政治失意**（对仕途或政府的不满），而不是个人情感（如怀旧或爱情）。
+
+### 参考信息
+
+学者普遍认为：
+- 许多中国诗人用节日场景来表达更深的情感
+- "隐藏情感"往往反映诗人的真实处境
+- 需要区分：个人怀旧、失恋、政治失意
+
+**情感类型对照表**：
+
+| 情感类型 | 关键词 | 示例诗人 |
+|----------|--------|----------|
+| 政治失意 | 贬谪、流放、罢免、不得志、报国无门、讽刺 | 杜甫、陆游、辛弃疾 |
+| 个人怀旧 | 思乡、怀人、忆旧、故园 | 游子思乡诗 |
+| 爱情失落 | 相思、离别、失恋、断肠 | 悼亡诗、闺怨诗 |
+
+### 你的任务
+
+**必须完成以下步骤：**
+
+1. **搜索阶段1节日相关的诗歌**：
+   - 使用关键词 "[节日名] 诗" 或 "[节日名] 古诗"
+   - 访问至少 **3 个不同的诗歌网站或百科页面**
+
+2. **分析至少 **3 首诗****：
+   - 记录诗名、诗人、朝代
+   - 识别诗中的情感类型（政治/个人/爱情）
+   - 引用诗中的具体句子作为证据
+
+3. **选择一首政治失意主题的诗**：
+   - 确认诗人确实有政治挫折经历
+   - 诗中的情感是对仕途/政府的不满
+
+4. **填写完整诗歌分析表**：
+
+| 序号 | 诗名 | 诗人 | 朝代 | 情感类型 | 关键句子 | 是否选用 |
+|------|------|------|------|----------|----------|----------|
+| 1 | [诗1] | [诗人] | [朝代] | [类型] | [引用] | 是/否 |
+| 2 | [诗2] | [诗人] | [朝代] | [类型] | [引用] | 是/否 |
+| 3 | [诗3] | [诗人] | [朝代] | [类型] | [引用] | 是/否 |
+
+5. **详细分析选中诗歌**：
+   - 解释诗歌的政治背景
+   - 说明为什么这首诗表达了政治失意
+
+```
+<stage2>
+诗名: [标题]
+诗人: [姓名]
+朝代: [朝代]
+节日关联: [如何与阶段1节日相关？引用诗中的具体句子]
+情感分析: [为什么这是政治失意而不是个人情感？]
+关键句子: [引用诗中表达政治失意的具体句子]
+政治背景: [这位诗人遇到了什么政治挫折？]
+</stage2>
+```
+
+---
+
+## 阶段3：历史事件验证（详细验证版）
+
+### 问题
+
+使用**阶段2的诗人**，找到导致其政治失意的具体历史事件：
+
+1. 是**政治贬谪**（政府对该诗人的处罚）
+2. **不是**战争、叛乱或个人悲剧
+3. 可以用具体年份验证
+
+### 参考信息
+
+分析诗人传记时需要区分：
+
+| 事件类型 | 定义 | 示例 |
+|----------|------|------|
+| **政治贬谪** | 政府将诗人免职、降职、流放 | 杜甫758年贬华州、苏轼1080年贬黄州 |
+| **战争/叛乱** | 军事冲突影响了诗人（但不是贬谪） | 安史之乱影响杜甫，但不是贬谪 |
+| **个人悲剧** | 家人去世、疾病（与政治无关） | 杜甫儿子饿死，这是个人悲剧 |
+
+### 你的任务
+
+**必须完成以下步骤：**
+
+1. **搜索诗人的政治经历**：
+   - 使用关键词 "[诗人名] 贬谪" 或 "[诗人名] 生平"
+   - 访问至少 **3 个不同的传记来源**
+
+2. **识别所有相关的政治事件**：
+   - 列出诗人经历的所有政治挫折
+   - 区分贬谪、战争影响、个人悲剧
+
+3. **选择一个具体的贬谪事件**：
+   - 找到具体的年份
+   - 确认是政府处罚（不是战争影响）
+   - 记录贬谪的起因和结果
+
+4. **年份交叉验证**：
+   - 从至少 **3 个来源**确认年份
+   - 如果来源不一致，说明并选择最可靠的
+
+5. **填写完整事件验证表**：
+
+| 序号 | 来源 | 事件描述 | 年份 | 事件类型 | 是否可靠 |
+|------|------|----------|------|----------|----------|
+| 1 | [来源1] | [描述] | [年份] | 政治贬谪/战争/个人 | 是/否 |
+| 2 | [来源2] | [描述] | [年份] | ... | ... |
+| 3 | [来源3] | [描述] | [年份] | ... | ... |
+
+```
+<stage3>
+事件: [描述]
+年份: [YYYY]
+诗人: [必须与阶段2匹配]
+贬谪原因: [为什么被贬？具体是什么政治事件？]
+为什么是政治贬谪: [不是战争，不是个人悲剧，给出具体理由]
+来源验证: [列出3个来源及其确认的年份]
+贬谪结果: [诗人被贬到哪里？担任什么职位？]
+</stage3>
+```
+
+---
+
+## 阶段4：链条一致性验证（新增阶段）
+
+### 问题
+
+验证整个链条的一致性，确保所有阶段正确连接。
+
+### 你的任务
+
+**必须完成以下验证步骤：**
+
+1. **验证节日-诗歌关联**：
+   - 确认阶段2的诗歌确实是关于阶段1的节日
+   - 引用诗中提及节日的具体句子
+   - 如果诗歌只是泛泛提及春天，说明为什么它仍然与该节日相关
+
+2. **验证诗人-事件关联**：
+   - 确认阶段3的事件确实是阶段2诗人经历的
+   - 确认事件发生在诗歌创作**之后或同期**（不是之前）
+   - 说明诗人的政治失意如何反映在诗歌中
+
+3. **验证事件性质**：
+   - 确认阶段3的事件是**政治贬谪**（政府处罚）
+   - 解释为什么这不是战争影响或个人悲剧
+
+4. **填写链条一致性表格**：
+
+| 验证项 | 阶段1 | 阶段2 | 阶段3 | 一致性检查 |
+|--------|-------|-------|-------|------------|
+| 节日匹配 | [节日名] | [诗歌是否提及该节日] | N/A | 是/否 |
+| 诗人匹配 | N/A | [诗人名] | [事件主角] | 是/否 |
+| 时间顺序 | N/A | [诗歌创作时间] | [事件发生时间] | 合理/不合理 |
+| 情感一致 | N/A | [诗歌情感] | [事件性质] | 一致/不一致 |
+
+```
+<stage4>
+节日-诗歌验证: [诗歌中哪句提及了节日？]
+诗人-事件验证: [事件主角是否是诗人？事件是否发生在诗歌之后？]
+情感-事件验证: [诗歌中的政治失意是否与该事件相关？]
+链条完整性: [整个链条是否逻辑自洽？]
+</stage4>
+```
+
+---
+
+## 最终答案
+
 ```
 <answer>
-[Festival name(s). If none, write "NONE"]
+链条: [阶段1节日] → [阶段2诗歌 by 诗人] → [阶段3事件 in 年份] → [阶段4验证]
+
+阶段1: [节日] + [食物] (口味证据: [...])
+阶段2: [诗名] by [诗人] (政治失意来源: [...])
+阶段3: [事件] in [年份] ([诗人]的贬谪)
+阶段4: 链条验证 [通过/不通过]
 </answer>
-<reasoning>
-## Phase 1: Date Conversion Table
-| ID | Festival | 2024 Date | In Jan-Jun? |
-## Phase 2: Food Classification Table
-| ID | Festival | Food | Sweet/Family? |
-## Phase 3: Nature & Position Table
-| ID | Festival | Celebration/Memorial? | Position? |
-## Phase 4: Cross-Verification
-| ID | Festival | Baidu URL |
-## Final Determination
-[Explanation]
-</reasoning>
 ```
-
----
-
-## Important Notes
-- Complete Phase 1 before Phase 2, Phase 2 before Phase 3, etc.
-- Lunar dates vary each year - verify for 2024 specifically
-- "Geng" (羹) = savory soup, NOT sweet dessert
-- "Offering to deities" ≠ "eaten by families"
-- First day of multi-day period FAILS Criterion C
-- Ancestor worship/memorial FAILS Criterion E
-- Baidu Baike visit is REQUIRED

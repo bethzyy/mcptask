@@ -1,43 +1,9 @@
 #!/usr/bin/env python3
 """
-Verification script for Chinese Traditional Festival Multi-Trap Analysis v47.
-Correct answer: Lantern Festival (元宵节/上元节) ONLY
+Verification script for Chain Dependency Task v80.
+Verifies TRUE CHAIN DEPENDENCY between stages.
 
-Key features:
-- 18 candidates with hidden answer name
-- Generic Criterion C explanation (NO direct hints about specific festivals)
-- Misleading initial observation (points to Dragon Boat Festival)
-- EXACT 19 page visit requirements (ALL 19 pages mandatory, no flexibility)
-- Checkpoint completion required (Checkpoint 1-4 outputs)
-- Phase completion required (Phase 1-4 tables)
-- 2024-specific date verification
-- Baidu Baike visit required
-- Festival coverage check (15+ festivals in reasoning)
-- Trap verification check (Dragon Boat Festival must be visited)
-
-v47 Changes:
-- Changed from "minimum X pages" to "ALL 19 specific pages required"
-- Added REQUIRED_PAGES list with exact page names
-- Added check_all_required_pages() function
-- Removed flexibility - ALL 19 pages must be visited, no exceptions
-
-Correct answer validation:
-- Date: Feb 24, 2024 (正月十五) - within Jan-Jun 2024 ✅
-- Food: Tangyuan/Yuanxiao (sweet dessert eaten by families) ✅
-- Position: Culmination day (15th of Spring Festival period) ✅
-- Nature: Celebration (no ancestor worship) ✅
-- Family: Family gathering is core tradition ✅
-
-Trap layers (L1-L9):
-L1: Spring Festival - FIRST day of 15-day period (FAILS C)
-L2: Kitchen God - food is OFFERING to deity (FAILS B)
-L3: Renri - qicaigeng is SAVORY vegetable soup (FAILS B)
-L4: Zhonghe - taiyanggao is RITUAL OFFERING (FAILS B)
-L5: Qingming - TOMB SWEEPING, ancestor worship (FAILS E)
-L6: Cold Food - MEMORIAL nature (FAILS E)
-L7: Dragon Boat - zongzi is DUMPLING, MEMORIAL nature (FAILS B and E)
-L8: Autumn/Winter festivals - OUTSIDE Jan-Jun 2024 (FAILS A)
-L9: Calendar Type - Must verify 2024 date specifically (lunar varies each year)
+Chain: Festival → Poem (same festival) → Event (same poet)
 """
 import sys
 import json
@@ -45,181 +11,53 @@ import os
 import re
 from pathlib import Path
 
-# Correct answer: Lantern Festival (multiple acceptable names)
-CORRECT = {
-    "lantern festival", "yuanxiao festival", "shangyuan festival",
-    "元宵节", "上元节", "灯节"
+# Stage 1: Festival with green, savory/bitter food
+STAGE1_CORRECT = {
+    "renri", "human day", "qicaigeng", "seven vegetable", "七菜羹",
+    "shangsi", "double third", "bitter", "savory", "上巳节", "上巳",
+    "medicinal", "health", "purification", "人日", "荠菜", "蒿子",
+}
+STAGE1_WRONG = {
+    "qingtuan", "yuanxiao", "mooncake",  # Sweet foods
+    "zongzi", "duanwu", "dragon boat",  # Ambiguous (can be sweet OR savory)
 }
 
-# v47: EXACT 19 pages that MUST be visited (no flexibility)
-REQUIRED_PAGES = [
-    # Festival pages (16)
-    "Chinese_New_Year",
-    "Lantern_Festival",
-    "Kitchen_God",
-    "Renri",
-    "Shangyuan_Festival",
-    "Zhonghe_Festival",
-    "Tianchuan_Festival",
-    "Qingming_Festival",
-    "Cold_Food_Festival",
-    "Shangsi_Festival",
-    "Dragon_Boat_Festival",
-    "Ghost_Festival",
-    "Mid-Autumn_Festival",
-    "Double_Ninth_Festival",
-    "Dongzhi",
-    "Laba_Festival",
-    # Food pages (2)
-    "Tangyuan",
-    "Zongzi",
-    # Baidu Baike (1)
-    "baike.baidu.com",
-]
-
-# Required festival pages (expanded list for search-based approach)
-REQUIRED_FESTIVAL_PAGES = [
-    "Chinese_New_Year",
-    "Spring_Festival",
-    "Lantern_Festival",
-    "Yuanxiao",
-    "Kitchen_God",
-    "Kitchen_God_Festival",
-    "Xiaonian",
-    "Renri",
-    "Shangyuan_Festival",
-    "Zhonghe_Festival",
-    "Tianchuan_Festival",
-    "Qingming_Festival",
-    "Cold_Food_Festival",
-    "Shangsi_Festival",
-    "Dragon_Boat_Festival",
-    "Duanwu",
-    "Tianfu_Festival",
-    "Ghost_Festival",
-    "Zhongyuan",
-    "Mid-Autumn_Festival",
-    "Double_Ninth_Festival",
-    "Xiayuan_Festival",
-    "Dongzhi_Festival",
-    "Laba_Festival",
-    "Chinese_traditional_festivals",
-    "Public_holidays_in_China",
-    "List_of_festivals_in_China",
-]
-MIN_REQUIRED_FESTIVAL_PAGES = 15  # Increased to force extensive exploration
-
-# Required food pages (must visit to verify classification)
-REQUIRED_FOOD_PAGES = [
-    "Tangyuan",
-    "Yuanxiao_(food)",
-    "Nian_gao",
-    "Zaotang",
-    "Guandong_candy",
-    "Qingtuan",
-    "Zongzi",
-    "Mooncake",
-    "Laba_porridge",
-    "Qicaigeng",
-    "Seven-vegetable_soup",
-    "Taiyanggao",
-    "Sun_cake",
-]
-MIN_REQUIRED_FOOD_PAGES = 4  # Increased to force food verification
-
-# Calendar/date verification pages
-CALENDAR_PAGES = [
-    "Chinese_calendar",
-    "Lunar_calendar",
-    "Lunisolar_calendar",
-    "2024_in_China",
-    "Public_holidays_in_China",
-    "2024",
-]
-MIN_REQUIRED_CALENDAR_PAGES = 1  # At least 1 calendar reference
-
-# Specific required pages for cross-verification (v46: added more obscure festivals)
-REQUIRED_SPECIFIC_PAGES = [
-    "Chinese_New_Year",
-    "Lantern_Festival",
-    "Tangyuan",
-    "Yuanxiao",
-    # v46: Added obscure festivals to force exploration
-    "Tianchuan_Festival",
-    "Xiayuan_Festival",
-    "Tianfu_Festival",
-    "Shangsi_Festival",
-    "Kitchen_God",
-    "Zhonghe_Festival",
-]
-MIN_REQUIRED_SPECIFIC_PAGES = 8  # Increased from 3 to 8
-
-# Baidu Baike pages (required for Phase 4)
-BAIDU_PAGES = [
-    "baidu",
-    "baike",
-    "元宵节",
-    "春节",
-    "上元",
-]
-MIN_BAIDU_PAGES = 1  # Must visit at least 1 Baidu page
-
-# Wrong answers (trap answers with rejection reasons)
-WRONG = {
-    # L1: First day trap
-    "chinese new year", "spring festival", "lunar new year", "春节",
-    # L2: Offering trap
-    "kitchen god", "xiaonian", "little new year", "祭灶", "小年",
-    # L3: Savory food trap
-    "renri", "human day", "人日",
-    # L4: Ritual offering trap
-    "zhonghe", "中和节",
-    # L5: Mourning trap
-    "qingming", "tomb sweeping", "清明节",
-    # L6: Memorial trap
-    "cold food", "hanshi", "寒食节",
-    # L7: Dumpling trap
-    "dragon boat", "duanwu", "端午节",
-    # L8: Date range trap (autumn/winter)
-    "ghost festival", "zhongyuan", "中元节",
-    "mid-autumn", "moon festival", "中秋节",
-    "double ninth", "chongyang", "重阳节",
-    "xiayuan", "下元节",
-    "dongzhi", "winter solstice", "冬至",
-    "laba", "腊八节",
-    "tianfu", "天贶节",
-    # L9: Obscure festival trap
-    "tianchuan", "天穿节",
-    "shangsi", "上巳节",
+# Stage 2: Poem about the festival with political frustration
+# Must match the festival from Stage 1
+STAGE2_CORRECT = {
+    # For Shangsi festival poems
+    "du fu", "dufu", "杜甫", "liren", "丽人行",
+    # For Renri festival poems
+    "renri", "人日", "人日两首", "renri poetry",
+    # For Qingming festival poems (trap - easy to find)
+    "du mu", "清明", "杜牧",
+    # Political frustration keywords
+    "political", "frustration", "satire", "criticism", "讽刺", "政治",
+}
+STAGE2_WRONG = {
+    "lost love", "romance", "beauty", "peach blossom",  # Personal emotions
+    "homesick", "missing home", "nostalgia",  # Not political
 }
 
-# Keyword groups for verification (8 groups, need 6/8)
-KEYWORD_GROUPS = [
-    # Group 1: Date verification (2024 specific)
-    ["2024", "february", "january", "june", "first half", "jan-jun"],
-    # Group 2: Lunar calendar verification
-    ["lunar", "lunisolar", "chinese calendar", "full moon", "fifteenth",
-     "正月", "十五", "solar", "阳历", "阴历"],
-    # Group 3: Food classification (sweet vs savory/offering)
-    ["sweet", "dessert", "tangyuan", "yuanxiao", "汤圆", "元宵",
-     "offering", "deity", "worship", "dumpling", "porridge", "savory"],
-    # Group 4: Festival nature (mourning exclusion)
-    ["family", "gathering", "meal", "eaten", "mourning", "ancestor",
-     "memorial", "tomb", "sweeping"],
-    # Group 5: Festival position (first day vs culmination)
-    ["first day", "culmination", "standalone", "15-day", "period",
-     "spring festival period", "position"],
-    # Group 6: Cultural context (ancient names, origins)
-    ["shangyuan", "上元", "taoist", "buddhist", "ancient", "historical",
-     "alias", "also known", "originally"],
-    # Group 7: Verification & cross-check terms
-    ["converted", "verified", "cross-check", "sources", "wikipedia",
-     "baidu", "baike", "calendar", "gregorian", "fixed date", "varying", "varies"],
-    # Group 8: Phase completion indicators (NEW for v37)
-    ["phase 1", "phase 2", "phase 3", "phase 4", "table complete",
-     "date conversion", "food classification", "nature", "cross-verif"],
-]
-MIN_KEYWORD_GROUPS = 6  # Increased from 4 to 6
+# Stage 3: Political demotion of the poet from Stage 2
+# Must match the poet from Stage 2
+STAGE3_CORRECT = {
+    # For Du Fu (Shangsi/Renri chain)
+    "755", "756", "757", "758", "an lushan", "rebellion", "suffering",
+    "huazhou", "华州", "demotion", "司功参军",
+    # For Xin Qiji (Renri chain - if exists)
+    "1181", "forced resign", "resignation",
+    # For Lu You (Dragon Boat chain)
+    "1164", "longxing", "隆兴",
+    # General demotion keywords
+    "demoted", "exile", "banished", "贬谪",
+}
+STAGE3_WRONG = {
+    # Only flag if war/rebellion is the MAIN event
+    "rebellion was the", "war was the", "battle of",
+    # Personal tragedy
+    "death of", "died of", "illness caused",
+}
 
 
 def get_work_dir():
@@ -229,7 +67,7 @@ def get_work_dir():
             return Path(p).parent
         return Path(".")
     except Exception as e:
-        print(f"| [ERROR] Failed to get work dir: {e}")
+        print(f"| [ERROR] {e}")
         return Path(".")
 
 
@@ -237,322 +75,120 @@ def parse_msgs(wd):
     try:
         f = wd / "messages.json"
         if not f.exists():
-            print(f"| [ERROR] messages.json not found at {f}")
-            return {"ok": False}
+            return {"ok": False, "text": ""}
+
         with open(f, 'r', encoding='utf-8') as file:
             data = json.load(file)
-        text = ""
+
+        text_parts = []
         for m in data:
             if m.get("role") == "assistant":
-                c = str(m.get("content", ""))
-                if isinstance(m.get("content"), list):
-                    parts = []
-                    for i in m.get("content", []):
+                c = m.get("content", "")
+                if isinstance(c, str):
+                    text_parts.append(c)
+                elif isinstance(c, list):
+                    for i in c:
                         if isinstance(i, dict):
-                            parts.append(i.get("text", ""))
-                        else:
-                            parts.append(str(i))
-                    c = " ".join(parts)
-                text = c
-        return {"ok": True, "text": text}
+                            # Handle both "text" and "output_text" types
+                            if i.get("type") == "text":
+                                text_parts.append(i.get("text", ""))
+                            elif i.get("type") == "output_text":
+                                # output_text might have content in different fields
+                                text_parts.append(i.get("text", ""))
+
+        return {"ok": True, "text": " ".join(text_parts)}
     except Exception as e:
-        print(f"| [ERROR] Failed to parse messages: {e}")
-        return {"ok": False}
+        print(f"| [ERROR] {e}")
+        return {"ok": False, "text": ""}
 
 
-def parse_ans(txt):
-    r = {"f": [], "e": ""}
-    try:
-        # Try <answer> tag first
-        m = re.search(r"<answer>(.+?)</answer>", txt, re.DOTALL | re.IGNORECASE)
+def parse_answer(txt):
+    result = {"stages": {}, "full_answer": "", "chain": []}
+
+    # Extract chain
+    m = re.search(r"Chain:\s*(.+?)(?:\n|Stage 1:)", txt, re.IGNORECASE)
+    if m:
+        result["chain"] = m.group(1).strip()
+
+    # Extract stages
+    for i in range(1, 4):
+        m = re.search(rf"<stage{i}>(.+?)</stage{i}>", txt, re.DOTALL | re.IGNORECASE)
         if m:
-            r["f"] = [x.strip() for x in m.group(1).split("\n") if x.strip()]
+            result["stages"][i] = m.group(1).strip()
 
-        # Check for <verification> or <reasoning>
-        m = re.search(r"<verification>(.+?)</verification>", txt, re.DOTALL | re.IGNORECASE)
-        if m:
-            r["e"] = m.group(1).strip()
-        else:
-            m = re.search(r"<reasoning>(.+?)</reasoning>", txt, re.DOTALL | re.IGNORECASE)
-            if m:
-                r["e"] = m.group(1).strip()
-            else:
-                m = re.search(r"<EXPLANATION>(.+?)</EXPLANATION>", txt, re.DOTALL | re.IGNORECASE)
-                if m:
-                    r["e"] = m.group(1).strip()
-    except Exception as e:
-        print(f"| [ERROR] Failed to parse answer: {e}")
-    return r
+    # Extract final answer
+    m = re.search(r"<answer>(.+?)</answer>", txt, re.DOTALL | re.IGNORECASE)
+    if m:
+        result["full_answer"] = m.group(1).strip()
+
+    return result
 
 
-def check_in(fests, exp):
-    for f in fests:
-        for e in exp:
-            if e in f.lower():
-                return True
-    return False
+def check_content(content, correct_set, wrong_set):
+    """Check if content has correct elements, returns (ok, msg, found)"""
+    if not content:
+        return False, "No content", [], []
+
+    content_lower = content.lower()
+
+    # Find wrong elements FIRST - these are hard failures
+    wrong_found = [w for w in wrong_set if w in content_lower or w in content]
+
+    # If wrong elements found, FAIL immediately
+    if wrong_found:
+        return False, "WRONG answer detected", [], wrong_found
+
+    # Only check correct elements if no wrong elements
+    # Check both lowercase and original content for Chinese keywords
+    correct_found = [c for c in correct_set if c in content_lower or c in content]
+
+    if len(correct_found) >= 2:
+        return True, "Correct", correct_found, []
+
+    return False, "Missing key elements", correct_found, []
 
 
-def check_wrong(fests, wrong_set):
-    found = []
-    for f in fests:
-        for w in wrong_set:
-            if w in f.lower():
-                found.append(f)
-                break
-    return found
+def verify_chain_dependency(stages):
+    """Verify that stages form a valid chain."""
+    issues = []
 
+    # Check Stage 1 → Stage 2 dependency
+    if 1 in stages and 2 in stages:
+        s1 = stages[1].lower()
+        s2 = stages[2].lower()
 
-def check_explanation(explanation, groups, min_groups=6):
-    if not explanation:
-        return False, "No reasoning/verification provided"
-    exp_lower = explanation.lower()
-    matched = 0
-    details = []
-    for i, g in enumerate(groups):
-        for kw in g:
-            if kw.lower() in exp_lower:
-                matched += 1
-                details.append(f"Group {i+1}: '{kw}'")
-                break
-    if matched >= min_groups:
-        return True, f"Matched {matched} groups: {', '.join(details)}"
-    return False, f"Only {matched} group(s). Need {min_groups}. Found: {details}"
+        # If Stage 1 says Shangsi, Stage 2 should mention it
+        if "shangsi" in s1 and "shangsi" not in s2 and "liren" not in s2:
+            issues.append("Stage 2 poem doesn't match Stage 1 festival (Shangsi)")
 
+        # If Stage 1 says Renri, Stage 2 should mention it
+        if "renri" in s1 and "renri" not in s2 and "人日" not in s2:
+            issues.append("Stage 2 poem doesn't match Stage 1 festival (Renri)")
 
-def check_page_visits(wd, pages, min_req, ptype="festival"):
-    try:
-        log_file = wd / "execution.log"
-        if not log_file.exists():
-            return False, "execution.log not found"
-        with open(log_file, 'r', encoding='utf-8') as f:
-            content = f.read()
-        visited = set()
-        for p in pages:
-            if p.lower() in content.lower():
-                visited.add(p)
-        if len(visited) >= min_req:
-            return True, f"Visited {len(visited)} {ptype} pages (required: {min_req})"
-        return False, f"Only {len(visited)} {ptype} pages (required: {min_req}): {sorted(visited)}"
-    except Exception as e:
-        return False, f"Error: {e}"
+    # Check Stage 2 → Stage 3 dependency
+    if 2 in stages and 3 in stages:
+        s2 = stages[2].lower()
+        s3 = stages[3].lower()
 
+        # Extract poet from Stage 2
+        poet = None
+        if "du fu" in s2 or "dufu" in s2:
+            poet = "du fu"
+        elif "xin qiji" in s2:
+            poet = "xin qiji"
+        elif "su shi" in s2:
+            poet = "su shi"
 
-def check_phase_completion(reasoning):
-    """Check if the reasoning includes evidence of phased completion."""
-    if not reasoning:
-        return False, "No reasoning to check phase completion"
+        if poet and poet not in s3:
+            issues.append(f"Stage 3 event doesn't match Stage 2 poet ({poet})")
 
-    exp_lower = reasoning.lower()
-    phases_found = []
-
-    # Check for Phase 1 indicators
-    phase1_indicators = ["phase 1", "date conversion", "2024 gregorian", "date table"]
-    if any(ind in exp_lower for ind in phase1_indicators):
-        phases_found.append("Phase 1")
-
-    # Check for Phase 2 indicators
-    phase2_indicators = ["phase 2", "food classification", "sweet/savory", "food table"]
-    if any(ind in exp_lower for ind in phase2_indicators):
-        phases_found.append("Phase 2")
-
-    # Check for Phase 3 indicators
-    phase3_indicators = ["phase 3", "nature", "position", "celebration/memorial"]
-    if any(ind in exp_lower for ind in phase3_indicators):
-        phases_found.append("Phase 3")
-
-    # Check for Phase 4 indicators
-    phase4_indicators = ["phase 4", "cross-verif", "baidu", "baike"]
-    if any(ind in exp_lower for ind in phase4_indicators):
-        phases_found.append("Phase 4")
-
-    if len(phases_found) >= 3:
-        return True, f"Found {len(phases_found)} phases: {phases_found}"
-    return False, f"Only {len(phases_found)} phases found: {phases_found}"
-
-
-def check_table_format(reasoning):
-    """Check if the reasoning includes properly formatted tables."""
-    if not reasoning:
-        return False, "No reasoning to check table format"
-
-    exp_lower = reasoning.lower()
-
-    # Check for table indicators
-    table_indicators = 0
-    if "|" in reasoning:  # Markdown table separator
-        table_indicators += 1
-    if re.search(r'\|.*\|.*\|', reasoning):  # At least 3 columns
-        table_indicators += 1
-    if "id" in exp_lower and "festival" in exp_lower:
-        table_indicators += 1
-
-    if table_indicators >= 2:
-        return True, f"Found {table_indicators} table indicators"
-    return False, f"Only {table_indicators} table indicators found"
-
-
-def check_checkpoint_completion(reasoning):
-    """Check if all 4 checkpoints are completed."""
-    if not reasoning:
-        return False, "No reasoning to check checkpoint completion"
-
-    exp_lower = reasoning.lower()
-    checkpoints_found = []
-
-    # Check for Checkpoint 1: Date Table
-    checkpoint1_indicators = [
-        "checkpoint 1", "complete date table", "date conversion table",
-        "all 18 festivals", "2024 gregorian"
-    ]
-    if any(ind in exp_lower for ind in checkpoint1_indicators):
-        checkpoints_found.append("Checkpoint 1")
-
-    # Check for Checkpoint 2: Food Analysis
-    checkpoint2_indicators = [
-        "checkpoint 2", "food analysis", "food classification",
-        "sweet/savory", "family/offering"
-    ]
-    if any(ind in exp_lower for ind in checkpoint2_indicators):
-        checkpoints_found.append("Checkpoint 2")
-
-    # Check for Checkpoint 3: Nature Analysis
-    checkpoint3_indicators = [
-        "checkpoint 3", "nature analysis", "celebration/memorial",
-        "position", "first day/culmination"
-    ]
-    if any(ind in exp_lower for ind in checkpoint3_indicators):
-        checkpoints_found.append("Checkpoint 3")
-
-    # Check for Checkpoint 4: Cross-Verification
-    checkpoint4_indicators = [
-        "checkpoint 4", "cross-verif", "baidu", "baike",
-        "two different sources"
-    ]
-    if any(ind in exp_lower for ind in checkpoint4_indicators):
-        checkpoints_found.append("Checkpoint 4")
-
-    if len(checkpoints_found) >= 3:
-        return True, f"Found {len(checkpoints_found)} checkpoints: {checkpoints_found}"
-    return False, f"Only {len(checkpoints_found)} checkpoints found: {checkpoints_found}"
-
-
-def check_festival_coverage(reasoning):
-    """Check if the reasoning mentions at least 15 different festivals."""
-    if not reasoning:
-        return False, "No reasoning to check festival coverage"
-
-    exp_lower = reasoning.lower()
-
-    # List of festival names to check for
-    festival_names = [
-        "spring festival", "chinese new year", "lunar new year",
-        "lantern festival", "yuanxiao", "shangyuan",
-        "kitchen god", "xiaonian", "little new year",
-        "renri", "human day",
-        "zhonghe",
-        "tianchuan",
-        "qingming", "tomb sweeping",
-        "cold food", "hanshi",
-        "shangsi",
-        "dragon boat", "duanwu",
-        "tianfu",
-        "ghost festival", "zhongyuan",
-        "mid-autumn", "moon festival",
-        "double ninth", "chongyang",
-        "xiayuan",
-        "dongzhi", "winter solstice",
-        "laba",
-    ]
-
-    found_festivals = set()
-    for name in festival_names:
-        if name in exp_lower:
-            found_festivals.add(name)
-
-    min_festivals = 15
-    if len(found_festivals) >= min_festivals:
-        return True, f"Found {len(found_festivals)} festivals in reasoning (required: {min_festivals})"
-    return False, f"Only {len(found_festivals)} festivals in reasoning (required: {min_festivals}): {sorted(found_festivals)[:10]}"
-
-
-def check_trap_verification(wd):
-    """Check if the model verified multiple trap festivals."""
-    try:
-        log_file = wd / "execution.log"
-        if not log_file.exists():
-            return False, "execution.log not found"
-        with open(log_file, 'r', encoding='utf-8') as f:
-            content = f.read().lower()
-
-        # Check for Dragon Boat Festival page visit (trap #1)
-        dragon_boat_indicators = [
-            "dragon_boat_festival",
-            "duanwu",
-            "dragon boat",
-            "端午",
-        ]
-        dragon_boat_found = any(ind in content for ind in dragon_boat_indicators)
-
-        # Check for Qingming Festival page visit (trap #2)
-        qingming_indicators = [
-            "qingming_festival",
-            "qingming",
-            "tomb sweeping",
-            "清明节",
-        ]
-        qingming_found = any(ind in content for ind in qingming_indicators)
-
-        # Check for Kitchen God Festival page visit (trap #3)
-        kitchen_god_indicators = [
-            "kitchen_god",
-            "xiaonian",
-            "zaotang",
-            "祭灶",
-            "小年",
-        ]
-        kitchen_god_found = any(ind in content for ind in kitchen_god_indicators)
-
-        traps_verified = []
-        if dragon_boat_found:
-            traps_verified.append("Dragon Boat")
-        if qingming_found:
-            traps_verified.append("Qingming")
-        if kitchen_god_found:
-            traps_verified.append("Kitchen God")
-
-        # Must verify at least 2 out of 3 trap festivals
-        if len(traps_verified) >= 2:
-            return True, f"Verified {len(traps_verified)} trap festivals: {traps_verified}"
-        return False, f"Only verified {len(traps_verified)} trap festivals (required: 2): {traps_verified}"
-    except Exception as e:
-        return False, f"Error: {e}"
-
-
-def check_all_required_pages(wd):
-    """Check if ALL 19 required pages were visited (v47)."""
-    try:
-        log_file = wd / "execution.log"
-        if not log_file.exists():
-            return False, "execution.log not found"
-        with open(log_file, 'r', encoding='utf-8') as f:
-            content = f.read().lower()
-
-        missing = []
-        for page in REQUIRED_PAGES:
-            if page.lower() not in content:
-                missing.append(page)
-
-        if missing:
-            return False, f"Missing {len(missing)} required pages: {missing}"
-        return True, f"All {len(REQUIRED_PAGES)} required pages visited"
-    except Exception as e:
-        return False, f"Error: {e}"
+    return issues
 
 
 def verify(wd):
     print("=" * 70)
-    print("| VERIFICATION: Chinese Festival Multi-Trap Analysis (v47)")
+    print("| VERIFICATION: Chain Dependency Task (v80)")
+    print("| Festival → Poem (same festival) → Event (same poet)")
     print("=" * 70)
 
     msgs = parse_msgs(wd)
@@ -560,116 +196,92 @@ def verify(wd):
         print("| [FAILED] Could not parse messages")
         return False
 
-    ans = parse_ans(msgs["text"])
-    print(f"| Answer: {ans['f']}")
-    print(f"| Verification: {len(ans['e'])} chars")
+    ans = parse_answer(msgs["text"])
+    print(f"| Chain: {ans['chain'][:80] if ans['chain'] else 'Not found'}...")
     print("| " + "-" * 68)
 
     ok = True
 
-    # v47: Check ALL 19 required pages (mandatory, no flexibility)
-    pages_ok, pages_msg = check_all_required_pages(wd)
-    if not pages_ok:
-        print(f"| [FAILED] Required pages: {pages_msg}")
-        print("|          You MUST visit ALL 19 pages listed in description.md")
-        ok = False
-    else:
-        print(f"| [PASSED] Required pages: {pages_msg}")
+    # === STAGE 1 ===
+    print("| === STAGE 1: Festival Puzzle ===")
+    print("|    Correct: Renri (savory) OR Shangsi (bitter)")
+    print("|    Trap: Qingtuan/Yuanxiao are SWEET")
 
+    stage1_content = ans["stages"].get(1, ans["full_answer"])
+    s1_ok, s1_msg, s1_correct, s1_wrong = check_content(
+        stage1_content, STAGE1_CORRECT, STAGE1_WRONG
+    )
+
+    if s1_ok:
+        print(f"| [PASSED] {s1_msg}")
+        print(f"|          Found: {s1_correct[:5]}")
+    else:
+        print(f"| [FAILED] {s1_msg}")
+        if s1_wrong:
+            print(f"|          Wrong elements: {s1_wrong[:5]}")
+        ok = False
+
+    # === STAGE 2 ===
+    print("| === STAGE 2: Poem Puzzle (must match Stage 1 festival) ===")
+    print("|    Correct: Poem about Stage 1 festival with political frustration")
+
+    stage2_content = ans["stages"].get(2, ans["full_answer"])
+    s2_ok, s2_msg, s2_correct, s2_wrong = check_content(
+        stage2_content, STAGE2_CORRECT, STAGE2_WRONG
+    )
+
+    if s2_ok:
+        print(f"| [PASSED] {s2_msg}")
+        print(f"|          Found: {s2_correct[:5]}")
+    else:
+        print(f"| [FAILED] {s2_msg}")
+        if s2_wrong:
+            print(f"|          Wrong elements: {s2_wrong[:5]}")
+        ok = False
+
+    # === STAGE 3 ===
+    print("| === STAGE 3: Historical Event (must match Stage 2 poet) ===")
+    print("|    Correct: Demotion of Stage 2 poet")
+
+    stage3_content = ans["stages"].get(3, ans["full_answer"])
+    s3_ok, s3_msg, s3_correct, s3_wrong = check_content(
+        stage3_content, STAGE3_CORRECT, STAGE3_WRONG
+    )
+
+    if s3_ok:
+        print(f"| [PASSED] {s3_msg}")
+        print(f"|          Found: {s3_correct[:5]}")
+    else:
+        print(f"| [FAILED] {s3_msg}")
+        if s3_wrong:
+            print(f"|          Wrong elements: {s3_wrong[:5]}")
+        ok = False
+
+    # === CHAIN DEPENDENCY CHECK ===
     print("| " + "-" * 68)
+    print("| === CHAIN DEPENDENCY CHECK ===")
 
-    # Check phase completion
-    phase_ok, phase_msg = check_phase_completion(ans["e"])
-    if not phase_ok:
-        print(f"| [FAILED] Phase completion: {phase_msg}")
-        print("|          Expected evidence of Phase 1-4 completion in reasoning")
+    chain_issues = verify_chain_dependency(ans["stages"])
+    if chain_issues:
+        print("| [FAILED] Chain dependency broken!")
+        for issue in chain_issues:
+            print(f"|          - {issue}")
         ok = False
     else:
-        print(f"| [PASSED] Phase completion: {phase_msg}")
-
-    # Check table format
-    table_ok, table_msg = check_table_format(ans["e"])
-    if not table_ok:
-        print(f"| [FAILED] Table format: {table_msg}")
-        print("|          Expected markdown tables with | separators")
-        ok = False
-    else:
-        print(f"| [PASSED] Table format: {table_msg}")
-
-    # Check checkpoint completion (NEW v44)
-    checkpoint_ok, checkpoint_msg = check_checkpoint_completion(ans["e"])
-    if not checkpoint_ok:
-        print(f"| [FAILED] Checkpoint completion: {checkpoint_msg}")
-        print("|          Expected evidence of Checkpoint 1-4 completion")
-        ok = False
-    else:
-        print(f"| [PASSED] Checkpoint completion: {checkpoint_msg}")
-
-    # Check festival coverage (NEW v44)
-    coverage_ok, coverage_msg = check_festival_coverage(ans["e"])
-    if not coverage_ok:
-        print(f"| [FAILED] Festival coverage: {coverage_msg}")
-        print("|          Must mention at least 15 different festivals in reasoning")
-        ok = False
-    else:
-        print(f"| [PASSED] Festival coverage: {coverage_msg}")
-
-    # Check trap verification (NEW v44)
-    trap_ok, trap_msg = check_trap_verification(wd)
-    if not trap_ok:
-        print(f"| [FAILED] Trap verification: {trap_msg}")
-        print("|          Must verify Dragon Boat Festival (the misleading initial observation)")
-        ok = False
-    else:
-        print(f"| [PASSED] Trap verification: {trap_msg}")
-
-    print("| " + "-" * 68)
-
-    # Check correct answer
-    if not check_in(ans["f"], CORRECT):
-        print("| [FAILED] Lantern Festival missing")
-        print("|          Correct answer: Lantern Festival (元宵节/上元节)")
-        print("|          - Date: Feb 24, 2024 (正月十五)")
-        print("|          - Food: Tangyuan (sweet dessert)")
-        print("|          - Position: Culmination of Spring Festival period")
-        print("|          - Nature: Celebration (no ancestor worship)")
-        ok = False
-    else:
-        print("| [PASSED] Lantern Festival is the answer")
-
-    # Check wrong answers (traps)
-    wrong_found = check_wrong(ans["f"], WRONG)
-    if wrong_found:
-        print(f"| [FAILED] Wrong festival (trap triggered): {wrong_found}")
-        print("|          Trap Rejection Reasons:")
-        print("|          L1 - Spring Festival: FIRST day of 15-day period")
-        print("|          L2 - Kitchen God: food is OFFERING to deity")
-        print("|          L3 - Renri: qicaigeng is SAVORY vegetable soup")
-        print("|          L4 - Zhonghe: taiyanggao is RITUAL OFFERING")
-        print("|          L5 - Qingming: TOMB SWEEPING, ancestor worship")
-        print("|          L6 - Cold Food: MEMORIAL nature")
-        print("|          L7 - Dragon Boat: zongzi is DUMPLING")
-        print("|          L8 - Autumn/Winter festivals: OUTSIDE Jan-Jun 2024")
-        print("|          L9 - Calendar Type: Must verify 2024 date specifically")
-        print("|                           (lunar dates vary each year!)")
-        ok = False
-    else:
-        print("| [PASSED] No wrong festivals (traps avoided)")
-
-    # Check reasoning (6/8 groups required)
-    exp_ok, exp_msg = check_explanation(ans["e"], KEYWORD_GROUPS, min_groups=MIN_KEYWORD_GROUPS)
-    if not exp_ok:
-        print(f"| [FAILED] Reasoning: {exp_msg}")
-        ok = False
-    else:
-        print(f"| [PASSED] Reasoning: {exp_msg}")
+        print("| [PASSED] Chain dependency intact")
 
     print("=" * 70)
     if ok:
         print("| RESULT: SUCCESS")
+        print("|")
+        print("| Valid chain: Festival → Poem → Event")
+        print("=" * 70)
         return True
     else:
         print("| RESULT: FAILED")
+        print("|")
+        print("| Chain broken or wrong answers")
+        print("=" * 70)
         return False
 
 

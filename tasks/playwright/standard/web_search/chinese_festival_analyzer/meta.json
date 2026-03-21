@@ -1,46 +1,19 @@
 {
   "task_id": "chinese_festival_analyzer",
-  "task_name": "Chinese Traditional Festival Multi-Trap Analysis",
+  "task_name": "Chain with Expert Trap v81",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "Identify Chinese festivals meeting criteria for documentary about family traditions with sweet foods. Features 18 candidates with 9-layer trap system and phased verification (Phase 1-4 tables required). v47: EXACT 19 pages required (16 festival + 2 food + 1 Baidu), no flexibility. Forces multi-turn reasoning with date conversion, food classification, nature analysis, and Baidu Baike cross-verification.",
+  "description": "v81: Expert suggestion is MISLEADING. Hidden food names. Stage 1 trap: green≠savory. True chain dependency: Festival → Poem → Event.",
   "author": "mcpmark",
-  "created_at": "2026-03-18",
+  "created_at": "2026-03-21",
   "difficulty": "L3",
   "tags": [
-    "multi-page",
-    "constraint-satisfaction",
-    "cross-analysis",
-    "negative-constraint",
-    "cultural-knowledge",
-    "food-verification",
-    "misleading-observation",
-    "explanation-required",
-    "page-visit-required",
-    "trap-avoidance",
-    "multi-step-reasoning",
-    "food-classification",
-    "lunar-calendar",
-    "date-verification",
-    "18-candidates",
-    "multi-layer-traps",
-    "lunar-calendar-conversion",
-    "cultural-depth",
-    "calendar-type-trap",
-    "phased-verification",
-    "phase-1-date-conversion",
-    "phase-2-food-classification",
-    "phase-3-nature-analysis",
-    "phase-4-cross-verification",
-    "baidu-baike-required",
-    "table-output-required",
-    "v47",
-    "19-specific-pages-required",
-    "exact-page-list",
-    "no-flexibility",
-    "mandatory-all-pages",
-    "multi-trap-verification",
-    "knowledge-use-blocked"
+    "multi-stage",
+    "true-chain-dependency",
+    "expert-trap",
+    "hidden-info",
+    "v81",
+    "3-stages"
   ],
   "mcp": [
     "playwright"
@@ -49,6 +22,6 @@
     "stateType": null,
     "stateContent": null,
     "stateUrl": null,
-    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Chinese_New_Year"
+    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Shangsi_Festival"
   }
 }
