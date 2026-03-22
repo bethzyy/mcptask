@@ -1,18 +1,18 @@
 {
   "task_id": "chinese_festival_analyzer",
-  "task_name": "Step-by-Step v109",
+  "task_name": "Open Exploration v114",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v109: Requires 20+ documented turns with step-by-step output after EACH browser action. Forces sequential execution by requiring immediate output after each navigation.",
+  "description": "v114: Removed candidate list for open exploration. Requires 20+ turns and 5/5 conditions verified.",
   "author": "mcpmark",
-  "created_at": "2026-03-21",
+  "created_at": "2026-03-22",
   "difficulty": "L3",
   "tags": [
     "multi-stage",
     "step-by-step",
     "20-turns-minimum",
-    "v109",
-    "sequential-execution"
+    "v114",
+    "open-exploration"
   ],
   "mcp": [
     "playwright"
@@ -22,7 +22,7 @@
     "stateContent": null,
     "stateUrl": null,
     "stateOriginalUrl": "https://en.wikipedia.org/wiki/List_of_festivals_in_China",
-    "version": "v109",
+    "version": "v114",
     "min_turns": 20,
     "conditions": [
       "appearance_green",
@@ -32,7 +32,7 @@
       "historical_pre_tang",
       "poet_demotion"
     ],
-    "trap_candidates": ["dragon_boat", "qingming", "lantern"],
+    "trap_candidates": ["dragon_boat", "qingming", "lantern", "mid_autumn"],
     "expected_turns": "20+"
   }
 }
