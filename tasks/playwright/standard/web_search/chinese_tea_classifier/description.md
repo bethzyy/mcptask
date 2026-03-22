@@ -1,4 +1,4 @@
-# Chinese Tea Detective: v5 - Wikipedia Link Chain (15 Turns Required)
+# Chinese Tea Detective: v6 - Wikipedia Link Chain (20 Turns Required)
 
 ## Task Overview
 
@@ -47,33 +47,42 @@ DECISION: [How this helps]
 
 ---
 
-## Required Navigation Phases
+## Investigation Requirements
 
-### Phase 1: Understand Oxidation (Turns 1-3)
-Navigate from Chinese tea → Tea categories → Oxidation info
-**Must understand**: What oxidation level defines Black Tea vs Oolong?
+You must complete ALL of the following requirements through your Wikipedia navigation:
 
-### Phase 2: Fujian Tea Investigation (Turns 4-7)
-Navigate to Fujian tea pages
-**Must find**: List of Fujian Black Teas AND Oolongs
+### Requirement 1: Oxidation Knowledge
+**You must understand**: What oxidation levels define different tea categories?
+- Black Tea (Hong Cha) has a specific oxidation range
+- Oolong has a different oxidation range
+- These ranges are key to correct classification
 
-### Phase 3: Compare Candidates (Turns 8-12)
-Investigate at least 3 specific tea pages
-**Must verify**: Oxidation level, category, origin for each
+### Requirement 2: Regional Tea Knowledge
+**You must investigate**: Fujian Province produces multiple tea categories
+- Find examples of Fujian Black Teas
+- Find examples of Fujian Oolongs
+- Note the characteristics of each
 
-### Phase 4: Final Verification (Turns 13-15)
-Confirm your answer with cross-referencing
-**Must explain**: Why the apprentice was wrong
+### Requirement 3: Candidate Verification
+**You must verify**: For any tea you identify, confirm through multiple sources:
+- Its exact oxidation level
+- Its correct category classification
+- Its geographic origin
+
+### Requirement 4: Error Analysis
+**You must explain**: What specific classification error did the apprentice make?
+- Identify the misleading factor in the sample description
+- Explain why the apprentice's reasoning was incorrect
 
 ---
 
-## TRAPS to Avoid
+## Common Mistakes to Avoid
 
-| Candidate | Why Wrong |
-|-----------|-----------|
-| **Lapsang Souchong** | IS Black Tea (100% oxidation) - correct category, but has SMOKEY flavor |
-| **Dian Hong** | IS Black Tea, but from Yunnan (not Fujian) |
-| **Any "Red" name = Black Tea** | FALSE! Da Hong Pao has "Red" but is Oolong |
+| Mistake | Why It's Wrong |
+|---------|---------------|
+| **Assuming smoky = wrong category** | Some Fujian teas have smoky notes but may still be in the correct category |
+| **Ignoring geographic origin** | Not all reddish teas from China are from Fujian |
+| **Equating color names with tea categories** | A tea with "Red" in its name is NOT necessarily a Black Tea (Hong Cha) - verify by oxidation level! |
 
 ---
 
@@ -90,7 +99,7 @@ Oxidation: [Exact %]
 ## Navigation Log
 Turn 1: [URL] - [Finding]
 Turn 2: [URL] - [Finding]
-... (list ALL turns, minimum 15)
+... (list ALL turns, minimum 20)
 
 ## Key Evidence
 [Why this tea is correct]
@@ -105,9 +114,9 @@ Turn 2: [URL] - [Finding]
 ## Verification
 
 Your answer will be checked for:
-1. **15+ documented turns**
-2. **Correct tea**: Da Hong Pao (大红袍)
-3. **Correct category**: Oolong (NOT Black Tea!)
-4. **Trap explanation**: Why name "Red" ≠ Black Tea
+1. **20+ documented turns** - You must show systematic exploration
+2. **Tea identification** - A specific Fujian tea that matches ALL the sample characteristics
+3. **Category verification** - The correct category based on oxidation level, not name
+4. **Error explanation** - Clear analysis of why the apprentice's classification was wrong
 
-**If you output fewer than 15 documented turns, you will FAIL.**
+**If you output fewer than 20 documented turns, you will FAIL.**

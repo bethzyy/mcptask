@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Verification for Chinese Tea Classification Task v5.
+Verification for Chinese Tea Classification Task v6.
 Correct answer: Da Hong Pao (大红袍) - Wuyi Rock Oolong
 
-v5 Design:
+v6 Design:
 - Wikipedia Link-Chain Navigation starting from Chinese_tea
-- Step-by-step output requirement (15+ turns)
+- Step-by-step output requirement (20+ turns)
 - Name trap: "Big Red Robe" sounds like Black Tea but is Oolong
 """
 import sys
@@ -38,7 +38,7 @@ TRAP_ANSWER_PHRASES = [
     "type: black tea", "type: black"
 ]
 
-MIN_TURNS = 15
+MIN_TURNS = 20
 
 
 def get_work_dir():
@@ -146,7 +146,7 @@ def check_wrong(fests, wrong_set):
 
 def verify(wd):
     print("=" * 70)
-    print("| VERIFICATION: Chinese Tea Classification (v5)")
+    print("| VERIFICATION: Chinese Tea Classification (v6)")
     print("| Correct Answer: Da Hong Pao (大红袍) - Wuyi Rock Oolong")
     print("=" * 70)
 
