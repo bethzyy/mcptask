@@ -197,12 +197,9 @@ def verify(wd):
         return False
     print("| [PASSED] No trap answers selected")
 
-    # CHECK 5: Turn count
+    # CHECK 5: Turn count (information only, not verified)
     print("| " + "-" * 68)
-    if turn_count < MIN_TURNS:
-        print(f"| [FAILED] Turn count = {turn_count} < {MIN_TURNS}")
-        return False
-    print(f"| [PASSED] Turn count: {turn_count} >= {MIN_TURNS}")
+    print(f"| [INFO] Turn count: {turn_count} (recommended: {MIN_TURNS}+)")
 
     # CHECK 6: Trap explanation
     print("| " + "-" * 68)

@@ -1,0 +1,2267 @@
+- generic [active] [ref=e1]:
+  - link "Jump to content" [ref=e2] [cursor=pointer]:
+    - /url: "#bodyContent"
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - navigation "Site" [ref=e6]:
+        - generic "Main menu" [ref=e7]:
+          - button "Main menu" [ref=e8] [cursor=pointer]
+          - generic [ref=e11]: Main menu
+      - link "Wikipedia The Free Encyclopedia" [ref=e12] [cursor=pointer]:
+        - /url: /wiki/Main_Page
+        - generic [ref=e13]:
+          - img "Wikipedia" [ref=e14]
+          - img "The Free Encyclopedia" [ref=e15]
+    - generic [ref=e16]:
+      - search [ref=e17]:
+        - generic [ref=e20]:
+          - searchbox "Search Wikipedia" [ref=e23]
+          - button "Search" [ref=e25]
+      - navigation "Personal tools" [ref=e26]:
+        - list [ref=e30]:
+          - listitem [ref=e31]:
+            - link "Donate" [ref=e32] [cursor=pointer]:
+              - /url: https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=en.wikipedia.org&uselang=en
+          - listitem [ref=e33]:
+            - link "Create account" [ref=e34] [cursor=pointer]:
+              - /url: /w/index.php?title=Special:CreateAccount&returnto=Cold+Food+Festival
+          - listitem [ref=e35]:
+            - link "Log in" [ref=e36] [cursor=pointer]:
+              - /url: /w/index.php?title=Special:UserLogin&returnto=Cold+Food+Festival
+  - generic [ref=e38]:
+    - navigation "Contents" [ref=e42]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - heading "Contents" [level=2] [ref=e46]
+          - button "hide" [ref=e47] [cursor=pointer]
+        - list [ref=e48]:
+          - listitem [ref=e49]:
+            - link "(Top)" [ref=e50] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e51]: (Top)
+          - listitem [ref=e52]:
+            - link "Legend" [ref=e53] [cursor=pointer]:
+              - /url: "#Legend"
+              - generic [ref=e54]: Legend
+            - list
+          - listitem [ref=e55]:
+            - link "History" [ref=e56] [cursor=pointer]:
+              - /url: "#History"
+              - generic [ref=e57]: History
+            - button "Toggle History subsection" [expanded] [ref=e58]:
+              - generic [ref=e60]: Toggle History subsection
+            - list [ref=e61]:
+              - listitem [ref=e62]:
+                - link "Controversy" [ref=e63] [cursor=pointer]:
+                  - /url: "#Controversy"
+                  - generic [ref=e64]: Controversy
+                - list
+          - listitem [ref=e65]:
+            - link "Observance" [ref=e66] [cursor=pointer]:
+              - /url: "#Observance"
+              - generic [ref=e67]: Observance
+            - button "Toggle Observance subsection" [expanded] [ref=e68]:
+              - generic [ref=e70]: Toggle Observance subsection
+            - list [ref=e71]:
+              - listitem [ref=e72]:
+                - link "China" [ref=e73] [cursor=pointer]:
+                  - /url: "#China"
+                  - generic [ref=e74]: China
+                - list
+              - listitem [ref=e75]:
+                - link "South Korea" [ref=e76] [cursor=pointer]:
+                  - /url: "#South_Korea"
+                  - generic [ref=e77]: South Korea
+                - list
+              - listitem [ref=e78]:
+                - link "Vietnam" [ref=e79] [cursor=pointer]:
+                  - /url: "#Vietnam"
+                  - generic [ref=e80]: Vietnam
+                - list
+          - listitem [ref=e81]:
+            - link "See also" [ref=e82] [cursor=pointer]:
+              - /url: "#See_also"
+              - generic [ref=e83]: See also
+            - list
+          - listitem [ref=e84]:
+            - link "Notes" [ref=e85] [cursor=pointer]:
+              - /url: "#Notes"
+              - generic [ref=e86]: Notes
+            - list
+          - listitem [ref=e87]:
+            - link "References" [ref=e88] [cursor=pointer]:
+              - /url: "#References"
+              - generic [ref=e89]: References
+            - button "Toggle References subsection" [expanded] [ref=e90]:
+              - generic [ref=e92]: Toggle References subsection
+            - list [ref=e93]:
+              - listitem [ref=e94]:
+                - link "Citations" [ref=e95] [cursor=pointer]:
+                  - /url: "#Citations"
+                  - generic [ref=e96]: Citations
+                - list
+              - listitem [ref=e97]:
+                - link "Bibliography" [ref=e98] [cursor=pointer]:
+                  - /url: "#Bibliography"
+                  - generic [ref=e99]: Bibliography
+                - list
+    - main [ref=e101]:
+      - generic [ref=e102]:
+        - heading "Cold Food Festival" [level=1] [ref=e103]
+        - generic [ref=e104]:
+          - button "Go to an article in another language. Available in 13 languages" [ref=e105] [cursor=pointer]
+          - generic [ref=e108]: 13 languages
+      - generic [ref=e110]:
+        - navigation "Namespaces" [ref=e112]:
+          - generic [ref=e113]:
+            - generic:
+              - list:
+                - listitem [ref=e114]:
+                  - link "Article" [ref=e115] [cursor=pointer]:
+                    - /url: /wiki/Cold_Food_Festival
+                    - generic [ref=e116]: Article
+                - listitem [ref=e117]:
+                  - link "Talk" [ref=e118] [cursor=pointer]:
+                    - /url: /wiki/Talk:Cold_Food_Festival
+                    - generic [ref=e119]: Talk
+        - generic [ref=e120]:
+          - navigation "Views" [ref=e121]:
+            - generic [ref=e122]:
+              - generic:
+                - list:
+                  - listitem [ref=e123]:
+                    - link "Read" [ref=e124] [cursor=pointer]:
+                      - /url: /wiki/Cold_Food_Festival
+                      - generic [ref=e125]: Read
+                  - listitem [ref=e126]:
+                    - link "Edit" [ref=e127] [cursor=pointer]:
+                      - /url: /w/index.php?title=Cold_Food_Festival&action=edit
+                      - generic [ref=e128]: Edit
+                  - listitem [ref=e129]:
+                    - link "View history" [ref=e130] [cursor=pointer]:
+                      - /url: /w/index.php?title=Cold_Food_Festival&action=history
+                      - generic [ref=e131]: View history
+          - navigation "Page tools" [ref=e132]:
+            - generic [ref=e133]:
+              - button "Tools" [ref=e134] [cursor=pointer]
+              - generic [ref=e136] [cursor=pointer]: Tools
+      - navigation "Appearance" [ref=e139]:
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]: Appearance
+            - button "hide" [ref=e144] [cursor=pointer]
+          - generic [ref=e1306]:
+            - generic [ref=e1307]: Birthday mode (Baby Globe)
+            - list [ref=e1309]:
+              - listitem [ref=e1310]:
+                - generic [ref=e1311]:
+                  - generic [ref=e1312]:
+                    - generic [ref=e1313]:
+                      - radio "Disabled" [ref=e1314]
+                      - generic [ref=e1317]: Disabled
+                    - generic [ref=e1318]:
+                      - radio "Enabled" [checked] [ref=e1319]
+                      - generic [ref=e1322]: Enabled
+                  - link "Learn more about Birthday mode" [ref=e1324] [cursor=pointer]:
+                    - /url: https://wikimediafoundation.org/wikipedia25/wikipedia-mascot/?utm_campaign=wpam&utm_source=wpam&utm_medium=wpamen
+          - generic [ref=e1325]:
+            - generic [ref=e1326]: Text
+            - list [ref=e1328]:
+              - listitem [ref=e1329]:
+                - generic [ref=e1331]:
+                  - generic [ref=e1332]:
+                    - radio "Small" [ref=e1333]
+                    - generic [ref=e1336]: Small
+                  - generic [ref=e1337]:
+                    - radio "Standard" [checked] [ref=e1338]
+                    - generic [ref=e1341]: Standard
+                  - generic [ref=e1342]:
+                    - radio "Large" [ref=e1343]
+                    - generic [ref=e1346]: Large
+          - generic [ref=e1347]:
+            - generic [ref=e1348]: Width
+            - list [ref=e1350]:
+              - listitem [ref=e1351]:
+                - generic [ref=e1353]:
+                  - generic [ref=e1354]:
+                    - radio "Standard" [checked] [ref=e1355]
+                    - generic [ref=e1358]: Standard
+                  - generic [ref=e1359]:
+                    - radio "Wide" [ref=e1360]
+                    - generic [ref=e1363]: Wide
+          - generic [ref=e1364]:
+            - generic [ref=e1365]:
+              - text: Color
+              - generic [ref=e1366]: (beta)
+            - list [ref=e1368]:
+              - listitem [ref=e1369]:
+                - generic [ref=e1371]:
+                  - generic [ref=e1372]:
+                    - radio "Automatic" [ref=e1373]
+                    - generic [ref=e1376]: Automatic
+                  - generic [ref=e1377]:
+                    - radio "Light" [checked] [ref=e1378]
+                    - generic [ref=e1381]: Light
+                  - generic [ref=e1382]:
+                    - radio "Dark" [ref=e1383]
+                    - generic [ref=e1386]: Dark
+      - generic "Cold Food Festival" [ref=e145]:
+        - generic [ref=e147]: From Wikipedia, the free encyclopedia
+        - generic [ref=e150]:
+          - text: (Redirected from
+          - link "Hanshi Festival" [ref=e151] [cursor=pointer]:
+            - /url: /w/index.php?title=Hanshi_Festival&redirect=no
+          - text: )
+        - generic [ref=e153]:
+          - table [ref=e154]:
+            - rowgroup [ref=e155]:
+              - row "Cold Food Festival" [ref=e156]:
+                - columnheader "Cold Food Festival" [ref=e157]
+              - row "Mount Mian in Shanxi" [ref=e158]:
+                - cell "Mount Mian in Shanxi" [ref=e159]:
+                  - link [ref=e161] [cursor=pointer]:
+                    - /url: /wiki/File:Mianshan.jpg
+                    - img [ref=e162]
+                  - generic [ref=e163]:
+                    - link "Mount Mian" [ref=e165] [cursor=pointer]:
+                      - /url: /wiki/Mount_Mian
+                    - text: in
+                    - link "Shanxi" [ref=e166] [cursor=pointer]:
+                      - /url: /wiki/Shanxi
+              - row "Also called 寒食节 Hanshi Festival (China) Hansik (South Korea) Tết Hàn Thực (Vietnam) Day of No Fire" [ref=e167]:
+                - rowheader "Also called" [ref=e168]
+                - cell "寒食节 Hanshi Festival (China) Hansik (South Korea) Tết Hàn Thực (Vietnam) Day of No Fire" [ref=e169]:
+                  - text: 寒食节 Hanshi Festival (China)
+                  - text: Hansik (South Korea)
+                  - text: Tết Hàn Thực (Vietnam)
+                  - text: Day of No Fire
+              - row "Observed by Chinese, South Koreans, Vietnamese" [ref=e170]:
+                - rowheader "Observed by" [ref=e171]
+                - cell "Chinese, South Koreans, Vietnamese" [ref=e172]
+              - row "Type Cultural" [ref=e173]:
+                - rowheader "Type" [ref=e174]
+                - cell "Cultural" [ref=e175]
+              - row "Begins 105th day after December solstice (April 4 or April 5)" [ref=e176]:
+                - rowheader "Begins" [ref=e177]
+                - cell "105th day after December solstice (April 4 or April 5)" [ref=e178]:
+                  - text: 105th day after
+                  - link "December solstice" [ref=e179] [cursor=pointer]:
+                    - /url: /wiki/December_solstice
+                  - text: (April 4 or April 5)
+              - row "Ends 107th day after December solstice (April 6 or April 7)" [ref=e180]:
+                - rowheader "Ends" [ref=e181]
+                - cell "107th day after December solstice (April 6 or April 7)" [ref=e182]:
+                  - text: 107th day after
+                  - link "December solstice" [ref=e183] [cursor=pointer]:
+                    - /url: /wiki/December_solstice
+                  - text: (April 6 or April 7)
+              - row "Date 106th day after December solstice (April 5 or April 6)" [ref=e184]:
+                - rowheader "Date" [ref=e185]
+                - cell "106th day after December solstice (April 5 or April 6)" [ref=e186]:
+                  - text: 106th day after
+                  - link "December solstice" [ref=e187] [cursor=pointer]:
+                    - /url: /wiki/December_solstice
+                  - text: (April 5 or April 6)
+              - row "Duration 3 days" [ref=e188]:
+                - rowheader "Duration" [ref=e189]
+                - cell "3 days" [ref=e190]
+              - row "Frequency Annual" [ref=e191]:
+                - rowheader "Frequency" [ref=e192]
+                - cell "Annual" [ref=e193]
+              - row "Related to Tomb Sweeping Festival" [ref=e194]:
+                - rowheader "Related to" [ref=e195]
+                - cell "Tomb Sweeping Festival" [ref=e196]:
+                  - link "Tomb Sweeping Festival" [ref=e197] [cursor=pointer]:
+                    - /url: /wiki/Tomb_Sweeping_Festival
+          - table [ref=e198]:
+            - rowgroup [ref=e199]:
+              - row "Cold Food Festival" [ref=e200]:
+                - columnheader "Cold Food Festival" [ref=e201]
+              - row "Chinese name" [ref=e202]:
+                - columnheader "Chinese name" [ref=e203]
+              - row "Traditional Chinese 寒食節" [ref=e204]:
+                - rowheader "Traditional Chinese" [ref=e205]:
+                  - link "Traditional Chinese" [ref=e206] [cursor=pointer]:
+                    - /url: /wiki/Traditional_Chinese_characters
+                - cell "寒食節" [ref=e207]:
+                  - generic "Chinese-language text" [ref=e208]:
+                    - link "寒食節" [ref=e210] [cursor=pointer]:
+                      - /url: https://en.wiktionary.org/wiki/%E5%AF%92%E9%A3%9F%E7%AF%80
+              - row "Simplified Chinese 寒食节" [ref=e211]:
+                - rowheader "Simplified Chinese" [ref=e212]:
+                  - link "Simplified Chinese" [ref=e213] [cursor=pointer]:
+                    - /url: /wiki/Simplified_Chinese_characters
+                - cell "寒食节" [ref=e214]:
+                  - generic "Chinese-language text" [ref=e215]:
+                    - link "寒食节" [ref=e217] [cursor=pointer]:
+                      - /url: https://en.wiktionary.org/wiki/%E5%AF%92%E9%A3%9F%E8%8A%82
+              - row "Literal meaning \"Cold Food Festival\"" [ref=e218]:
+                - rowheader "Literal meaning" [ref=e219]
+                - cell "\"Cold Food Festival\"" [ref=e220]
+              - row "[show] Transcriptions" [ref=e221]:
+                - cell "[show] Transcriptions" [ref=e222]:
+                  - table [ref=e223]:
+                    - rowgroup [ref=e224]:
+                      - row "[show] Transcriptions" [ref=e225]:
+                        - columnheader "[show] Transcriptions" [ref=e226]:
+                          - button "[show]" [ref=e1387] [cursor=pointer]
+                          - text: Transcriptions
+                      - row
+                      - row
+                      - row
+                      - row
+                      - row
+                      - row
+                      - row
+                      - row
+                      - row
+              - row "Vietnamese name" [ref=e227]:
+                - columnheader "Vietnamese name" [ref=e228]
+              - row "Vietnamese alphabet Tết Hàn Thực" [ref=e229]:
+                - rowheader "Vietnamese alphabet" [ref=e230]:
+                  - link "Vietnamese alphabet" [ref=e231] [cursor=pointer]:
+                    - /url: /wiki/Vietnamese_alphabet
+                - cell "Tết Hàn Thực" [ref=e232]:
+                  - generic "Vietnamese-language text" [ref=e233]: Tết Hàn Thực
+              - row "Chữ Hán 節寒食" [ref=e234]:
+                - rowheader "Chữ Hán" [ref=e235]:
+                  - link "Chữ Hán" [ref=e236] [cursor=pointer]:
+                    - /url: /wiki/Ch%E1%BB%AF_H%C3%A1n
+                - cell "節寒食" [ref=e237]:
+                  - generic "Vietnamese-language text" [ref=e238]: 節寒食
+              - row "Korean name" [ref=e239]:
+                - columnheader "Korean name" [ref=e240]
+              - row "Hangul 한식" [ref=e241]:
+                - rowheader "Hangul" [ref=e242]:
+                  - link "Hangul" [ref=e243] [cursor=pointer]:
+                    - /url: /wiki/Hangul
+                - cell "한식" [ref=e244]:
+                  - generic "Korean-language text" [ref=e245]: 한식
+              - row "Hanja 寒食" [ref=e246]:
+                - rowheader "Hanja" [ref=e247]:
+                  - link "Hanja" [ref=e248] [cursor=pointer]:
+                    - /url: /wiki/Hanja
+                - cell "寒食" [ref=e249]:
+                  - generic "Korean-language text" [ref=e250]: 寒食
+              - row "[show] Transcriptions" [ref=e251]:
+                - cell "[show] Transcriptions" [ref=e252]:
+                  - table [ref=e253]:
+                    - rowgroup [ref=e254]:
+                      - row "[show] Transcriptions" [ref=e255]:
+                        - columnheader "[show] Transcriptions" [ref=e256]:
+                          - button "[show]" [ref=e1388] [cursor=pointer]
+                          - text: Transcriptions
+                      - row
+                      - row
+          - paragraph [ref=e257]:
+            - text: The Cold Food or Hanshi Festival (寒食节) is a
+            - link "traditional Chinese holiday" [ref=e258] [cursor=pointer]:
+              - /url: /wiki/List_of_observances_set_by_the_Chinese_calendar
+            - text: which developed from the local commemoration of the death of the
+            - link "Jin" [ref=e259] [cursor=pointer]:
+              - /url: /wiki/Jin_(Chinese_state)
+            - link "nobleman" [ref=e260] [cursor=pointer]:
+              - /url: /wiki/Chinese_nobility
+            - link "Jie Zitui" [ref=e261] [cursor=pointer]:
+              - /url: /wiki/Jie_Zitui
+            - text: in the 7th century BC under the
+            - link "Zhou dynasty" [ref=e262] [cursor=pointer]:
+              - /url: /wiki/Zhou_dynasty
+            - text: ", into an occasion across East Asia for the commemoration and"
+            - link "veneration" [ref=e263] [cursor=pointer]:
+              - /url: /wiki/Ancestral_veneration
+            - text: of ancestors by the 7th-century
+            - link "Tang dynasty" [ref=e264] [cursor=pointer]:
+              - /url: /wiki/Tang_dynasty
+            - text: . Its name derives from the tradition of avoiding the lighting of any kind of fire, even for the
+            - link "preparation of food" [ref=e265] [cursor=pointer]:
+              - /url: /wiki/Cooking
+            - text: . This practice originally occurred at
+            - link "midwinter" [ref=e266] [cursor=pointer]:
+              - /url: /wiki/Midwinter
+            - text: for as long as a month, but the hardship this involved led to repeated attempts to ban its observance out of concern for its practitioners. By the end of the
+            - link "Three Kingdoms period" [ref=e267] [cursor=pointer]:
+              - /url: /wiki/Three_Kingdoms_period
+            - text: (3rd century), it was limited to three days in the spring around the
+            - link "Qingming" [ref=e268] [cursor=pointer]:
+              - /url: /wiki/Qingming_(solar_term)
+            - link "solar term" [ref=e269] [cursor=pointer]:
+              - /url: /wiki/Solar_term
+            - text: . Under the
+            - link "Tang" [ref=e270] [cursor=pointer]:
+              - /url: /wiki/Tang_dynasty
+            - text: ", ancestral observance was limited to the single day which is now the"
+            - link "Tomb-Sweeping Festival" [ref=e271] [cursor=pointer]:
+              - /url: /wiki/Qingming_Festival
+            - text: . The Tomb-Sweeping Festival is an
+            - link "official holiday" [ref=e272] [cursor=pointer]:
+              - /url: /wiki/Public_holiday
+            - text: in several countries, and the Cold Food Festival which stretches either side of it continues to see some observance in
+            - link "China" [ref=e273] [cursor=pointer]:
+              - /url: /wiki/China
+            - text: ","
+            - link "South Korea" [ref=e274] [cursor=pointer]:
+              - /url: /wiki/South_Korea
+            - text: ", and"
+            - link "Vietnam" [ref=e275] [cursor=pointer]:
+              - /url: /wiki/Vietnam
+            - text: .
+          - generic [ref=e276]:
+            - heading "Legend" [level=2] [ref=e277]
+            - generic [ref=e278]:
+              - text: "["
+              - link "edit" [ref=e279] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=1
+              - text: "]"
+          - paragraph [ref=e280]:
+            - text: The usual story for the origin of the Cold Food and Tomb-Sweeping Festivals concerns the 7th-century-BC
+            - link "Jin" [ref=e281] [cursor=pointer]:
+              - /url: /wiki/Jin_(Chinese_state)
+            - link "nobleman" [ref=e282] [cursor=pointer]:
+              - /url: /wiki/Chinese_nobility
+            - link "Jie Zhitui" [ref=e283] [cursor=pointer]:
+              - /url: /wiki/Jie_Zhitui
+            - text: ","
+            - superscript [ref=e284]:
+              - link "[1]" [ref=e285] [cursor=pointer]:
+                - /url: "#cite_note-doobydooby-1"
+            - text: a model of
+            - link "self-sacrificing" [ref=e286] [cursor=pointer]:
+              - /url: /wiki/Self_sacrifice
+            - link "loyalty" [ref=e287] [cursor=pointer]:
+              - /url: /wiki/Loyalty
+            - text: .
+            - superscript [ref=e288]:
+              - link "[2]" [ref=e289] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHanan1981[httpsbooksgooglecombooksidGR6ea0F3BDQCpgPA205_205]-2"
+          - paragraph [ref=e290]:
+            - text: During the
+            - link "Spring and Autumn period" [ref=e291] [cursor=pointer]:
+              - /url: /wiki/Spring_and_Autumn_period
+            - text: of
+            - link "Chinese history" [ref=e292] [cursor=pointer]:
+              - /url: /wiki/Chinese_history
+            - text: ", the"
+            - link "Zhou Kingdom" [ref=e293] [cursor=pointer]:
+              - /url: /wiki/Zhou_Kingdom
+            - text: began to break up into
+            - link "its constituent parts" [ref=e294] [cursor=pointer]:
+              - /url: /wiki/Ancient_Chinese_states
+            - text: and their lords gained more and more freedom from central control. One of these states was
+            - link "Jin" [ref=e295] [cursor=pointer]:
+              - /url: /wiki/Jin_(Chinese_state)
+            - text: ", around modern"
+            - link "Shanxi" [ref=e296] [cursor=pointer]:
+              - /url: /wiki/Shanxi
+            - text: . As was common among wealthy
+            - link "Chinese" [ref=e297] [cursor=pointer]:
+              - /url: /wiki/Han_people
+            - text: at the time,
+            - link "its duke" [ref=e298] [cursor=pointer]:
+              - /url: /wiki/Xian_Duke_of_Jin
+            - link "had many wives" [ref=e299] [cursor=pointer]:
+              - /url: /wiki/Chinese_marriage
+            - text: . One of them,
+            - link "Li Ji" [ref=e300] [cursor=pointer]:
+              - /url: /wiki/Li_Ji_(concubine)
+            - text: ", was of"
+            - link "lower status" [ref=e301] [cursor=pointer]:
+              - /url: /wiki/Chinese_concubinage
+            - text: and came from the
+            - link "Rong tribes" [ref=e302] [cursor=pointer]:
+              - /url: /wiki/Xirong
+            - text: who lived to China's west, but
+            - link "successfully schemed" [ref=e303] [cursor=pointer]:
+              - /url: /wiki/Li_Ji_Unrest
+            - text: to become a full wife and to establish
+            - link "her son" [ref=e304] [cursor=pointer]:
+              - /url: /wiki/Xiqi
+            - text: as the duke's successor. Her older stepson
+            - link "Ji Chong'er" [ref=e305] [cursor=pointer]:
+              - /url: /wiki/Ji_Chong%27er
+            - text: was
+            - link "framed" [ref=e306] [cursor=pointer]:
+              - /url: /wiki/Frameup
+            - text: for revolting against the duke in 655 BC, forcing the prince to flee for his life to his mother's family among the
+            - link "Di tribes" [ref=e307] [cursor=pointer]:
+              - /url: /wiki/Beidi
+            - text: north of China. Only 15 of his men followed him into exile. These included
+            - link "Jie Zhitui" [ref=e308] [cursor=pointer]:
+              - /url: /wiki/Jie_Zhitui
+            - text: ", who entertained the prince with his"
+            - link "poems" [ref=e309] [cursor=pointer]:
+              - /url: /wiki/Chinese_poetry
+            - text: and
+            - link "music" [ref=e310] [cursor=pointer]:
+              - /url: /wiki/Guqin
+            - text: . He was so considerate of his lord that once, when their supplies were stolen while traveling through
+            - link "Wey" [ref=e311] [cursor=pointer]:
+              - /url: /wiki/State_of_Wey
+            - text: ", he used meat from his own thigh to make soup to relieve the prince's hunger."
+            - superscript [ref=e312]:
+              - link "[3]" [ref=e313] [cursor=pointer]:
+                - /url: "#cite_note-legate-3"
+          - paragraph [ref=e314]:
+            - text: In 636 BC,
+            - link "the duke of Qin" [ref=e315] [cursor=pointer]:
+              - /url: /wiki/Mu_Duke_of_Qin
+            - text: finally invaded Jin on Chong'er's behalf and installed him as its duke. (Posthumously, he became known as the
+            - link "\"Wen\" or \"Civilized Duke\" of Jin" [ref=e316] [cursor=pointer]:
+              - /url: /wiki/Wen_Duke_of_Jin
+            - text: .) In 635 BC,
+            - superscript [ref=e317]:
+              - link "[4]" [ref=e318] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198653-4"
+            - text: the new duke was generous to those who had helped him in adversity but overlooked Jie, who sadly withdrew into poor obscurity in the forests near
+            - link "Mt Mian" [ref=e320] [cursor=pointer]:
+              - /url: /wiki/Mt_Mian
+            - text: .
+            - superscript [ref=e321]:
+              - link "[1]" [ref=e322] [cursor=pointer]:
+                - /url: "#cite_note-doobydooby-1"
+            - text: The duke sent repeated envoys to lure Jie back to court, but he felt no ambition for political power. Too loyal to directly criticize his master but too principled to accept a place in a corrupt administration,
+            - superscript [ref=e323]:
+              - link "[5]" [ref=e324] [cursor=pointer]:
+                - /url: "#cite_note-ling-5"
+            - text: he opted to simply remain in seclusion. Annoyed, the duke ordered a
+            - link "forest fire" [ref=e325] [cursor=pointer]:
+              - /url: /wiki/Forest_fire
+            - text: to be started around three sides of the mountain to smoke Jie and his mother out of hiding.
+            - superscript [ref=e326]:
+              - link "[6]" [ref=e327] [cursor=pointer]:
+                - /url: "#cite_note-sucky-6"
+            - text: Instead of coming out, they were
+            - link "burnt alive" [ref=e328] [cursor=pointer]:
+              - /url: /wiki/Death_by_burning
+            - text: .
+            - superscript [ref=e329]:
+              - link "[1]" [ref=e330] [cursor=pointer]:
+                - /url: "#cite_note-doobydooby-1"
+            - text: Jie's charred corpse was found still standing, embracing
+            - superscript [ref=e331]:
+              - link "[6]" [ref=e332] [cursor=pointer]:
+                - /url: "#cite_note-sucky-6"
+            - text: or tightly bound
+            - superscript [ref=e333]:
+              - link "[5]" [ref=e334] [cursor=pointer]:
+                - /url: "#cite_note-ling-5"
+            - text: to a tree. In his remorse, the duke renamed the mountain Mt. Jie, established the town still known as
+            - link "Jiexiu" [ref=e335] [cursor=pointer]:
+              - /url: /wiki/Jiexiu
+            - text: ("Jie's Rest"),
+            - superscript [ref=e336]:
+              - text: "["
+              - link "citation needed" [ref=e338] [cursor=pointer]:
+                - /url: /wiki/Wikipedia:Citation_needed
+              - text: "]"
+            - text: and inaugurated the Cold Food Festival as a memorial period for Jie.
+            - superscript [ref=e339]:
+              - link "[1]" [ref=e340] [cursor=pointer]:
+                - /url: "#cite_note-doobydooby-1"
+          - paragraph [ref=e341]:
+            - text: In addition to the festival, the story also occasioned the
+            - link "Chinese proverb" [ref=e342] [cursor=pointer]:
+              - /url: /wiki/Chengyu
+            - text: that, "while some can burn off an entire mountain, others are kept from even lighting up to eat their rice".
+            - superscript [ref=e343]:
+              - text: "["
+              - link "citation needed" [ref=e345] [cursor=pointer]:
+                - /url: /wiki/Wikipedia:Citation_needed
+              - text: "]"
+          - generic [ref=e346]:
+            - heading "History" [level=2] [ref=e347]
+            - generic [ref=e348]:
+              - text: "["
+              - link "edit" [ref=e349] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=2
+              - text: "]"
+          - figure "Li Tang's The Civilized Duke of Jin Recovering His State (1140)" [ref=e350]:
+            - link [ref=e351] [cursor=pointer]:
+              - /url: /wiki/File:Duke_Wen_of_Jin_Recovering_His_State_(%E6%99%89%E6%96%87%E5%85%AC%E5%BE%A9%E5%9C%8B%E5%9C%96)_by_Li_Tang_(%E6%9D%8E%E5%94%90),_1140.jpg
+              - img [ref=e352]
+            - generic [ref=e353]:
+              - link "Li Tang" [ref=e354] [cursor=pointer]:
+                - /url: /wiki/Li_Tang_(painter)
+              - text: "'s The Civilized Duke of Jin Recovering His State (1140)"
+          - figure "Duke Wen of Jin lid a forest fire on one side of Mt Mian to drive out Jie Zhitui (illustration from the Chronicles of the Eastern Zhou Kingdoms)." [ref=e355]:
+            - link [ref=e356] [cursor=pointer]:
+              - /url: /wiki/File:Chronicles_of_the_Eastern_Zhou_Kingdoms_(%E6%9D%B1%E5%91%A8%E5%88%97%E5%9C%8B%E5%BF%97)_-_Illustrations_25.jpg
+              - img [ref=e357]
+            - generic [ref=e358]:
+              - text: Duke Wen of Jin lid a forest fire on one side of
+              - link "Mt Mian" [ref=e359] [cursor=pointer]:
+                - /url: /wiki/Mt_Mian
+              - text: to drive out Jie Zhitui (illustration from the
+              - link "Chronicles of the Eastern Zhou Kingdoms" [ref=e361] [cursor=pointer]:
+                - /url: /wiki/Chronicles_of_the_Eastern_Zhou_Kingdoms
+              - text: ).
+          - paragraph [ref=e362]:
+            - text: The first part of this legend appears to be historical. In the earliest accounts, however, Jie is more prideful than sad and is not killed in a fire. The 4th-century-BC
+            - link "commentary" [ref=e363] [cursor=pointer]:
+              - /url: /wiki/Zuozhuan
+            - text: "on"
+            - link "Confucius" [ref=e364] [cursor=pointer]:
+              - /url: /wiki/Confucius
+            - text: "'s"
+            - link "Spring and Autumn Annals" [ref=e366] [cursor=pointer]:
+              - /url: /wiki/Spring_and_Autumn_Annals
+            - text: traditionally credited to
+            - link "Zuo Qiuming" [ref=e367] [cursor=pointer]:
+              - /url: /wiki/Zuo_Qiuming
+            - text: includes a
+            - link "Thucydidean" [ref=e368] [cursor=pointer]:
+              - /url: /wiki/History_of_the_Peloponnesian_War#Speeches
+            - text: passage where Jie argues with his mother about their future. Jie credits
+            - link "Heaven" [ref=e369] [cursor=pointer]:
+              - /url: /wiki/Tian
+            - text: with having restored Chong'er to his rightful place and is disgusted by the credit-seeking and job-hunting behavior of his fellows, whom he considers worse than thieves. He also finds his lord unworthy for failing to reward him despite his failure to present himself at court. His mother asks him to at least go before the duke,
+            - superscript [ref=e370]:
+              - link "[3]" [ref=e371] [cursor=pointer]:
+                - /url: "#cite_note-legate-3"
+            - superscript [ref=e372]:
+              - link "[7]" [ref=e373] [cursor=pointer]:
+                - /url: "#cite_note-durr-7"
+            - text: but Jie admits his bitter criticism of the other lords makes that impossibly embarrassing. His mother accepts his decision to withdraw to a
+            - link "hermitage" [ref=e374] [cursor=pointer]:
+              - /url: /wiki/Hermit
+            - text: and goes with him. Ji Chong'er belatedly remembers his obligations to Jie and looks for him. When this proves vain, he accepts the situation and sets aside the produce of the fields of "Mëenshang" to endow sacrifices in Jie's honor, "a memento... of my neglect and a mark of distinction for the good man".
+            - superscript [ref=e375]:
+              - link "[8]" [ref=e376] [cursor=pointer]:
+                - /url: "#cite_note-leggy-8"
+            - superscript [ref=e377]:
+              - link "[7]" [ref=e378] [cursor=pointer]:
+                - /url: "#cite_note-durr-7"
+            - text: Other sources from the
+            - link "Zhou" [ref=e379] [cursor=pointer]:
+              - /url: /wiki/Zhou_dynasty
+            - text: and
+            - link "early Han" [ref=e380] [cursor=pointer]:
+              - /url: /wiki/Western_Han
+            - text: mention and praise Jie for various reasons. The poems of the
+            - link "Songs of Chu" [ref=e382] [cursor=pointer]:
+              - /url: /wiki/Songs_of_Chu
+            - text: extol him for his loyalty and proper treatment of his lord's forgetfulness.
+            - superscript [ref=e383]:
+              - link "[9]" [ref=e384] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198652-9"
+            - link "Master Lü's Spring and Autumn Annals" [ref=e386] [cursor=pointer]:
+              - /url: /wiki/L%C3%BCshi_Chunqiu
+            - text: praises his altruism and lack of personal ambition.
+            - superscript [ref=e387]:
+              - link "[9]" [ref=e388] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198652-9"
+            - text: At some point before the composition of the Han-era
+            - link "Biographies of the Immortals" [ref=e390] [cursor=pointer]:
+              - /url: /wiki/Biographies_of_the_Immortals
+            - text: ", Jie came to be revered as a"
+            - link "Taoist" [ref=e391] [cursor=pointer]:
+              - /url: /wiki/Taoism_in_China
+            - link "immortal" [ref=e392] [cursor=pointer]:
+              - /url: /wiki/Taoist_immortal
+            - text: .
+            - superscript [ref=e393]:
+              - link "[10]" [ref=e394] [cursor=pointer]:
+                - /url: "#cite_note-10"
+            - superscript [ref=e395]:
+              - link "[11]" [ref=e396] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198668-11"
+          - paragraph [ref=e397]:
+            - text: The Cold Food Festival is first mentioned in
+            - link "Huan Tan" [ref=e398] [cursor=pointer]:
+              - /url: /wiki/Huan_Tan
+            - text: "'s"
+            - link "New Discussions" [ref=e400] [cursor=pointer]:
+              - /url: /wiki/Xinlun
+            - text: ", composed around the beginning of the 1st century. It records that the commoners of"
+            - link "Taiyuan Commandery" [ref=e401] [cursor=pointer]:
+              - /url: /wiki/Taiyuan_Commandery
+            - text: avoided using fire in preparing their food for five days around
+            - link "midwinter" [ref=e402] [cursor=pointer]:
+              - /url: /wiki/Midwinter
+            - text: ", upholding this taboo even when they are gravely ill. This was done in Jie Zhitui's honor."
+            - superscript [ref=e403]:
+              - link "[12]" [ref=e404] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEPokora1975122_&_136–7-12"
+            - superscript [ref=e405]:
+              - link "[9]" [ref=e406] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198652-9"
+            - text: A biography in the
+            - link "Book of the Later Han" [ref=e408] [cursor=pointer]:
+              - /url: /wiki/Book_of_the_Later_Han
+            - text: relates how the magistrate for
+            - link "Bingzhou" [ref=e409] [cursor=pointer]:
+              - /url: /wiki/Bing_Prefecture
+            - text: (i.e., Taiyuan) found people rich and poor observing a "dragon taboo" against lighting a fire during the month of Jie's death in midwinter, lest they anger his spirit. Many of the old and young died every year because of the hardship this brought. The magistrate Zhou Ju
+            - generic [ref=e410]:
+              - text: (
+              - generic "Chinese-language text" [ref=e411]:
+                - generic [ref=e412]:
+                  - link "周" [ref=e413] [cursor=pointer]:
+                    - /url: https://en.wiktionary.org/wiki/%E5%91%A8
+                  - link "舉" [ref=e414] [cursor=pointer]:
+                    - /url: https://en.wiktionary.org/wiki/%E8%88%89
+              - text: )
+            - text: wrote an oration around AD 130 praising Jie but admonishing the people for a tradition that harmed so many that it could not have been what the
+            - link "sage" [ref=e415] [cursor=pointer]:
+              - /url: /wiki/Taoist_immortal
+            - text: intended. He then had the oration displayed at Jie's temple and distributed among the poor. This did not end the Cold Food Festival, but the biography notes that local superstitions did improve "to a certain extent".
+            - superscript [ref=e416]:
+              - link "[13]" [ref=e417] [cursor=pointer]:
+                - /url: "#cite_note-13"
+            - superscript [ref=e418]:
+              - link "[14]" [ref=e419] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198654–55-14"
+            - text: The improvement is not explained but, at some point over the next century, it moved from the middle of winter to late spring,
+            - superscript [ref=e420]:
+              - link "[15]" [ref=e421] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198669-15"
+            - text: 105 days after the
+            - link "dongzhi" [ref=e422] [cursor=pointer]:
+              - /url: /wiki/Dongzhi_(solar_term)
+            - link "solar term" [ref=e423] [cursor=pointer]:
+              - /url: /wiki/Solar_term
+            - text: .
+            - superscript [ref=e424]:
+              - link "[a]" [ref=e425] [cursor=pointer]:
+                - /url: "#cite_note-17"
+            - text: Since it also spread from Taiyuan to the surrounding commanderies of
+            - link "Shangdang" [ref=e426] [cursor=pointer]:
+              - /url: /wiki/Shangdang
+            - text: ","
+            - link "Xihe" [ref=e427] [cursor=pointer]:
+              - /url: /wiki/Xihe_Commandery
+            - text: ", and"
+            - link "Yanmen" [ref=e428] [cursor=pointer]:
+              - /url: /wiki/Yanmen_Commandery
+            - text: and was still causing some hardship,
+            - link "Cao Cao" [ref=e429] [cursor=pointer]:
+              - /url: /wiki/Cao_Cao
+            - text: attempted to outlaw the Cold Food Festival in AD 206. The heads of offending families were liable for 6 months'
+            - link "hard labor" [ref=e430] [cursor=pointer]:
+              - /url: /wiki/Hard_labor
+            - text: ", their local official was liable for one month himself, and their magistrate was to lose one month's salary."
+            - superscript [ref=e431]:
+              - link "[17]" [ref=e432] [cursor=pointer]:
+                - /url: "#cite_note-18"
+            - superscript [ref=e433]:
+              - link "[18]" [ref=e434] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198656-19"
+            - text: Cao Cao's effort was a failure, with observance of the Cold Food Festival on
+            - link "Qingming" [ref=e435] [cursor=pointer]:
+              - /url: /wiki/Qingming_(solar_term)
+            - text: and for up to a month around it being reported by the mid-3rd century.
+            - superscript [ref=e436]:
+              - link "[19]" [ref=e437] [cursor=pointer]:
+                - /url: "#cite_note-20"
+            - superscript [ref=e438]:
+              - link "[16]" [ref=e439] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198657-16"
+            - link "Shi Le" [ref=e440] [cursor=pointer]:
+              - /url: /wiki/Shi_Le
+            - text: ", the"
+            - link "Jie" [ref=e441] [cursor=pointer]:
+              - /url: /wiki/Jie_(ethnic_group)
+            - text: emperor of the
+            - link "Later Zhao" [ref=e442] [cursor=pointer]:
+              - /url: /wiki/Later_Zhao
+            - text: in the early 4th century, again tried to forbid it. The next year a massive
+            - link "hailstorm" [ref=e443] [cursor=pointer]:
+              - /url: /wiki/Hailstorm
+            - text: devastated crops and forests throughout Shanxi. On the advice of his ministers, he again approved the festival in the region around Taiyuan.
+            - superscript [ref=e444]:
+              - link "[20]" [ref=e445] [cursor=pointer]:
+                - /url: "#cite_note-21"
+            - superscript [ref=e446]:
+              - link "[21]" [ref=e447] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198658-22"
+            - text: The
+            - link "Northern Wei" [ref=e448] [cursor=pointer]:
+              - /url: /wiki/Northern_Wei
+            - text: similarly banned the festival in 478 and 496, but were also compelled to approve its observance around
+            - link "Mt Mian" [ref=e450] [cursor=pointer]:
+              - /url: /wiki/Mt_Mian
+            - text: .
+            - superscript [ref=e451]:
+              - link "[22]" [ref=e452] [cursor=pointer]:
+                - /url: "#cite_note-23"
+            - superscript [ref=e453]:
+              - link "[23]" [ref=e454] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198659-24"
+            - text: These prohibitions failed to such an extent that, by the time of
+            - link "Jia Sixie" [ref=e455] [cursor=pointer]:
+              - /url: /wiki/Jia_Sixie
+            - text: "'s c. 540"
+            - link "Qimin Yaoshu" [ref=e457] [cursor=pointer]:
+              - /url: /wiki/Qimin_Yaoshu
+            - text: ", a day-long Cold Food Festival had spread across most of China, moved to the day before the"
+            - link "Qingming" [ref=e458] [cursor=pointer]:
+              - /url: /wiki/Qingming_(solar_term)
+            - link "solar term" [ref=e459] [cursor=pointer]:
+              - /url: /wiki/Solar_term
+            - text: .
+            - superscript [ref=e460]:
+              - link "[24]" [ref=e461] [cursor=pointer]:
+                - /url: "#cite_note-qmys-25"
+            - superscript [ref=e462]:
+              - link "[25]" [ref=e463] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198660-26"
+          - paragraph [ref=e464]:
+            - text: The Cold Food Festival grew to a three-day period
+            - superscript [ref=e465]:
+              - link "[26]" [ref=e466] [cursor=pointer]:
+                - /url: "#cite_note-jcssj-27"
+            - superscript [ref=e467]:
+              - link "[27]" [ref=e468] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198661-28"
+            - text: and began to incorporate
+            - link "ancestral veneration" [ref=e469] [cursor=pointer]:
+              - /url: /wiki/Ancestral_veneration
+            - text: under the
+            - link "Tang" [ref=e470] [cursor=pointer]:
+              - /url: /wiki/Tang_dynasty
+            - text: and remained more important than celebrations of the
+            - link "Qingming" [ref=e471] [cursor=pointer]:
+              - /url: /wiki/Qingming_(solar_term)
+            - link "solar term" [ref=e472] [cursor=pointer]:
+              - /url: /wiki/Solar_term
+            - text: as late as the
+            - link "Song" [ref=e473] [cursor=pointer]:
+              - /url: /wiki/Song_dynasty
+            - text: .
+            - superscript [ref=e474]:
+              - link "[28]" [ref=e475] [cursor=pointer]:
+                - /url: "#cite_note-chappy-29"
+            - text: The present
+            - link "Tomb-Sweeping Festival" [ref=e476] [cursor=pointer]:
+              - /url: /wiki/Tomb-Sweeping_Festival
+            - text: on Qingming grew by incorporating the Cold Food observances
+            - superscript [ref=e477]:
+              - link "[29]" [ref=e478] [cursor=pointer]:
+                - /url: "#cite_note-shaday-30"
+            - text: along with the separate holiday of
+            - link "Shangsi" [ref=e479] [cursor=pointer]:
+              - /url: /wiki/Shangsi_Festival
+            - text: .
+            - superscript [ref=e480]:
+              - link "[28]" [ref=e481] [cursor=pointer]:
+                - /url: "#cite_note-chappy-29"
+            - text: The Cold Food Festival had almost completely disappeared by the end of the
+            - link "Qing" [ref=e482] [cursor=pointer]:
+              - /url: /wiki/Qing_dynasty
+            - text: .
+            - superscript [ref=e483]:
+              - link "[1]" [ref=e484] [cursor=pointer]:
+                - /url: "#cite_note-doobydooby-1"
+          - generic [ref=e485]:
+            - heading "Controversy" [level=3] [ref=e486]
+            - generic [ref=e487]:
+              - text: "["
+              - link "edit" [ref=e488] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=3
+              - text: "]"
+          - paragraph [ref=e489]:
+            - text: Since the early 7th century, Chinese and Western scholars have argued for alternative origins for the festival.
+            - link "Du Gongzhan" [ref=e490] [cursor=pointer]:
+              - /url: /w/index.php?title=Du_Gongzhan&action=edit&redlink=1
+            - text: ", the editor of the late-"
+            - link "Sui" [ref=e491] [cursor=pointer]:
+              - /url: /wiki/Sui_dynasty
+            - link "Record of the Seasons of Jingchu" [ref=e493] [cursor=pointer]:
+              - /url: /wiki/Record_of_the_Seasons_of_Jingchu
+            - text: ", connected it with a ritual avoidance of fire mentioned in the"
+            - link "Rites of Zhou" [ref=e495] [cursor=pointer]:
+              - /url: /wiki/Rites_of_Zhou
+            - text: ":"
+            - superscript [ref=e496]:
+              - link "[26]" [ref=e497] [cursor=pointer]:
+                - /url: "#cite_note-jcssj-27"
+            - text: "\"In mid-spring, they announce the prohibition of fire in the capital using a bell with a wooden clapper\"."
+            - superscript [ref=e498]:
+              - link "[30]" [ref=e499] [cursor=pointer]:
+                - /url: "#cite_note-31"
+            - superscript [ref=e500]:
+              - link "[27]" [ref=e501] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198661-28"
+            - text: This prohibition was related to the ancient Chinese use of different kinds of firewood according to the seasons, particularly after the development of
+            - link "Chinese astrology" [ref=e502] [cursor=pointer]:
+              - /url: /wiki/Chinese_astrology
+            - text: that considered the
+            - link "heliacal rising" [ref=e503] [cursor=pointer]:
+              - /url: /wiki/Heliacal_rising
+            - text: of
+            - link "Antares" [ref=e504] [cursor=pointer]:
+              - /url: /wiki/Antares
+            - text: to be an occasion for great risk of
+            - link "conflagration" [ref=e505] [cursor=pointer]:
+              - /url: /wiki/Conflagration
+            - text: and
+            - link "wildfire" [ref=e506] [cursor=pointer]:
+              - /url: /wiki/Wildfire
+            - text: .
+            - superscript [ref=e507]:
+              - link "[31]" [ref=e508] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198655-32"
+            - text: Du was followed in his conjecture by others, including
+            - link "Li Fu" [ref=e509] [cursor=pointer]:
+              - /url: /wiki/Li_Fu
+            - text: .
+            - superscript [ref=e510]:
+              - link "[32]" [ref=e511] [cursor=pointer]:
+                - /url: "#cite_note-33"
+            - superscript [ref=e512]:
+              - link "[33]" [ref=e513] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198664-34"
+            - text: The
+            - link "Sinologist" [ref=e514] [cursor=pointer]:
+              - /url: /wiki/Sinologist
+            - link "J.J.M. de Groot" [ref=e515] [cursor=pointer]:
+              - /url: /wiki/Jan_Jakob_Maria_de_Groot
+            - text: argued for its origin as a celebration of the sun's "victory" at the
+            - link "vernal equinox" [ref=e516] [cursor=pointer]:
+              - /url: /wiki/March_equinox
+            - text: ", based on a"
+            - link "comparative anthropological" [ref=e517] [cursor=pointer]:
+              - /url: /wiki/Comparative_anthropology
+            - text: analysis drawing on
+            - link "Ovid" [ref=e518] [cursor=pointer]:
+              - /url: /wiki/Ovid
+            - text: ","
+            - link "Macrobius" [ref=e519] [cursor=pointer]:
+              - /url: /wiki/Macrobius
+            - text: ","
+            - link "Lucian" [ref=e520] [cursor=pointer]:
+              - /url: /wiki/Lucian
+            - text: ", and"
+            - link "Epiphanius of Salamis" [ref=e521] [cursor=pointer]:
+              - /url: /wiki/Epiphanius_of_Salamis
+            - text: .
+            - superscript [ref=e522]:
+              - link "[34]" [ref=e523] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEDe_Groot1886-35"
+            - superscript [ref=e524]:
+              - link "[35]" [ref=e525] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198663–4-36"
+            - link "James Frazer" [ref=e526] [cursor=pointer]:
+              - /url: /wiki/James_Frazer
+            - text: and his followers
+            - superscript [ref=e527]:
+              - link "[36]" [ref=e528] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEJohnston1918472-37"
+            - superscript [ref=e529]:
+              - link "[37]" [ref=e530] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEMoriya1951756-38"
+            - text: similarly considered it either a "sun-charm" or "purification" from its similarities to other "fire-festivals".
+            - superscript [ref=e531]:
+              - link "[38]" [ref=e532] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEFrazer1918136–7_&_329–30-39"
+            - superscript [ref=e533]:
+              - link "[39]" [ref=e534] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198666–7-40"
+            - link "Claude Lévi-Strauss" [ref=e535] [cursor=pointer]:
+              - /url: /wiki/Claude_L%C3%A9vi-Strauss
+            - text: based his analysis of the festival as a kind of Chinese
+            - link "Lent" [ref=e536] [cursor=pointer]:
+              - /url: /wiki/Lent
+            - superscript [ref=e537]:
+              - link "[40]" [ref=e538] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTELévi-Strauss1966349–51_&_397–9-41"
+            - text: upon a mistranslation of the relevant passage in the
+            - link "Rites of Zhou" [ref=e540] [cursor=pointer]:
+              - /url: /wiki/Rites_of_Zhou
+            - text: by
+            - link "Frazer" [ref=e541] [cursor=pointer]:
+              - /url: /wiki/James_Frazer
+            - text: .
+            - superscript [ref=e542]:
+              - link "[41]" [ref=e543] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198669–71-42"
+            - link "Eberhard" [ref=e544] [cursor=pointer]:
+              - /url: /wiki/Wolfram_Eberhard
+            - text: connected it with his idea of a prehistoric spring-based calendar and made the Cold Food Festival a remnant of its original New Year.
+            - superscript [ref=e545]:
+              - link "[42]" [ref=e546] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEEberhard194228_&_37-43"
+            - superscript [ref=e547]:
+              - link "[43]" [ref=e548] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198667–8-44"
+          - paragraph [ref=e549]:
+            - text: The unanimous connection of the festival to Jie Zhitui in the early sources and the dependence of these later theories on the Cold Food Festival's occurrence in late spring—when it in fact began as a mid-winter observance—suggests that none of them are likely accurate.
+            - superscript [ref=e550]:
+              - link "[44]" [ref=e551] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198651–2-45"
+            - text: One contemporary record of ritual fire-avoidance coming from a separate source in southeastern China concerned the late-2nd-century BC "kings" of "
+            - link "Yue" [ref=e552] [cursor=pointer]:
+              - /url: /wiki/State_of_Yue
+            - text: "\" Mi ("
+            - generic "Chinese-language text" [ref=e553]:
+              - generic [ref=e554]:
+                - link "越" [ref=e555] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E8%B6%8A
+                - link "糜" [ref=e556] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E7%B3%9C
+                - link "王" [ref=e557] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E7%8E%8B
+            - text: ", Yuè Míwáng)"
+            - superscript [ref=e558]:
+              - link "[45]" [ref=e559] [cursor=pointer]:
+                - /url: "#cite_note-mrburns-46"
+            - text: and Yao (
+            - generic "Chinese-language text" [ref=e560]:
+              - generic [ref=e561]:
+                - link "越" [ref=e562] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E8%B6%8A
+                - link "王" [ref=e563] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E7%8E%8B
+                - link "遙" [ref=e564] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E9%81%99
+            - text: ", Yuè Wáng Yáo,"
+            - superscript [ref=e565]:
+              - link "[45]" [ref=e566] [cursor=pointer]:
+                - /url: "#cite_note-mrburns-46"
+            - text: and
+            - generic "Chinese-language text" [ref=e567]:
+              - generic [ref=e568]:
+                - link "越" [ref=e569] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E8%B6%8A
+                - link "繇" [ref=e570] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E7%B9%87
+                - link "王" [ref=e571] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E7%8E%8B
+            - text: ", Yuè Yáowáng)."
+            - superscript [ref=e572]:
+              - link "[46]" [ref=e573] [cursor=pointer]:
+                - /url: "#cite_note-alms-47"
+            - text: These were actually princes of the old Yue royal family fighting over the southern successor state of
+            - link "Minyue" [ref=e574] [cursor=pointer]:
+              - /url: /wiki/Minyue
+            - text: .
+            - superscript [ref=e575]:
+              - link "[46]" [ref=e576] [cursor=pointer]:
+                - /url: "#cite_note-alms-47"
+            - text: Supposedly, the Mi King was
+            - link "beheaded" [ref=e577] [cursor=pointer]:
+              - /url: /wiki/Decapitation
+            - text: during a battle with Yao but his body continued to stay atop his horse all the way back to "Wu Village", where he was buried. As late as the 10th century, residents of the area avoided fire on the day of his death as a mark of respect to
+            - link "his spirit" [ref=e578] [cursor=pointer]:
+              - /url: /wiki/Chinese_soul
+            - text: .
+            - superscript [ref=e579]:
+              - link "[47]" [ref=e580] [cursor=pointer]:
+                - /url: "#cite_note-longhairs-48"
+            - text: This southern equivalent to the Cold Food Festival
+            - superscript [ref=e581]:
+              - link "[48]" [ref=e582] [cursor=pointer]:
+                - /url: "#cite_note-milly-49"
+            - text: was not celebrated annually, though, but on every "wu day" of the
+            - link "old Chinese calendar" [ref=e583] [cursor=pointer]:
+              - /url: /wiki/Sexagenary_cycle
+            - text: ","
+            - superscript [ref=e584]:
+              - link "[47]" [ref=e585] [cursor=pointer]:
+                - /url: "#cite_note-longhairs-48"
+            - superscript [ref=e586]:
+              - link "[48]" [ref=e587] [cursor=pointer]:
+                - /url: "#cite_note-milly-49"
+            - text: a generally unlucky day to some
+            - link "Taoists" [ref=e588] [cursor=pointer]:
+              - /url: /wiki/Taoism_in_China
+            - text: .
+            - superscript [ref=e589]:
+              - link "[49]" [ref=e590] [cursor=pointer]:
+                - /url: "#cite_note-50"
+          - generic [ref=e591]:
+            - heading "Observance" [level=2] [ref=e592]
+            - generic [ref=e593]:
+              - text: "["
+              - link "edit" [ref=e594] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=4
+              - text: "]"
+          - generic [ref=e595]:
+            - heading "China" [level=3] [ref=e596]
+            - generic [ref=e597]:
+              - text: "["
+              - link "edit" [ref=e598] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=5
+              - text: "]"
+          - paragraph [ref=e599]:
+            - text: The Cold Food Festival was originally observed at
+            - link "mid-winter" [ref=e600] [cursor=pointer]:
+              - /url: /wiki/Mid-winter
+            - text: (the
+            - link "Dongzhi" [ref=e601] [cursor=pointer]:
+              - /url: /wiki/Dongzhi_(solar_term)
+            - link "solar term" [ref=e602] [cursor=pointer]:
+              - /url: /wiki/Solar_term
+            - text: ), but moved to late spring
+            - superscript [ref=e603]:
+              - link "[b]" [ref=e604] [cursor=pointer]:
+                - /url: "#cite_note-51"
+            - text: (the
+            - link "Qingming" [ref=e605] [cursor=pointer]:
+              - /url: /wiki/Qingming_(solar_term)
+            - link "solar term" [ref=e606] [cursor=pointer]:
+              - /url: /wiki/Solar_term
+            - text: ) around the 2nd century. Its primary activity was a strict taboo against using fire, usually under the superstitious belief that violations led to violent weather. Leading up to the 6th century, there was a patch of blackened trees on
+            - link "Mt Mian" [ref=e608] [cursor=pointer]:
+              - /url: /wiki/Mt_Mian
+            - text: that were used for local worship of
+            - link "Jie Zhitui" [ref=e609] [cursor=pointer]:
+              - /url: /wiki/Jie_Zhitui
+            - text: and had a reputation for
+            - link "miracles" [ref=e610] [cursor=pointer]:
+              - /url: /wiki/Miracle
+            - text: .
+            - superscript [ref=e611]:
+              - link "[24]" [ref=e612] [cursor=pointer]:
+                - /url: "#cite_note-qmys-25"
+            - superscript [ref=e613]:
+              - link "[25]" [ref=e614] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198660-26"
+            - text: Traditional cold foods included lǐlào
+            - generic [ref=e615]:
+              - text: (
+              - generic "Chinese-language text" [ref=e616]:
+                - link "醴酪" [ref=e618] [cursor=pointer]:
+                  - /url: https://en.wiktionary.org/wiki/%E9%86%B4%E9%85%AA
+              - text: )
+            - text: ", a kind of"
+            - link "congee" [ref=e619] [cursor=pointer]:
+              - /url: /wiki/Congee
+            - text: flavored with
+            - link "apricot pits" [ref=e620] [cursor=pointer]:
+              - /url: /wiki/Apricot_pit
+            - text: and
+            - link "malt sugar" [ref=e621] [cursor=pointer]:
+              - /url: /wiki/Malt_sugar
+            - text: .
+            - superscript [ref=e622]:
+              - link "[24]" [ref=e623] [cursor=pointer]:
+                - /url: "#cite_note-qmys-25"
+            - superscript [ref=e624]:
+              - link "[25]" [ref=e625] [cursor=pointer]:
+                - /url: "#cite_note-FOOTNOTEHolzman198660-26"
+            - text: Later activities included
+            - link "visiting ancestral tombs" [ref=e626] [cursor=pointer]:
+              - /url: /wiki/Ancestral_veneration
+            - text: ","
+            - link "cock fighting" [ref=e627] [cursor=pointer]:
+              - /url: /wiki/Cock_fighting
+            - text: ", playing on swings, beating blankets, and tug-of-war games."
+            - superscript [ref=e628]:
+              - text: "["
+              - link "citation needed" [ref=e630] [cursor=pointer]:
+                - /url: /wiki/Wikipedia:Citation_needed
+              - text: "]"
+          - paragraph [ref=e631]:
+            - text: The Cold Food Festival is generally ignored in modern China, except to the extent that it has influenced some of the activities and traditional foods for the
+            - link "Tomb-Sweeping Festival" [ref=e632] [cursor=pointer]:
+              - /url: /wiki/Tomb-Sweeping_Festival
+            - text: .
+            - superscript [ref=e633]:
+              - link "[29]" [ref=e634] [cursor=pointer]:
+                - /url: "#cite_note-shaday-30"
+            - text: In the city of
+            - link "Jiexiu" [ref=e635] [cursor=pointer]:
+              - /url: /wiki/Jiexiu
+            - text: in
+            - link "Shanxi" [ref=e636] [cursor=pointer]:
+              - /url: /wiki/Shanxi
+            - text: Province, near where Jie died, locals still commemorate the festival, but even there the tradition of eating cold food is no longer practiced.
+            - superscript [ref=e637]:
+              - text: "["
+              - link "citation needed" [ref=e639] [cursor=pointer]:
+                - /url: /wiki/Wikipedia:Citation_needed
+              - text: "]"
+          - generic [ref=e640]:
+            - heading "South Korea" [level=3] [ref=e641]
+            - generic [ref=e642]:
+              - text: "["
+              - link "edit" [ref=e643] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=6
+              - text: "]"
+          - paragraph [ref=e644]:
+            - text: The Korean equivalent Hansik (
+            - link "Korean" [ref=e645] [cursor=pointer]:
+              - /url: /wiki/Korean_language
+            - text: ":"
+            - generic "Korean-language text" [ref=e646]: 한식
+            - text: ), takes place on the 105th day after
+            - link "dongzhi" [ref=e648] [cursor=pointer]:
+              - /url: /wiki/Dongzhi_(solar_term)
+            - text: ", which translates to April 5 in the Gregorian calendar, except in leap years when it is on April 4 instead. It is a day to welcome the warm weather thawing the frozen lands. On this day, rites to worship ancestors are observed early in the morning, and the family visits their ancestors' tombs to tidy up. The custom of eating cold food on the day has, however, disappeared. Since this day coincides with"
+            - link "Arbor Day" [ref=e649] [cursor=pointer]:
+              - /url: /wiki/Sikmogil
+            - text: ", public cemeteries are crowded with visitors planting trees around the tombs of their ancestors."
+            - superscript [ref=e650]:
+              - link "[50]" [ref=e651] [cursor=pointer]:
+                - /url: "#cite_note-52"
+          - generic [ref=e652]:
+            - heading "Vietnam" [level=3] [ref=e653]
+            - generic [ref=e654]:
+              - text: "["
+              - link "edit" [ref=e655] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=7
+              - text: "]"
+          - note [ref=e656]:
+            - text: "Main article:"
+            - link "Tết Hàn Thực" [ref=e657] [cursor=pointer]:
+              - /url: /wiki/T%E1%BA%BFt_H%C3%A0n_Th%E1%BB%B1c
+          - paragraph [ref=e658]:
+            - text: The Vietnamese equivalent Tết Hàn Thực is celebrated in most parts of the country on the 3rd day of the 3rd lunar month, but only marginally. People cook
+            - link "glutinous rice" [ref=e659] [cursor=pointer]:
+              - /url: /wiki/Glutinous_rice
+            - text: balls called
+            - link "bánh trôi" [ref=e661] [cursor=pointer]:
+              - /url: /w/index.php?title=B%C3%A1nh_tr%C3%B4i&action=edit&redlink=1
+            - text: but the holiday's origins are largely forgotten, and the fire taboo is also largely ignored.
+            - superscript [ref=e662]:
+              - link "[51]" [ref=e663] [cursor=pointer]:
+                - /url: "#cite_note-53"
+          - generic [ref=e664]:
+            - heading "See also" [level=2] [ref=e665]
+            - generic [ref=e666]:
+              - text: "["
+              - link "edit" [ref=e667] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=8
+              - text: "]"
+          - list [ref=e668]:
+            - listitem [ref=e669]:
+              - link "Tết Hàn Thực" [ref=e670] [cursor=pointer]:
+                - /url: /wiki/T%E1%BA%BFt_H%C3%A0n_Th%E1%BB%B1c
+            - listitem [ref=e671]:
+              - link "List of festivals in Asia" [ref=e672] [cursor=pointer]:
+                - /url: /wiki/List_of_festivals_in_Asia
+            - listitem [ref=e673]:
+              - link "Traditional" [ref=e674] [cursor=pointer]:
+                - /url: /wiki/Traditional_Chinese_holidays
+              - text: and
+              - link "Public holidays in China" [ref=e675] [cursor=pointer]:
+                - /url: /wiki/Public_holidays_in_China
+              - text: ","
+              - link "Hong Kong" [ref=e676] [cursor=pointer]:
+                - /url: /wiki/Public_holidays_in_Hong_Kong
+              - text: ", and"
+              - link "Macao" [ref=e677] [cursor=pointer]:
+                - /url: /wiki/Public_holidays_in_Macao
+              - text: and
+              - link "on Taiwan" [ref=e678] [cursor=pointer]:
+                - /url: /wiki/Public_holidays_in_Taiwan
+            - listitem [ref=e679]:
+              - link "Festivals" [ref=e680] [cursor=pointer]:
+                - /url: /wiki/List_of_festivals_in_South_Korea
+              - text: and
+              - link "Public holidays in South Korea" [ref=e681] [cursor=pointer]:
+                - /url: /wiki/Public_holidays_in_South_Korea
+              - text: and
+              - link "North Korea" [ref=e682] [cursor=pointer]:
+                - /url: /wiki/Public_holidays_in_North_Korea
+            - listitem [ref=e683]:
+              - link "List of Korean traditional festivals" [ref=e684] [cursor=pointer]:
+                - /url: /wiki/List_of_Korean_traditional_festivals
+          - generic [ref=e685]:
+            - heading "Notes" [level=2] [ref=e686]
+            - generic [ref=e687]:
+              - text: "["
+              - link "edit" [ref=e688] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=9
+              - text: "]"
+          - list [ref=e691]:
+            - listitem [ref=e692]:
+              - link "Jump up" [ref=e695] [cursor=pointer]:
+                - /url: "#cite_ref-17"
+                - text: ^
+              - generic [ref=e696]:
+                - text: A handful of 2nd and 4th century sources also report it being celebrated in the summer, on the 5th day of the 5th lunar month.
+                - superscript [ref=e697]:
+                  - link "[16]" [ref=e698] [cursor=pointer]:
+                    - /url: "#cite_note-FOOTNOTEHolzman198657-16"
+                - text: That date is now used for the
+                - link "Dragon Boat Festival" [ref=e699] [cursor=pointer]:
+                  - /url: /wiki/Dragon_Boat_Festival
+                - text: related to
+                - link "similar stories" [ref=e700] [cursor=pointer]:
+                  - /url: /wiki/History_of_the_Dragon_Boat_Festival
+                - text: about the ministers
+                - link "Qu Yuan" [ref=e701] [cursor=pointer]:
+                  - /url: /wiki/Qu_Yuan
+                - text: and
+                - link "Wu Zixu" [ref=e702] [cursor=pointer]:
+                  - /url: /wiki/Wu_Zixu
+                - text: .
+            - listitem [ref=e703]:
+              - link "Jump up" [ref=e706] [cursor=pointer]:
+                - /url: "#cite_ref-51"
+                - text: ^
+              - generic [ref=e707]:
+                - text: According to the usual Chinese reckoning of the seasons.
+                - superscript [ref=e708]:
+                  - link "[15]" [ref=e709] [cursor=pointer]:
+                    - /url: "#cite_note-FOOTNOTEHolzman198669-15"
+          - generic [ref=e710]:
+            - heading "References" [level=2] [ref=e711]
+            - generic [ref=e712]:
+              - text: "["
+              - link "edit" [ref=e713] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=10
+              - text: "]"
+          - generic [ref=e714]:
+            - heading "Citations" [level=3] [ref=e715]
+            - generic [ref=e716]:
+              - text: "["
+              - link "edit" [ref=e717] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=11
+              - text: "]"
+          - list [ref=e720]:
+            - listitem [ref=e721]:
+              - generic [ref=e722]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e723] [cursor=pointer]':
+                  - /url: "#cite_ref-doobydooby_1-0"
+                  - generic [ref=e724]: "Jump up to:"
+                  - superscript [ref=e725]:
+                    - generic [ref=e726]: a
+                - link "b" [ref=e727] [cursor=pointer]:
+                  - /url: "#cite_ref-doobydooby_1-1"
+                  - superscript [ref=e728]:
+                    - generic [ref=e729]: b
+                - link "c" [ref=e730] [cursor=pointer]:
+                  - /url: "#cite_ref-doobydooby_1-2"
+                  - superscript [ref=e731]:
+                    - generic [ref=e732]: c
+                - link "d" [ref=e733] [cursor=pointer]:
+                  - /url: "#cite_ref-doobydooby_1-3"
+                  - superscript [ref=e734]:
+                    - generic [ref=e735]: d
+                - link "e" [ref=e736] [cursor=pointer]:
+                  - /url: "#cite_ref-doobydooby_1-4"
+                  - superscript [ref=e737]:
+                    - generic [ref=e738]: e
+              - generic [ref=e739]:
+                - link "Wu (2014)" [ref=e740] [cursor=pointer]:
+                  - /url: "#CITEREFWu2014"
+                - text: ", p."
+                - link "126" [ref=e741] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=K3N-AgAAQBAJ&pg=PT126
+            - listitem [ref=e742]:
+              - link "Jump up" [ref=e745] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHanan1981[httpsbooksgooglecombooksidGR6ea0F3BDQCpgPA205_205]_2-0"
+                - text: ^
+              - generic [ref=e746]:
+                - link "Hanan (1981)" [ref=e747] [cursor=pointer]:
+                  - /url: "#CITEREFHanan1981"
+                - text: ", p."
+                - link "205" [ref=e748] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=GR6ea0F3BDQC&pg=PA205
+                - text: .
+            - listitem [ref=e749]:
+              - generic [ref=e750]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e751] [cursor=pointer]':
+                  - /url: "#cite_ref-legate_3-0"
+                  - generic [ref=e752]: "Jump up to:"
+                  - superscript [ref=e753]:
+                    - generic [ref=e754]: a
+                - link "b" [ref=e755] [cursor=pointer]:
+                  - /url: "#cite_ref-legate_3-1"
+                  - superscript [ref=e756]:
+                    - generic [ref=e757]: b
+              - generic [ref=e758]:
+                - link "Legge (1872)" [ref=e759] [cursor=pointer]:
+                  - /url: "#CITEREFLegge1872"
+                - text: ", p."
+                - link "191" [ref=e760] [cursor=pointer]:
+                  - /url: https://archive.org/details/chineseclassics01legggoog/page/n358
+                - text: .
+            - listitem [ref=e761]:
+              - link "Jump up" [ref=e764] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198653_4-0"
+                - text: ^
+              - generic [ref=e765]:
+                - link "Holzman (1986)" [ref=e766] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 53."
+            - listitem [ref=e767]:
+              - generic [ref=e768]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e769] [cursor=pointer]':
+                  - /url: "#cite_ref-ling_5-0"
+                  - generic [ref=e770]: "Jump up to:"
+                  - superscript [ref=e771]:
+                    - generic [ref=e772]: a
+                - link "b" [ref=e773] [cursor=pointer]:
+                  - /url: "#cite_ref-ling_5-1"
+                  - superscript [ref=e774]:
+                    - generic [ref=e775]: b
+              - generic [ref=e776]:
+                - link "Ling & Shih (1999)" [ref=e777] [cursor=pointer]:
+                  - /url: "#CITEREFLingShih1999"
+                - text: ", p."
+                - link "226" [ref=e778] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=BY6aAAAAQBAJ&pg=PA226
+                - text: .
+            - listitem [ref=e779]:
+              - generic [ref=e780]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e781] [cursor=pointer]':
+                  - /url: "#cite_ref-sucky_6-0"
+                  - generic [ref=e782]: "Jump up to:"
+                  - superscript [ref=e783]:
+                    - generic [ref=e784]: a
+                - link "b" [ref=e785] [cursor=pointer]:
+                  - /url: "#cite_ref-sucky_6-1"
+                  - superscript [ref=e786]:
+                    - generic [ref=e787]: b
+              - generic [ref=e788]:
+                - link "Sukhu (2017)" [ref=e789] [cursor=pointer]:
+                  - /url: "#CITEREFSukhu2017"
+                - text: ", p."
+                - link "179" [ref=e790] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=CNkoDwAAQBAJ&pg=PT179
+                - text: .
+            - listitem [ref=e791]:
+              - generic [ref=e792]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e793] [cursor=pointer]':
+                  - /url: "#cite_ref-durr_7-0"
+                  - generic [ref=e794]: "Jump up to:"
+                  - superscript [ref=e795]:
+                    - generic [ref=e796]: a
+                - link "b" [ref=e797] [cursor=pointer]:
+                  - /url: "#cite_ref-durr_7-1"
+                  - superscript [ref=e798]:
+                    - generic [ref=e799]: b
+              - generic [ref=e800]:
+                - link "Durrant et al. (2016)" [ref=e801] [cursor=pointer]:
+                  - /url: "#CITEREFDurrantLiSchabergPlaks2016"
+                - text: ", p."
+                - link "379" [ref=e802] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=En_WDgAAQBAJ&pg=PA379
+                - text: .
+            - listitem [ref=e803]:
+              - link "Jump up" [ref=e806] [cursor=pointer]:
+                - /url: "#cite_ref-leggy_8-0"
+                - text: ^
+              - generic [ref=e807]:
+                - link "Legge (1872)" [ref=e808] [cursor=pointer]:
+                  - /url: "#CITEREFLegge1872"
+                - text: ", p."
+                - link "192" [ref=e809] [cursor=pointer]:
+                  - /url: https://archive.org/details/chineseclassics01legggoog/page/n359
+                - text: .
+            - listitem [ref=e810]:
+              - generic [ref=e811]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e812] [cursor=pointer]':
+                  - /url: "#cite_ref-FOOTNOTEHolzman198652_9-0"
+                  - generic [ref=e813]: "Jump up to:"
+                  - superscript [ref=e814]:
+                    - generic [ref=e815]: a
+                - link "b" [ref=e816] [cursor=pointer]:
+                  - /url: "#cite_ref-FOOTNOTEHolzman198652_9-1"
+                  - superscript [ref=e817]:
+                    - generic [ref=e818]: b
+                - link "c" [ref=e819] [cursor=pointer]:
+                  - /url: "#cite_ref-FOOTNOTEHolzman198652_9-2"
+                  - superscript [ref=e820]:
+                    - generic [ref=e821]: c
+              - generic [ref=e822]:
+                - link "Holzman (1986)" [ref=e823] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 52."
+            - listitem [ref=e824]:
+              - link "Jump up" [ref=e827] [cursor=pointer]:
+                - /url: "#cite_ref-10"
+                - text: ^
+              - generic [ref=e828]:
+                - generic [ref=e829]:
+                  - link "Biographies of the Immortals" [ref=e830] [cursor=pointer]:
+                    - /url: /wiki/Liexian_Zhuan
+                  - text: (in Chinese)
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Biographies+of+the+Immortals&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e831]:
+              - link "Jump up" [ref=e834] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198668_11-0"
+                - text: ^
+              - generic [ref=e835]:
+                - link "Holzman (1986)" [ref=e836] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 68."
+            - listitem [ref=e837]:
+              - link "Jump up" [ref=e840] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEPokora1975122_&_136–7_12-0"
+                - text: ^
+              - generic [ref=e841]:
+                - link "Pokora (1975)" [ref=e842] [cursor=pointer]:
+                  - /url: "#CITEREFPokora1975"
+                - text: ", pp. 122 & 136–7."
+            - listitem [ref=e843]:
+              - link "Jump up" [ref=e846] [cursor=pointer]:
+                - /url: "#cite_ref-13"
+                - text: ^
+              - generic [ref=e847]:
+                - generic [ref=e848]:
+                  - link "Book of the Later Han" [ref=e849] [cursor=pointer]:
+                    - /url: /wiki/Book_of_the_Later_Han
+                  - text: (in Chinese), vol. 61, §2024
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Book+of+the+Later+Han&rft.pages=%C2%A72024&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e850]:
+              - link "Jump up" [ref=e853] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198654–55_14-0"
+                - text: ^
+              - generic [ref=e854]:
+                - link "Holzman (1986)" [ref=e855] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", pp. 54–55."
+            - listitem [ref=e856]:
+              - generic [ref=e857]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e858] [cursor=pointer]':
+                  - /url: "#cite_ref-FOOTNOTEHolzman198669_15-0"
+                  - generic [ref=e859]: "Jump up to:"
+                  - superscript [ref=e860]:
+                    - generic [ref=e861]: a
+                - link "b" [ref=e862] [cursor=pointer]:
+                  - /url: "#cite_ref-FOOTNOTEHolzman198669_15-1"
+                  - superscript [ref=e863]:
+                    - generic [ref=e864]: b
+              - generic [ref=e865]:
+                - link "Holzman (1986)" [ref=e866] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 69."
+            - listitem [ref=e867]:
+              - generic [ref=e868]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e869] [cursor=pointer]':
+                  - /url: "#cite_ref-FOOTNOTEHolzman198657_16-0"
+                  - generic [ref=e870]: "Jump up to:"
+                  - superscript [ref=e871]:
+                    - generic [ref=e872]: a
+                - link "b" [ref=e873] [cursor=pointer]:
+                  - /url: "#cite_ref-FOOTNOTEHolzman198657_16-1"
+                  - superscript [ref=e874]:
+                    - generic [ref=e875]: b
+              - generic [ref=e876]:
+                - link "Holzman (1986)" [ref=e877] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 57."
+            - listitem [ref=e878]:
+              - link "Jump up" [ref=e881] [cursor=pointer]:
+                - /url: "#cite_ref-18"
+                - text: ^
+              - generic [ref=e882]:
+                - generic [ref=e883]:
+                  - link "Imperial Reader of the Taiping Era" [ref=e884] [cursor=pointer]:
+                    - /url: /wiki/Taiping_Yulan
+                  - text: (in Chinese), Vol. 28, §8a; Vol. 30, §6a–b; & Vol. 869, §7b
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Imperial+Reader+of+the+Taiping+Era&rft.pages=Vol.+28%2C+%C2%A78a%3B+Vol.+30%2C+%C2%A76a-b%3B+%26+Vol.+869%2C+%C2%A77b&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e885]:
+              - link "Jump up" [ref=e888] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198656_19-0"
+                - text: ^
+              - generic [ref=e889]:
+                - link "Holzman (1986)" [ref=e890] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 56."
+            - listitem [ref=e891]:
+              - link "Jump up" [ref=e894] [cursor=pointer]:
+                - /url: "#cite_ref-20"
+                - text: ^
+              - generic [ref=e895]:
+                - generic [ref=e896]:
+                  - link "Imperial Reader of the Taiping Era" [ref=e897] [cursor=pointer]:
+                    - /url: /wiki/Taiping_Yulan
+                  - text: (in Chinese), Vol. 30, §6a
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Imperial+Reader+of+the+Taiping+Era&rft.pages=Vol.+30%2C+%C2%A76a&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e898]:
+              - link "Jump up" [ref=e901] [cursor=pointer]:
+                - /url: "#cite_ref-21"
+                - text: ^
+              - generic [ref=e902]:
+                - generic [ref=e903]:
+                  - link "Book of Jin" [ref=e904] [cursor=pointer]:
+                    - /url: /wiki/Book_of_Jin
+                  - text: (in Chinese), vol. 105, §2749–50
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Book+of+Jin&rft.pages=%C2%A72749-50&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e905]:
+              - link "Jump up" [ref=e908] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198658_22-0"
+                - text: ^
+              - generic [ref=e909]:
+                - link "Holzman (1986)" [ref=e910] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 58."
+            - listitem [ref=e911]:
+              - link "Jump up" [ref=e914] [cursor=pointer]:
+                - /url: "#cite_ref-23"
+                - text: ^
+              - generic [ref=e915]:
+                - generic [ref=e916]:
+                  - link "Wei Shou" [ref=e917] [cursor=pointer]:
+                    - /url: /wiki/Wei_Shou
+                  - text: ","
+                  - link "Book of Wei" [ref=e918] [cursor=pointer]:
+                    - /url: /wiki/Book_of_Wei
+                  - text: (in Chinese), vol. 7, §140 & 179
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Book+of+Wei&rft.pages=%C2%A7140+%26+179&rft.aulast=Wei&rft.aufirst=Shou&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e919]:
+              - link "Jump up" [ref=e922] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198659_24-0"
+                - text: ^
+              - generic [ref=e923]:
+                - link "Holzman (1986)" [ref=e924] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 59."
+            - listitem [ref=e925]:
+              - generic [ref=e926]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e927] [cursor=pointer]':
+                  - /url: "#cite_ref-qmys_25-0"
+                  - generic [ref=e928]: "Jump up to:"
+                  - superscript [ref=e929]:
+                    - generic [ref=e930]: a
+                - link "b" [ref=e931] [cursor=pointer]:
+                  - /url: "#cite_ref-qmys_25-1"
+                  - superscript [ref=e932]:
+                    - generic [ref=e933]: b
+                - link "c" [ref=e934] [cursor=pointer]:
+                  - /url: "#cite_ref-qmys_25-2"
+                  - superscript [ref=e935]:
+                    - generic [ref=e936]: c
+              - generic [ref=e937]:
+                - generic [ref=e938]:
+                  - link "Qimin Yaoshu" [ref=e939] [cursor=pointer]:
+                    - /url: /wiki/Qimin_Yaoshu
+                  - text: (in Chinese), vol. 9, §521
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Qimin+Yaoshu&rft.pages=%C2%A7521&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e940]:
+              - generic [ref=e941]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e942] [cursor=pointer]':
+                  - /url: "#cite_ref-FOOTNOTEHolzman198660_26-0"
+                  - generic [ref=e943]: "Jump up to:"
+                  - superscript [ref=e944]:
+                    - generic [ref=e945]: a
+                - link "b" [ref=e946] [cursor=pointer]:
+                  - /url: "#cite_ref-FOOTNOTEHolzman198660_26-1"
+                  - superscript [ref=e947]:
+                    - generic [ref=e948]: b
+                - link "c" [ref=e949] [cursor=pointer]:
+                  - /url: "#cite_ref-FOOTNOTEHolzman198660_26-2"
+                  - superscript [ref=e950]:
+                    - generic [ref=e951]: c
+              - generic [ref=e952]:
+                - link "Holzman (1986)" [ref=e953] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 60."
+            - listitem [ref=e954]:
+              - generic [ref=e955]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e956] [cursor=pointer]':
+                  - /url: "#cite_ref-jcssj_27-0"
+                  - generic [ref=e957]: "Jump up to:"
+                  - superscript [ref=e958]:
+                    - generic [ref=e959]: a
+                - link "b" [ref=e960] [cursor=pointer]:
+                  - /url: "#cite_ref-jcssj_27-1"
+                  - superscript [ref=e961]:
+                    - generic [ref=e962]: b
+              - generic [ref=e963]:
+                - generic [ref=e964]:
+                  - text: Zong Lin; et al.,
+                  - link "Record of the Seasons of Jingchu" [ref=e965] [cursor=pointer]:
+                    - /url: /wiki/Jingchu_Suishiji
+                  - text: (in Chinese)
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Record+of+the+Seasons+of+Jingchu&rft.aulast=Zong&rft.aufirst=Lin&rft.au=Du+Gongzhan&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e966]:
+              - generic [ref=e967]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e968] [cursor=pointer]':
+                  - /url: "#cite_ref-FOOTNOTEHolzman198661_28-0"
+                  - generic [ref=e969]: "Jump up to:"
+                  - superscript [ref=e970]:
+                    - generic [ref=e971]: a
+                - link "b" [ref=e972] [cursor=pointer]:
+                  - /url: "#cite_ref-FOOTNOTEHolzman198661_28-1"
+                  - superscript [ref=e973]:
+                    - generic [ref=e974]: b
+              - generic [ref=e975]:
+                - link "Holzman (1986)" [ref=e976] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 61."
+            - listitem [ref=e977]:
+              - generic [ref=e978]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e979] [cursor=pointer]':
+                  - /url: "#cite_ref-chappy_29-0"
+                  - generic [ref=e980]: "Jump up to:"
+                  - superscript [ref=e981]:
+                    - generic [ref=e982]: a
+                - link "b" [ref=e983] [cursor=pointer]:
+                  - /url: "#cite_ref-chappy_29-1"
+                  - superscript [ref=e984]:
+                    - generic [ref=e985]: b
+              - generic [ref=e986]:
+                - link "Chapman (2014)" [ref=e987] [cursor=pointer]:
+                  - /url: "#CITEREFChapman2014"
+                - text: ", p."
+                - link "484" [ref=e988] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=AeiIl2y6vJQC&pg=PA484
+                - text: .
+            - listitem [ref=e989]:
+              - generic [ref=e990]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e991] [cursor=pointer]':
+                  - /url: "#cite_ref-shaday_30-0"
+                  - generic [ref=e992]: "Jump up to:"
+                  - superscript [ref=e993]:
+                    - generic [ref=e994]: a
+                - link "b" [ref=e995] [cursor=pointer]:
+                  - /url: "#cite_ref-shaday_30-1"
+                  - superscript [ref=e996]:
+                    - generic [ref=e997]: b
+              - generic [ref=e998]:
+                - generic [ref=e999]:
+                  - text: Zhang Qian (1 April 2017),
+                  - link "\"Change of Weather, Rich Food Mark the Arrival of Qingming\"" [ref=e1000] [cursor=pointer]:
+                    - /url: https://www.shine.cn/archive/feature/art-and-culture/Change-of-weather-rich-food-mark-the-arrival-of-Qingming/shdaily.shtml
+                  - text: ","
+                  - link "Shanghai Daily" [ref=e1001] [cursor=pointer]:
+                    - /url: http://www.shanghaidaily.com
+                  - text: ", Shanghai: Shanghai United Media Group"
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=Change+of+Weather%2C+Rich+Food+Mark+the+Arrival+of+Qingming&rft.btitle=Shanghai+Daily&rft.place=Shanghai&rft.pub=Shanghai+United+Media+Group&rft.date=2017-04-01&rft.aulast=Zhang&rft.aufirst=Qian&rft_id=https%3A%2F%2Fwww.shine.cn%2Farchive%2Ffeature%2Fart-and-culture%2FChange-of-weather-rich-food-mark-the-arrival-of-Qingming%2Fshdaily.shtml&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e1002]:
+              - link "Jump up" [ref=e1005] [cursor=pointer]:
+                - /url: "#cite_ref-31"
+                - text: ^
+              - generic [ref=e1006]:
+                - generic [ref=e1007]:
+                  - link "Liu Xin" [ref=e1008] [cursor=pointer]:
+                    - /url: /wiki/Liu_Xin_(scholar)
+                  - text: (ed.),
+                  - link "\"Autumn Offices\"" [ref=e1009] [cursor=pointer]:
+                    - /url: http://ctext.org/rites-of-zhou/qiu-guan-si-kou
+                  - text: ","
+                  - link "Rites of Zhou" [ref=e1010] [cursor=pointer]:
+                    - /url: /wiki/Rites_of_Zhou
+                  - text: (in Chinese), §95
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=Autumn+Offices&rft.btitle=Rites+of+Zhou&rft.pages=%C2%A795&rft_id=http%3A%2F%2Fctext.org%2Frites-of-zhou%2Fqiu-guan-si-kou&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e1011]:
+              - link "Jump up" [ref=e1014] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198655_32-0"
+                - text: ^
+              - generic [ref=e1015]:
+                - link "Holzman (1986)" [ref=e1016] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 55."
+            - listitem [ref=e1017]:
+              - link "Jump up" [ref=e1020] [cursor=pointer]:
+                - /url: "#cite_ref-33"
+                - text: ^
+              - generic [ref=e1021]:
+                - generic [ref=e1022]:
+                  - link "Li Fu" [ref=e1023] [cursor=pointer]:
+                    - /url: /wiki/Li_Fu
+                  - text: ","
+                  - link "Correcting Errors" [ref=e1024] [cursor=pointer]:
+                    - /url: /w/index.php?title=Kanwu&action=edit&redlink=1
+                  - text: (in Chinese), §13a
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Correcting+Errors&rft.pages=%C2%A713a&rft.aulast=Li&rft.aufirst=Fu&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e1025]:
+              - link "Jump up" [ref=e1028] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198664_34-0"
+                - text: ^
+              - generic [ref=e1029]:
+                - link "Holzman (1986)" [ref=e1030] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", p. 64."
+            - listitem [ref=e1031]:
+              - link "Jump up" [ref=e1034] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEDe_Groot1886_35-0"
+                - text: ^
+              - generic [ref=e1035]:
+                - link "De Groot (1886)" [ref=e1036] [cursor=pointer]:
+                  - /url: "#CITEREFDe_Groot1886"
+                - text: .
+            - listitem [ref=e1037]:
+              - link "Jump up" [ref=e1040] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198663–4_36-0"
+                - text: ^
+              - generic [ref=e1041]:
+                - link "Holzman (1986)" [ref=e1042] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", pp. 63–4."
+            - listitem [ref=e1043]:
+              - link "Jump up" [ref=e1046] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEJohnston1918472_37-0"
+                - text: ^
+              - generic [ref=e1047]:
+                - link "Johnston (1918)" [ref=e1048] [cursor=pointer]:
+                  - /url: "#CITEREFJohnston1918"
+                - text: ", p. 472."
+            - listitem [ref=e1049]:
+              - link "Jump up" [ref=e1052] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEMoriya1951756_38-0"
+                - text: ^
+              - generic [ref=e1053]:
+                - link "Moriya (1951)" [ref=e1054] [cursor=pointer]:
+                  - /url: "#CITEREFMoriya1951"
+                - text: ", p. 756."
+            - listitem [ref=e1055]:
+              - link "Jump up" [ref=e1058] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEFrazer1918136–7_&_329–30_39-0"
+                - text: ^
+              - generic [ref=e1059]:
+                - link "Frazer (1918)" [ref=e1060] [cursor=pointer]:
+                  - /url: "#CITEREFFrazer1918"
+                - text: ", pp. 136–7 & 329–30."
+            - listitem [ref=e1061]:
+              - link "Jump up" [ref=e1064] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198666–7_40-0"
+                - text: ^
+              - generic [ref=e1065]:
+                - link "Holzman (1986)" [ref=e1066] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", pp. 66–7."
+            - listitem [ref=e1067]:
+              - link "Jump up" [ref=e1070] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTELévi-Strauss1966349–51_&_397–9_41-0"
+                - text: ^
+              - generic [ref=e1071]:
+                - link "Lévi-Strauss (1966)" [ref=e1072] [cursor=pointer]:
+                  - /url: "#CITEREFLévi-Strauss1966"
+                - text: ", pp. 349–51 & 397–9."
+            - listitem [ref=e1073]:
+              - link "Jump up" [ref=e1076] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198669–71_42-0"
+                - text: ^
+              - generic [ref=e1077]:
+                - link "Holzman (1986)" [ref=e1078] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", pp. 69–71."
+            - listitem [ref=e1079]:
+              - link "Jump up" [ref=e1082] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEEberhard194228_&_37_43-0"
+                - text: ^
+              - generic [ref=e1083]:
+                - link "Eberhard (1942)" [ref=e1084] [cursor=pointer]:
+                  - /url: "#CITEREFEberhard1942"
+                - text: ", p. 28 & 37."
+            - listitem [ref=e1085]:
+              - link "Jump up" [ref=e1088] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198667–8_44-0"
+                - text: ^
+              - generic [ref=e1089]:
+                - link "Holzman (1986)" [ref=e1090] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", pp. 67–8."
+            - listitem [ref=e1091]:
+              - link "Jump up" [ref=e1094] [cursor=pointer]:
+                - /url: "#cite_ref-FOOTNOTEHolzman198651–2_45-0"
+                - text: ^
+              - generic [ref=e1095]:
+                - link "Holzman (1986)" [ref=e1096] [cursor=pointer]:
+                  - /url: "#CITEREFHolzman1986"
+                - text: ", pp. 51–2."
+            - listitem [ref=e1097]:
+              - generic [ref=e1098]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e1099] [cursor=pointer]':
+                  - /url: "#cite_ref-mrburns_46-0"
+                  - generic [ref=e1100]: "Jump up to:"
+                  - superscript [ref=e1101]:
+                    - generic [ref=e1102]: a
+                - link "b" [ref=e1103] [cursor=pointer]:
+                  - /url: "#cite_ref-mrburns_46-1"
+                  - superscript [ref=e1104]:
+                    - generic [ref=e1105]: b
+              - generic [ref=e1106]:
+                - link "Milburn (2015)" [ref=e1107] [cursor=pointer]:
+                  - /url: "#CITEREFMilburn2015"
+                - text: ", p."
+                - link "326" [ref=e1108] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=HhE1CgAAQBAJ&pg=PA326
+                - text: .
+            - listitem [ref=e1109]:
+              - generic [ref=e1110]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e1111] [cursor=pointer]':
+                  - /url: "#cite_ref-alms_47-0"
+                  - generic [ref=e1112]: "Jump up to:"
+                  - superscript [ref=e1113]:
+                    - generic [ref=e1114]: a
+                - link "b" [ref=e1115] [cursor=pointer]:
+                  - /url: "#cite_ref-alms_47-1"
+                  - superscript [ref=e1116]:
+                    - generic [ref=e1117]: b
+              - generic [ref=e1118]:
+                - generic [ref=e1119]:
+                  - link "Sima Qian" [ref=e1120] [cursor=pointer]:
+                    - /url: /wiki/Sima_Qian
+                  - text: ","
+                  - link "Records of the Grand Historian" [ref=e1121] [cursor=pointer]:
+                    - /url: /wiki/Records_of_the_Grand_Historian
+                  - text: (in Chinese),
+                  - link "Vol. 114" [ref=e1122] [cursor=pointer]:
+                    - /url: https://en.wikisource.org/wiki/zh:%E5%8F%B2%E8%A8%98/%E5%8D%B7114
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Records+of+the+Grand+Historian&rft.pages=%3As%3Azh%3A%E5%8F%B2%E8%A8%98%2F%E5%8D%B7114%7CVol.+114&rft.aulast=Sima&rft.aufirst=Qian&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e1123]:
+              - generic [ref=e1124]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e1125] [cursor=pointer]':
+                  - /url: "#cite_ref-longhairs_48-0"
+                  - generic [ref=e1126]: "Jump up to:"
+                  - superscript [ref=e1127]:
+                    - generic [ref=e1128]: a
+                - link "b" [ref=e1129] [cursor=pointer]:
+                  - /url: "#cite_ref-longhairs_48-1"
+                  - superscript [ref=e1130]:
+                    - generic [ref=e1131]: b
+              - generic [ref=e1132]:
+                - generic [ref=e1133]:
+                  - link "Imperial Reader of the Taiping Era" [ref=e1134] [cursor=pointer]:
+                    - /url: /wiki/Taiping_Yulan
+                  - text: (in Chinese), Vol. 556, §2514
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Imperial+Reader+of+the+Taiping+Era&rft.pages=Vol.+556%2C+%C2%A72514&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e1135]:
+              - generic [ref=e1136]:
+                - text: ^
+                - 'link "Jump up to: a" [ref=e1137] [cursor=pointer]':
+                  - /url: "#cite_ref-milly_49-0"
+                  - generic [ref=e1138]: "Jump up to:"
+                  - superscript [ref=e1139]:
+                    - generic [ref=e1140]: a
+                - link "b" [ref=e1141] [cursor=pointer]:
+                  - /url: "#cite_ref-milly_49-1"
+                  - superscript [ref=e1142]:
+                    - generic [ref=e1143]: b
+              - generic [ref=e1144]:
+                - link "Milburn (2015)" [ref=e1145] [cursor=pointer]:
+                  - /url: "#CITEREFMilburn2015"
+                - text: ", p."
+                - link "268" [ref=e1146] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=HhE1CgAAQBAJ&pg=PA268
+                - text: .
+            - listitem [ref=e1147]:
+              - link "Jump up" [ref=e1150] [cursor=pointer]:
+                - /url: "#cite_ref-50"
+                - text: ^
+              - generic [ref=e1151]:
+                - generic [ref=e1152]:
+                  - text: Pecheva, Annie (15 Nov 2012),
+                  - link "\"The Rest Day of the Spirits\"" [ref=e1153] [cursor=pointer]:
+                    - /url: http://anniepecheva.blogspot.tw/2012/11/the-rest-day-of-spirits.html
+                  - text: ","
+                  - link "The Blog" [ref=e1154] [cursor=pointer]:
+                    - /url: http://anniepecheva.blogspot.tw
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=The+Rest+Day+of+the+Spirits&rft.btitle=The+Blog&rft.date=2012-11-15&rft.aulast=Pecheva&rft.aufirst=Annie&rft_id=http%3A%2F%2Fanniepecheva.blogspot.tw%2F2012%2F11%2Fthe-rest-day-of-spirits.html&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+                - text: .
+            - listitem [ref=e1155]:
+              - link "Jump up" [ref=e1158] [cursor=pointer]:
+                - /url: "#cite_ref-52"
+                - text: ^
+              - generic [ref=e1159]:
+                - generic [ref=e1160]:
+                  - link "\"Korea's Four Major National Holidays\"" [ref=e1161] [cursor=pointer]:
+                    - /url: https://english.seoul.go.kr/service/amusement/traditional-culture/koreas-four-major-national-holidays/
+                  - text: .
+                  - link "Seoul Metropolitan Government" [ref=e1162] [cursor=pointer]:
+                    - /url: /wiki/Seoul_Metropolitan_Government
+                  - generic [ref=e1163]: . Retrieved 5 April 2022
+                  - text: .
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=unknown&rft.btitle=Korea%27s+Four+Major+National+Holidays&rft.pub=Seoul+Metropolitan+Government&rft_id=https%3A%2F%2Fenglish.seoul.go.kr%2Fservice%2Famusement%2Ftraditional-culture%2Fkoreas-four-major-national-holidays%2F&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+            - listitem [ref=e1164]:
+              - link "Jump up" [ref=e1167] [cursor=pointer]:
+                - /url: "#cite_ref-53"
+                - text: ^
+              - generic [ref=e1168]:
+                - generic [ref=e1169]: Đặng Đức Siêu (2006). Sổ tay văn hoá Việt Nam [Handbook of Vietnamese Culture]. Nhà Xuất bản Lao động.
+                - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=S%E1%BB%95+tay+v%C4%83n+ho%C3%A1+Vi%E1%BB%87t+Nam&rft.pub=Nh%C3%A0+Xu%E1%BA%A5t+b%E1%BA%A3n+Lao+%C4%91%E1%BB%99ng&rft.date=2006&rft.au=%C4%90%E1%BA%B7ng+%C4%90%E1%BB%A9c+Si%C3%AAu&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+          - generic [ref=e1170]:
+            - heading "Bibliography" [level=3] [ref=e1171]
+            - generic [ref=e1172]:
+              - text: "["
+              - link "edit" [ref=e1173] [cursor=pointer]:
+                - /url: /w/index.php?title=Cold_Food_Festival&action=edit&section=12
+              - text: "]"
+          - list [ref=e1174]:
+            - listitem [ref=e1175]:
+              - generic [ref=e1176]:
+                - text: Milburn, Olivia, ed. (2015),
+                - link "\"Tales of the Lands of Wu\"" [ref=e1177] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=HhE1CgAAQBAJ&pg=PA39
+                - text: ", Urbanization in Early and Medieval China: Gazetteers for the City of Suzhou, Seattle: University of Washington Press, pp. 39–58,"
+                - link "ISBN" [ref=e1178] [cursor=pointer]:
+                  - /url: /wiki/ISBN_(identifier)
+                - link "9780295806105" [ref=e1179] [cursor=pointer]:
+                  - /url: /wiki/Special:BookSources/9780295806105
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=Tales+of+the+Lands+of+Wu&rft.btitle=Urbanization+in+Early+and+Medieval+China%3A+Gazetteers+for+the+City+of+Suzhou&rft.place=Seattle&rft.pages=39-58&rft.pub=University+of+Washington+Press&rft.date=2015&rft.isbn=9780295806105&rft_id=https%3A%2F%2Fbooks.google.com%2Fbooks%3Fid%3DHhE1CgAAQBAJ%26pg%3DPA39&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1180]:
+              - generic [ref=e1181]:
+                - text: Chapman, Ian (2014),
+                - 'link "\"Festival and Ritual Calendar: Selections from Record of the Year and Seasons of Jing-Chu\"" [ref=e1182] [cursor=pointer]':
+                  - /url: https://books.google.com/books?id=AeiIl2y6vJQC&pg=PA463
+                - text: ","
+                - 'link "Early Medieval China: A Sourcebook" [ref=e1183] [cursor=pointer]':
+                  - /url: https://books.google.com/books?id=AeiIl2y6vJQC
+                - text: ", New York: Columbia University Press, pp. 468–493,"
+                - link "ISBN" [ref=e1184] [cursor=pointer]:
+                  - /url: /wiki/ISBN_(identifier)
+                - link "978-0-231-15987-6" [ref=e1185] [cursor=pointer]:
+                  - /url: /wiki/Special:BookSources/978-0-231-15987-6
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=Festival+and+Ritual+Calendar%3A+Selections+from+Record+of+the+Year+and+Seasons+of+Jing-Chu&rft.btitle=Early+Medieval+China%3A+A+Sourcebook&rft.place=New+York&rft.pages=468-493&rft.pub=Columbia+University+Press&rft.date=2014&rft.isbn=978-0-231-15987-6&rft.aulast=Chapman&rft.aufirst=Ian&rft_id=https%3A%2F%2Fbooks.google.com%2Fbooks%3Fid%3DAeiIl2y6vJQC%26pg%3DPA463&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1186]:
+              - generic [ref=e1187]:
+                - link "Confucius" [ref=e1188] [cursor=pointer]:
+                  - /url: /wiki/Confucius
+                - text: (1872),
+                - link "Legge, James" [ref=e1189] [cursor=pointer]:
+                  - /url: /wiki/James_Legge
+                - text: (ed.),
+                - link "The Ch'un Ts'ew, with the Tso Chuen, Pt. I" [ref=e1190] [cursor=pointer]:
+                  - /url: https://en.wikisource.org/wiki/The_Ch%27un_Ts%27ew
+                  - text: The Ch'un Ts'ew, with the Tso Chuen, Pt. I
+                - text: ", The Chinese Classics, Vol. V, Hong Kong: Lane, Crawford, & Co."
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=The+Ch%27un+Ts%27ew%2C+with+the+Tso+Chuen%2C+Pt.+I&rft.place=Hong+Kong&rft.series=%27%27The+Chinese+Classics%27%27%2C+Vol.+V&rft.pub=Lane%2C+Crawford%2C+%26+Co.&rft.date=1872&rft.au=Confucius&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1191]:
+              - generic [ref=e1192]:
+                - link "De Groot, Jan Jakob Maria" [ref=e1193] [cursor=pointer]:
+                  - /url: /wiki/Jan_Jakob_Maria_de_Groot
+                - text: "(1886), \"Les Fêtes Annuellement Célébrées a Emoui\", Annales du Musée Guimet (in French), Paris: Guimet Museum, pp. 208–29"
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=Les+F%C3%AAtes+Annuellement+C%C3%A9l%C3%A9br%C3%A9es+a+Emoui&rft.btitle=Annales+du+Mus%C3%A9e+Guimet&rft.place=Paris&rft.pages=208-29&rft.pub=Guimet+Museum&rft.date=1886&rft.aulast=De+Groot&rft.aufirst=Jan+Jakob+Maria&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1194]:
+              - generic [ref=e1195]:
+                - text: Durrant, Stephen W.; et al., eds. (2016),
+                - link "Zuo Tradition" [ref=e1196] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=En_WDgAAQBAJ
+                - text: ", Classics of Chinese Thought, Seattle: University of Washington Press,"
+                - link "ISBN" [ref=e1197] [cursor=pointer]:
+                  - /url: /wiki/ISBN_(identifier)
+                - link "9780295999159" [ref=e1198] [cursor=pointer]:
+                  - /url: /wiki/Special:BookSources/9780295999159
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Zuo+Tradition&rft.place=Seattle&rft.series=Classics+of+Chinese+Thought&rft.pub=University+of+Washington+Press&rft.date=2016&rft.isbn=9780295999159&rft_id=https%3A%2F%2Fbooks.google.com%2Fbooks%3Fid%3DEn_WDgAAQBAJ&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1199]:
+              - generic [ref=e1200]:
+                - link "Eberhard, Wolfram" [ref=e1201] [cursor=pointer]:
+                  - /url: /wiki/Wolfram_Eberhard
+                - text: "(1942), Lokalkulturen im Alten China, T'oung Pao, No. 37 (in German), vol. I: Die Lokalkulturen des Nordens und Westens, Leiden: Brill"
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Lokalkulturen+im+Alten+China&rft.place=Leiden&rft.series=%27%27T%27oung+Pao%27%27%2C+No.+37&rft.pub=Brill&rft.date=1942&rft.aulast=Eberhard&rft.aufirst=Wolfram&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1202]:
+              - generic [ref=e1203]:
+                - link "Frazer, James George" [ref=e1204] [cursor=pointer]:
+                  - /url: /wiki/James_Frazer
+                - text: (1918),
+                - link "The Golden Bough" [ref=e1205] [cursor=pointer]:
+                  - /url: /wiki/The_Golden_Bough
+                - text: ", vol. VII (3rd ed.), London: Macmillan & Co."
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=The+Golden+Bough&rft.place=London&rft.edition=3rd&rft.pub=Macmillan+%26+Co.&rft.date=1918&rft.aulast=Frazer&rft.aufirst=James+George&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1206]:
+              - generic [ref=e1207]:
+                - text: Hanan, Patrick (1981),
+                - link "The Chinese Vernacular Story" [ref=e1208] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=GR6ea0F3BDQC
+                - text: ", Harvard East Asian Series, No. 94,"
+                - link "Cambridge" [ref=e1209] [cursor=pointer]:
+                  - /url: /wiki/Cambridge,_Mass.
+                - text: ": Harvard University Press,"
+                - link "ISBN" [ref=e1210] [cursor=pointer]:
+                  - /url: /wiki/ISBN_(identifier)
+                - link "978-0-674-12565-0" [ref=e1211] [cursor=pointer]:
+                  - /url: /wiki/Special:BookSources/978-0-674-12565-0
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=The+Chinese+Vernacular+Story&rft.place=Cambridge&rft.series=%27%27Harvard+East+Asian+Series%27%27%2C+No.+94&rft.pub=Harvard+University+Press&rft.date=1981&rft.isbn=978-0-674-12565-0&rft.aulast=Hanan&rft.aufirst=Patrick&rft_id=https%3A%2F%2Fbooks.google.com%2Fbooks%3Fid%3DGR6ea0F3BDQC&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1212]:
+              - generic [ref=e1213]:
+                - text: Holzman, Donald (June 1986), "The Cold Food Festival in Early Medieval China", Harvard Journal of Asiatic Studies, vol. 46,
+                - link "Cambridge" [ref=e1214] [cursor=pointer]:
+                  - /url: /wiki/Cambridge,_Massachusetts
+                - text: ": Harvard University Press, pp. 51–79,"
+                - link "doi" [ref=e1215] [cursor=pointer]:
+                  - /url: /wiki/Doi_(identifier)
+                - text: ":"
+                - link "10.2307/2719075" [ref=e1216] [cursor=pointer]:
+                  - /url: https://doi.org/10.2307%2F2719075
+                - text: ","
+                - link "JSTOR" [ref=e1217] [cursor=pointer]:
+                  - /url: /wiki/JSTOR_(identifier)
+                - link "2719075" [ref=e1218] [cursor=pointer]:
+                  - /url: https://www.jstor.org/stable/2719075
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=The+Cold+Food+Festival+in+Early+Medieval+China&rft.btitle=Harvard+Journal+of+Asiatic+Studies&rft.place=Cambridge&rft.pages=51-79&rft.pub=Harvard+University+Press&rft.date=1986-06&rft_id=info%3Adoi%2F10.2307%2F2719075&rft_id=https%3A%2F%2Fwww.jstor.org%2Fstable%2F2719075%23id-name%3DJSTOR&rft.aulast=Holzman&rft.aufirst=Donald&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1219]:
+              - generic [ref=e1220]:
+                - link "Huan Tan" [ref=e1221] [cursor=pointer]:
+                  - /url: /wiki/Huan_Tan
+                - text: "(1975), Pokora, T. (ed.), Hsin-lun and Other Writings, Michigan Papers in Chinese Studies, No. 20, Ann Arbor: University of Michigan Press"
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Hsin-lun+and+Other+Writings&rft.place=Ann+Arbor&rft.series=%27%27Michigan+Papers+in+Chinese+Studies%27%27%2C+No.+20&rft.pub=University+of+Michigan+Press&rft.date=1975&rft.aulast=Huan&rft.aufirst=Tan&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1222]:
+              - generic [ref=e1223]:
+                - link "Johnston, Reginald Fleming" [ref=e1224] [cursor=pointer]:
+                  - /url: /wiki/Reginald_Johnston
+                - text: (1918),
+                - link "\"Purification (Chinese)\"" [ref=e1225] [cursor=pointer]:
+                  - /url: https://archive.org/stream/in.ernet.dli.2015.500003/2015.500003.Encyclopaedia-Of#page/n491/mode/2up
+                - text: ","
+                - link "Encyclopaedia of Religion and Ethics" [ref=e1226] [cursor=pointer]:
+                  - /url: /wiki/Encyclopaedia_of_Religion_and_Ethics
+                - text: ", vol. X, Edinburgh: T. & T. Clark, pp. 470–4"
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=Purification+%28Chinese%29&rft.btitle=Encyclopaedia+of+Religion+and+Ethics&rft.place=Edinburgh&rft.pages=470-4&rft.pub=T.+%26+T.+Clark&rft.date=1918&rft.aulast=Johnston&rft.aufirst=Reginald+Fleming&rft_id=https%3A%2F%2Farchive.org%2Fstream%2Fin.ernet.dli.2015.500003%2F2015.500003.Encyclopaedia-Of%23page%2Fn491%2Fmode%2F2up&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1227]:
+              - generic [ref=e1228]:
+                - link "Lévi-Strauss, Claude" [ref=e1229] [cursor=pointer]:
+                  - /url: /wiki/Claude_L%C3%A9vi-Strauss
+                - text: "(1966), Du Miel aux Cendres (in French), Paris: Plon"
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=Du+Miel+aux+Cendres&rft.place=Paris&rft.pub=Plon&rft.date=1966&rft.aulast=L%C3%A9vi-Strauss&rft.aufirst=Claude&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1230]:
+              - generic [ref=e1231]:
+                - text: "Ling, L.H.M.; et al. (1999), \"Confucianism with a Liberal Face: Democratic Politics in Postcolonial Taiwan\", in Dallmayr, Fred Reinhard (ed.),"
+                - 'link "Border Crossings: Toward a Comparative Political Theory" [ref=e1232] [cursor=pointer]':
+                  - /url: https://books.google.com/books?id=BY6aAAAAQBAJ
+                - text: ","
+                - link "Lanham" [ref=e1233] [cursor=pointer]:
+                  - /url: /wiki/Lanham,_Maryland
+                - text: ": Lexington Books, pp. 213–236,"
+                - link "ISBN" [ref=e1234] [cursor=pointer]:
+                  - /url: /wiki/ISBN_(identifier)
+                - link "978-0-7391-0043-1" [ref=e1235] [cursor=pointer]:
+                  - /url: /wiki/Special:BookSources/978-0-7391-0043-1
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=Confucianism+with+a+Liberal+Face%3A+Democratic+Politics+in+Postcolonial+Taiwan&rft.btitle=Border+Crossings%3A+Toward+a+Comparative+Political+Theory&rft.place=Lanham&rft.pages=213-236&rft.pub=Lexington+Books&rft.date=1999&rft.isbn=978-0-7391-0043-1&rft.aulast=Ling&rft.aufirst=L.H.M.&rft.au=Shih%2C+Chih-yu&rft_id=https%3A%2F%2Fbooks.google.com%2Fbooks%3Fid%3DBY6aAAAAQBAJ&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1236]:
+              - generic [ref=e1237]: Moriya, Mitsuo (1951), "Kanshoku Kō", Wada Hakase Kanreki Kinen Tōyōshi Ronsō (in Japanese), Tokyo, pp. 747–62
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.atitle=Kanshoku+K%C5%8D&rft.btitle=Wada+Hakase+Kanreki+Kinen+T%C5%8Dy%C5%8Dshi+Rons%C5%8D&rft.place=Tokyo&rft.pages=747-62&rft.date=1951&rft.aulast=Moriya&rft.aufirst=Mitsuo&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1238]:
+              - generic [ref=e1239]:
+                - text: Sukhu, Gopal, ed. (2017),
+                - 'link "The Songs of Chu: An Anthology of Ancient Chinese Poetry by Qu Yuan and Others" [ref=e1240] [cursor=pointer]':
+                  - /url: https://books.google.com/books?id=CNkoDwAAQBAJ
+                - text: ", New York: Columbia University Press,"
+                - link "ISBN" [ref=e1241] [cursor=pointer]:
+                  - /url: /wiki/ISBN_(identifier)
+                - link "9780231544658" [ref=e1242] [cursor=pointer]:
+                  - /url: /wiki/Special:BookSources/9780231544658
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=The+Songs+of+Chu%3A+An+Anthology+of+Ancient+Chinese+Poetry+by+Qu+Yuan+and+Others&rft.place=New+York&rft.pub=Columbia+University+Press&rft.date=2017&rft.isbn=9780231544658&rft_id=https%3A%2F%2Fbooks.google.com%2Fbooks%3Fid%3DCNkoDwAAQBAJ&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+            - listitem [ref=e1243]:
+              - generic [ref=e1244]:
+                - text: Wu Dongming (2014),
+                - link "A Panoramic View of Chinese Culture" [ref=e1245] [cursor=pointer]:
+                  - /url: https://books.google.com/books?id=K3N-AgAAQBAJ
+                - text: ", Simon & Schuster,"
+                - link "ISBN" [ref=e1246] [cursor=pointer]:
+                  - /url: /wiki/ISBN_(identifier)
+                - link "9781476774961" [ref=e1247] [cursor=pointer]:
+                  - /url: /wiki/Special:BookSources/9781476774961
+              - generic "ctx_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&rft.btitle=A+Panoramic+View+of+Chinese+Culture&rft.pub=Simon+%26+Schuster&rft.date=2014&rft.isbn=9781476774961&rft.aulast=Wu&rft.aufirst=Dongming&rft_id=https%3A%2F%2Fbooks.google.com%2Fbooks%3Fid%3DK3N-AgAAQBAJ&rfr_id=info%3Asid%2Fen.wikipedia.org%3ACold+Food+Festival"
+              - text: .
+        - generic [ref=e1249]:
+          - link "Categories" [ref=e1250] [cursor=pointer]:
+            - /url: /wiki/Help:Category
+          - text: ":"
+          - list [ref=e1251]:
+            - listitem [ref=e1252]:
+              - link "Festivals in China" [ref=e1253] [cursor=pointer]:
+                - /url: /wiki/Category:Festivals_in_China
+            - listitem [ref=e1254]:
+              - link "Festivals in Korea" [ref=e1255] [cursor=pointer]:
+                - /url: /wiki/Category:Festivals_in_Korea
+            - listitem [ref=e1256]:
+              - link "Food and drink festivals in South Korea" [ref=e1257] [cursor=pointer]:
+                - /url: /wiki/Category:Food_and_drink_festivals_in_South_Korea
+            - listitem [ref=e1258]:
+              - link "April observances" [ref=e1259] [cursor=pointer]:
+                - /url: /wiki/Category:April_observances
+            - listitem [ref=e1260]:
+              - link "Observances set by the Chinese calendar" [ref=e1261] [cursor=pointer]:
+                - /url: /wiki/Category:Observances_set_by_the_Chinese_calendar
+            - listitem [ref=e1262]:
+              - link "Observances set by the Korean calendar" [ref=e1263] [cursor=pointer]:
+                - /url: /wiki/Category:Observances_set_by_the_Korean_calendar
+            - listitem [ref=e1264]:
+              - link "Spring (season) in China" [ref=e1265] [cursor=pointer]:
+                - /url: /wiki/Category:Spring_(season)_in_China
+            - listitem [ref=e1266]:
+              - link "Winter solstice" [ref=e1267] [cursor=pointer]:
+                - /url: /wiki/Category:Winter_solstice
+    - contentinfo [ref=e1269]:
+      - list [ref=e1270]:
+        - listitem [ref=e1271]: This page was last edited on 28 January 2026, at 06:35 (UTC).
+        - listitem [ref=e1272]:
+          - text: Text is available under the
+          - link "Creative Commons Attribution-ShareAlike 4.0 License" [ref=e1273] [cursor=pointer]:
+            - /url: /wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License
+          - text: ; additional terms may apply. By using this site, you agree to the
+          - link "Terms of Use" [ref=e1274] [cursor=pointer]:
+            - /url: https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use
+          - text: and
+          - link "Privacy Policy" [ref=e1275] [cursor=pointer]:
+            - /url: https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy
+          - text: . Wikipedia® is a registered trademark of the
+          - link "Wikimedia Foundation, Inc." [ref=e1276] [cursor=pointer]:
+            - /url: https://wikimediafoundation.org/
+          - text: ", a non-profit organization."
+      - list:
+        - listitem [ref=e1277]:
+          - link "Privacy policy" [ref=e1278] [cursor=pointer]:
+            - /url: https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy
+        - listitem [ref=e1279]:
+          - link "About Wikipedia" [ref=e1280] [cursor=pointer]:
+            - /url: /wiki/Wikipedia:About
+        - listitem [ref=e1281]:
+          - link "Disclaimers" [ref=e1282] [cursor=pointer]:
+            - /url: /wiki/Wikipedia:General_disclaimer
+        - listitem [ref=e1283]:
+          - link "Contact Wikipedia" [ref=e1284] [cursor=pointer]:
+            - /url: //en.wikipedia.org/wiki/Wikipedia:Contact_us
+        - listitem [ref=e1285]:
+          - link "Legal & safety contacts" [ref=e1286] [cursor=pointer]:
+            - /url: https://foundation.wikimedia.org/wiki/Special:MyLanguage/Legal:Wikimedia_Foundation_Legal_and_Safety_Contact_Information
+        - listitem [ref=e1287]:
+          - link "Code of Conduct" [ref=e1288] [cursor=pointer]:
+            - /url: https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Universal_Code_of_Conduct
+        - listitem [ref=e1289]:
+          - link "Developers" [ref=e1290] [cursor=pointer]:
+            - /url: https://developer.wikimedia.org
+        - listitem [ref=e1291]:
+          - link "Statistics" [ref=e1292] [cursor=pointer]:
+            - /url: https://stats.wikimedia.org/#/en.wikipedia.org
+        - listitem [ref=e1293]:
+          - link "Cookie statement" [ref=e1294] [cursor=pointer]:
+            - /url: https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement
+        - listitem [ref=e1295]:
+          - link "Mobile view" [ref=e1296] [cursor=pointer]:
+            - /url: //en.wikipedia.org/w/index.php?title=Cold_Food_Festival&mobileaction=toggle_view_mobile
+      - list [ref=e1297]:
+        - listitem [ref=e1298]:
+          - link "Wikimedia Foundation" [ref=e1299] [cursor=pointer]:
+            - /url: https://www.wikimedia.org/
+            - img "Wikimedia Foundation" [ref=e1301]
+        - listitem [ref=e1302]:
+          - link "Powered by MediaWiki" [ref=e1303] [cursor=pointer]:
+            - /url: https://www.mediawiki.org/
+            - img "Powered by MediaWiki" [ref=e1305]
+  - generic [ref=e1389]:
+    - list

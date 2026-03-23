@@ -1,0 +1,415 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link [ref=e5] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e6]:
+        - generic [ref=e9]:
+          - generic [ref=e11]:
+            - textbox "Site Search" [ref=e12]
+            - button "Submit" [ref=e13] [cursor=pointer]
+          - paragraph
+        - link "Answers" [ref=e15] [cursor=pointer]:
+          - /url: https://answers.travelchinaguide.com/
+    - navigation [ref=e17]:
+      - table [ref=e18]:
+        - rowgroup [ref=e19]:
+          - row "Home Asia Tours China Tours Small Groups City Packages Day Trips Tailor My Trip Trains City Guide Reviews" [ref=e20]:
+            - cell "Home" [ref=e21]:
+              - link "Home" [ref=e22] [cursor=pointer]:
+                - /url: /
+            - cell "Asia Tours" [ref=e23]:
+              - link "Asia Tours" [ref=e24] [cursor=pointer]:
+                - /url: /asia/
+            - cell "China Tours" [ref=e25]:
+              - link "China Tours" [ref=e26] [cursor=pointer]:
+                - /url: /tour/default.htm
+            - cell "Small Groups" [ref=e27]:
+              - link "Small Groups" [ref=e28] [cursor=pointer]:
+                - /url: /group/
+            - cell "City Packages" [ref=e29]:
+              - link "City Packages" [ref=e30] [cursor=pointer]:
+                - /url: /package/
+            - cell "Day Trips" [ref=e31]:
+              - link "Day Trips" [ref=e32] [cursor=pointer]:
+                - /url: /package/day-trips/
+            - cell "Tailor My Trip" [ref=e33]:
+              - link "Tailor My Trip" [ref=e34] [cursor=pointer]:
+                - /url: https://secure.travelchinaguide.com/reserve/tailormade.htm
+            - cell "Trains" [ref=e35]:
+              - link "Trains" [ref=e36] [cursor=pointer]:
+                - /url: /china-trains/
+            - cell "City Guide" [ref=e37]:
+              - link "City Guide" [ref=e38] [cursor=pointer]:
+                - /url: /cityguides/
+            - cell "Reviews" [ref=e39]:
+              - link "Reviews" [ref=e40] [cursor=pointer]:
+                - /url: /feedback/
+  - generic [ref=e41]:
+    - generic [ref=e42]:
+      - link "Holidays in China" [ref=e44] [cursor=pointer]:
+        - /url: /essential/public-holiday.htm
+      - list [ref=e46]:
+        - listitem [ref=e47]:
+          - link "2026 / 2027 / 2028 Public Holiday Calendar" [ref=e48] [cursor=pointer]:
+            - /url: /essential/holidays/calendar.htm
+        - listitem [ref=e49]:
+          - link "Traditional Festivals" [ref=e50] [cursor=pointer]:
+            - /url: /essential/holidays/
+        - listitem [ref=e51]:
+          - link "Chinese New Year" [ref=e52] [cursor=pointer]:
+            - /url: /essential/holidays/chinese-new-year.htm
+        - listitem [ref=e53]:
+          - link "Lantern Festival" [ref=e54] [cursor=pointer]:
+            - /url: /essential/holidays/lantern.htm
+        - listitem [ref=e55]: Qingming
+        - listitem [ref=e56]:
+          - link "Dragon Boat" [ref=e57] [cursor=pointer]:
+            - /url: /essential/holidays/dragon-boat.htm
+        - listitem [ref=e58]:
+          - link "Qixi" [ref=e59] [cursor=pointer]:
+            - /url: /essential/holidays/qixi.htm
+        - listitem [ref=e60]:
+          - link "Mid-Autumn" [ref=e61] [cursor=pointer]:
+            - /url: /essential/holidays/mid-autumn.htm
+        - listitem [ref=e62]:
+          - link "Double Ninth" [ref=e63] [cursor=pointer]:
+            - /url: /essential/holidays/chongyang.htm
+        - listitem [ref=e64]:
+          - link "Winter Solstice" [ref=e65] [cursor=pointer]:
+            - /url: /essential/holidays/winter-solstice.htm
+        - listitem [ref=e66]:
+          - link "Laba" [ref=e67] [cursor=pointer]:
+            - /url: /essential/holidays/laba.htm
+        - listitem [ref=e68]:
+          - link "National Holidays" [ref=e69] [cursor=pointer]:
+            - /url: /intro/festival/
+        - listitem [ref=e70]:
+          - link "Tourism Festivals" [ref=e71] [cursor=pointer]:
+            - /url: /intro/festival/tourism.htm
+        - listitem [ref=e72]:
+          - link "Ethnic Minority Festivals" [ref=e73] [cursor=pointer]:
+            - /url: /essential/holidays/minority.htm
+        - listitem [ref=e74]:
+          - link "Christmas" [ref=e75] [cursor=pointer]:
+            - /url: /essential/holidays/christmas.htm
+      - iframe [ref=e77]:
+        - generic [ref=f7e3]:
+          - generic:
+            - link "China tours" [ref=f7e5] [cursor=pointer]:
+              - /url: https://www.travelchinaguide.com/tour/default.htm
+              - img "China tours" [ref=f7e6]
+            - link "China Small Groups" [ref=f7e8] [cursor=pointer]:
+              - /url: https://www.travelchinaguide.com/group/
+              - img "China Small Groups" [ref=f7e9]
+      - iframe [ref=e79]:
+        - generic [active] [ref=f8e1]:
+          - generic [ref=f8e2]: Train Search & Ticket Booking
+          - list [ref=f8e5]:
+            - listitem [ref=f8e6]:
+              - generic [ref=f8e8]:
+                - textbox [ref=f8e9]: From
+                - textbox [ref=f8e10]: To
+                - textbox [ref=f8e11]
+                - button [ref=f8e12] [cursor=pointer]
+              - generic [ref=f8e14]: Train service fee low to $6 per ticket
+          - status [ref=f8e15]
+          - status [ref=f8e16]
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e83]:
+          - link "Home" [ref=e84] [cursor=pointer]:
+            - /url: /
+          - text: /
+          - link "Tips" [ref=e85] [cursor=pointer]:
+            - /url: /essential/
+          - text: /
+          - link "Holidays in China" [ref=e86] [cursor=pointer]:
+            - /url: /essential/public-holiday.htm
+          - text: /
+          - link "Traditional Festivals" [ref=e87] [cursor=pointer]:
+            - /url: /essential/holidays/
+          - text: /
+        - heading "Qingming Festival (Tomb-sweeping Day)" [level=1] [ref=e89]
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - img "Qingming Festival" [ref=e94]
+              - generic [ref=e95]: Qingming Festival of 2026 falls on April 5. People sweep ancestors’ tombs on the day. It is also a great time for spring outing.
+            - paragraph
+            - text: Qingming Festival (also known as Pure Brightness Festival or Tomb-sweeping Day), which falls on either April 4th or 5th of the gregorian calendar, is one of the Chinese
+            - link "Twenty-four Solar Terms" [ref=e96] [cursor=pointer]:
+              - /url: /intro/focus/solar-term.htm
+            - text: . From that date temperatures begin to rise and rainfall increases, indicating that it is the crucial time for plowing and sowing in the spring. The festival therefore has a close relationship with agriculture. However, it is not only a seasonal symbol; it is also a day of paying respect to the dead, a spring outing, and other activities.
+            - iframe [ref=e98]:
+              - generic [ref=f9e2]:
+                - link "China Tours" [ref=f9e4] [cursor=pointer]:
+                  - /url: https://www.agatetravel.com/
+                  - img "China Tours" [ref=f9e5]
+                - paragraph [ref=f9e6]: "12"
+            - heading "Date & Holiday of Qingming Festival in 2026, 2027, 2028 ..." [level=2] [ref=e101]
+            - table [ref=e103]:
+              - rowgroup [ref=e104]:
+                - row "Year Date of Qingming Festival Holiday" [ref=e105]:
+                  - cell "Year" [ref=e106]
+                  - cell "Date of Qingming Festival" [ref=e107]
+                  - cell "Holiday" [ref=e108]
+                - row "2026 April 5 April 4 - 6" [ref=e109]:
+                  - cell "2026" [ref=e110]
+                  - cell "April 5" [ref=e111]
+                  - cell "April 4 - 6" [ref=e112]
+                - row "2027 April 5 April 3 - 5" [ref=e113]:
+                  - cell "2027" [ref=e114]
+                  - cell "April 5" [ref=e115]
+                  - cell "April 3 - 5" [ref=e116]
+                - row "2028 April 4 April 2 - 4" [ref=e117]:
+                  - cell "2028" [ref=e118]
+                  - cell "April 4" [ref=e119]
+                  - cell "April 2 - 4" [ref=e120]
+                - row "2029 April 4 April 4" [ref=e121]:
+                  - cell "2029" [ref=e122]
+                  - cell "April 4" [ref=e123]
+                  - cell "April 4" [ref=e124]
+                - row "2030 April 5 April 5" [ref=e125]:
+                  - cell "2030" [ref=e126]
+                  - cell "April 5" [ref=e127]
+                  - cell "April 5" [ref=e128]
+                - row "2031 April 5 April 4 - 6" [ref=e129]:
+                  - cell "2031" [ref=e130]
+                  - cell "April 5" [ref=e131]
+                  - cell "April 4 - 6" [ref=e132]
+                - row "2032 April 4 April 3 - 5" [ref=e133]:
+                  - cell "2032" [ref=e134]
+                  - cell "April 4" [ref=e135]
+                  - cell "April 3 - 5" [ref=e136]
+            - text: More detailed
+            - link "2026 / 2027 / 2028 China Public Holiday Calendar" [ref=e137] [cursor=pointer]:
+              - /url: /essential/holidays/calendar.htm
+            - text: is available for you to know the schedule of all holidays in China and better make your travel plan.
+            - heading "Origin of Qingming Festival" [level=2] [ref=e140]
+            - text: It is said that the Qingming Festival was originally held to commemorate a loyal man living in the Spring and Autumn Period (770 - 476 BC), named Jie Zitui. Jie cut a piece of meat from his own leg in order to save his hungry lord who was forced to go into exile when the crown was in jeopardy. The lord came back to his position nineteen years later, and forgot Jie Zitui but later felt ashamed and decided to reward him. However, Jie had blocked himself up in a mountain with his mother. In order to find Jie, the lord ordered that the mountain should be set on fire. Later Jie was found dead with his mother. In order to commemorate Jie, the lord ordered that the day Jie died was Hanshi (Cold Food) Festival - the day that only cold food could be eaten.
+            - paragraph
+            - table [ref=e141]:
+              - rowgroup [ref=e142]:
+                - row "Spring Outing during Qingming Festival" [ref=e143]:
+                  - cell "Spring Outing during Qingming Festival" [ref=e144]:
+                    - img "Spring Outing during Qingming Festival" [ref=e145]
+                - row "Spring Outing during Qingming Festival" [ref=e146]:
+                  - cell "Spring Outing during Qingming Festival" [ref=e147]:
+                    - generic [ref=e149]: Spring Outing during Qingming Festival
+            - text: The second year, when the lord went to the mountain to sacrifice to Jie, he found willows revived, so he gave instructions that the day after Hanshi Festival was to be Qingming Festival. Later, the two festivals were combined as one.
+            - heading "What Chinese People Do on Qingming Festival?" [level=2] [ref=e152]
+            - text: Qingming Festival is a time of many different activities, among which the main ones are tomb sweeping, taking a spring outing, and flying kites. Some other lost customs like wearing willow branches on the head and riding on swings have added infinite joy in past days. It is a combination of sadness and happiness.
+            - text: Tomb Sweeping
+            - text: Tomb sweeping is regarded as the most important custom in the Qingming Festival from which the name of Tomb-sweeping day is got. Cleaning the tomb and paying respect to the dead person with offerings are the two important parts of remembering the past relatives. Weeds around the tomb are cleared away and fresh soil is added to show care of the dead. The dead person's favourite food and wine are taken to sacrifice to them, along with paper resembling money. This is all burned in the hope that the deceased are not lacking food and money. Kowtow before the tablets set up for the dead are made.
+            - text: Today, with cremation taking over from burying, the custom has been extremely simplified in cities. Only flowers are presented to the dead relatives and revolutionary martyrs. No matter how respect is shown, good prayers for the deceased are expressed.
+            - text: Spring Outing
+            - text: Not only is it a day for commemorating the dead, is it also a time for people to enjoy themselves. During March, everything in nature takes on a new look, as trees turn green, flowers blossom, and the sun shines brightly. It is a fine time to go out and to appreciate the beautiful scenes of nature. This custom can be traced back to the Tang Dynasty (618 - 907) and followed by each dynasty later till today. So visitors can be seen everywhere during the month of the festival.
+            - text: Spring outings not only add joy to life but also promote a healthy body and mind.
+            - text: Flying Kites
+            - text: Flying kites is an activity favored by many people during the Qingming Festival. Kites are not only flown during the day time but also in the evening. Little lanterns are tied to the kite or to the string that holds the kite. And when the kite is flying in the sky, the lanterns look like twinkling stars that add unique scenery to the sky during the night. What makes flying kites during this day special is that people cut the string while the kite is in the sky to let it fly free. It is said this brings good luck and that diseases can be eliminated by doing this.
+            - text: All in all, the Qingming Festival is an occasion of unique characteristics, integrating sorrowful tears to the dead with the continuous laughter from the spring outing.
+          - generic [ref=e153]: "- Last updated on Nov. 06, 2025 by Gabby Li -"
+        - generic [ref=e154]:
+          - generic [ref=e288]:
+            - text: "Q & A Search:"
+            - textbox [ref=e289]
+            - button "Submit" [ref=e290] [cursor=pointer]
+          - generic [ref=e291]: Questions & Answers on Qingming Festival
+          - generic [ref=e292]:
+            - generic [ref=e293]:
+              - generic [ref=e294]:
+                - text: Asked by Asfa from United States | Mar. 16, 2026 07:36
+                - generic [ref=e295] [cursor=pointer]:
+                  - img [ref=e296]
+                  - text: Reply
+              - generic [ref=e297]: April 4-8
+              - generic [ref=e298]: We are traveling to Beijing. I came across your page and noticed the qingming festival falls that time. Should be cancel our plans and most tourist places will be closed? We wanted to do the Tiananmen Square, Forbidden City, Park sunset, Great Wall Summer Palace, Hutongs + Peking Duck dinner
+              - generic [ref=e299]:
+                - generic [ref=e300]: Answers (1)
+                - generic [ref=e301]:
+                  - generic [ref=e302]:
+                    - text: Answered by Elena Mar. 16, 2026 18:55
+                    - generic [ref=e303]:
+                      - generic [ref=e304] [cursor=pointer]:
+                        - img [ref=e305]
+                        - text: "0"
+                      - generic [ref=e306] [cursor=pointer]:
+                        - img [ref=e307]
+                        - text: "0"
+                      - generic [ref=e308] [cursor=pointer]:
+                        - img [ref=e309]
+                        - text: Reply
+                  - generic [ref=e310]: "Tourist places won't be closed but will be crowded during the 3-day holiday from April 4-6. Not only these famous attractions, but also the public transport will be busier than usual. Mini group Beijing tours are recommended for hassel-free trips: https://www.travelchinaguide.com/package/beijing.htm"
+            - generic [ref=e311]:
+              - generic [ref=e312]:
+                - text: Asked by Ren Houpai from China | Jun. 10, 2024 05:02
+                - generic [ref=e313] [cursor=pointer]:
+                  - img [ref=e314]
+                  - text: Reply
+              - generic [ref=e315]: Drinking liquor during Qingming.
+              - generic [ref=e316]: Is it OK to drink a lot of liquor during Qingming and get tipsy with neighbors and relatives, as well as eat a lot of delicious fat pork?
+              - generic [ref=e317]:
+                - generic [ref=e318]: Answers (1)
+                - generic [ref=e319]:
+                  - generic [ref=e320]:
+                    - text: Answered by Keith Jun. 11, 2024 18:23
+                    - generic [ref=e321]:
+                      - generic [ref=e322] [cursor=pointer]:
+                        - img [ref=e323]
+                        - text: "0"
+                      - generic [ref=e324] [cursor=pointer]:
+                        - img [ref=e325]
+                        - text: "0"
+                      - generic [ref=e326] [cursor=pointer]:
+                        - img [ref=e327]
+                        - text: Reply
+                  - generic [ref=e328]: It's OK and some places in China have the custom of drinking liguor on Qingming Festival. The most important thing is to visit the grave of passed families.
+            - generic [ref=e329]:
+              - generic [ref=e330]:
+                - text: Asked by Daniel from United States | Mar. 25, 2022 20:07
+                - generic [ref=e331] [cursor=pointer]:
+                  - img [ref=e332]
+                  - text: Reply
+              - generic [ref=e333]: Should you wish "happy Qingming Festival" to a Chinese individual?
+              - generic [ref=e335]:
+                - generic [ref=e336]: Answers (3)
+                - generic [ref=e337]:
+                  - generic [ref=e338]:
+                    - text: Answered by Crystal Zhang Mar. 25, 2022 22:16
+                    - generic [ref=e339]:
+                      - generic [ref=e340] [cursor=pointer]:
+                        - img [ref=e341]
+                        - text: "2"
+                      - generic [ref=e342] [cursor=pointer]:
+                        - img [ref=e343]
+                        - text: "0"
+                      - generic [ref=e344] [cursor=pointer]:
+                        - img [ref=e345]
+                        - text: Reply
+                  - generic [ref=e346]: We won't say that, after all, this festival is to remember and miss our ancestors. so would you say Happy Memorial Day"
+                - generic [ref=e347]:
+                  - generic [ref=e348]:
+                    - text: Answered by Chris Apr. 04, 2023 03:00
+                    - generic [ref=e349]:
+                      - generic [ref=e350] [cursor=pointer]:
+                        - img [ref=e351]
+                        - text: "2"
+                      - generic [ref=e352] [cursor=pointer]:
+                        - img [ref=e353]
+                        - text: "0"
+                      - generic [ref=e354] [cursor=pointer]:
+                        - img [ref=e355]
+                        - text: Reply
+                  - generic [ref=e356]: Yes, in the United States, people would say "Happy Memorial Day". In fact, it is a large day of shopping as there are a lot of special prices on this day.
+                - generic [ref=e357]:
+                  - generic [ref=e358]:
+                    - text: Answered by Naomi Mar. 13, 2024 18:34
+                    - generic [ref=e359]:
+                      - generic [ref=e360] [cursor=pointer]:
+                        - img [ref=e361]
+                        - text: "4"
+                      - generic [ref=e362] [cursor=pointer]:
+                        - img [ref=e363]
+                        - text: "1"
+                      - generic [ref=e364] [cursor=pointer]:
+                        - img [ref=e365]
+                        - text: Reply
+                  - generic [ref=e366]: I am from China. Qing Ming is not a happy festival. Because it's a day for remembering the death.
+            - generic [ref=e367]:
+              - generic [ref=e368]:
+                - text: Asked by Aspen Leger from USA | Apr. 08, 2021 18:04
+                - generic [ref=e369] [cursor=pointer]:
+                  - img [ref=e370]
+                  - text: Reply
+              - generic [ref=e371]: Can you still celebrate The Qingming festival even if you aren't living in China or near it?
+              - generic [ref=e373]:
+                - generic [ref=e374]: Answers (1)
+                - generic [ref=e375]:
+                  - generic [ref=e376]:
+                    - text: Answered by Pan Yingshu Apr. 12, 2021 17:30
+                    - generic [ref=e377]:
+                      - generic [ref=e378] [cursor=pointer]:
+                        - img [ref=e379]
+                        - text: "0"
+                      - generic [ref=e380] [cursor=pointer]:
+                        - img [ref=e381]
+                        - text: "0"
+                      - generic [ref=e382] [cursor=pointer]:
+                        - img [ref=e383]
+                        - text: Reply
+                  - generic [ref=e384]: I will still celebrate Tomb Sweeping Day, no matter where I am.
+            - generic [ref=e385]:
+              - generic [ref=e386]:
+                - text: Asked by Yean from USA | Mar. 27, 2021 15:10
+                - generic [ref=e387] [cursor=pointer]:
+                  - img [ref=e388]
+                  - text: Reply
+              - generic [ref=e389]: QingMing for recently departed
+              - generic [ref=e390]: My brother-in-law just passed last Nov 2020. Do I follow QingMing traditions for him?
+              - generic [ref=e391]:
+                - generic [ref=e392]: Answers (1)
+                - generic [ref=e393]:
+                  - generic [ref=e394]:
+                    - text: Answered by Cherry Mar. 28, 2021 23:54
+                    - generic [ref=e395]:
+                      - generic [ref=e396] [cursor=pointer]:
+                        - img [ref=e397]
+                        - text: "0"
+                      - generic [ref=e398] [cursor=pointer]:
+                        - img [ref=e399]
+                        - text: "0"
+                      - generic [ref=e400] [cursor=pointer]:
+                        - img [ref=e401]
+                        - text: Reply
+                  - generic [ref=e402]: Generally speaking, you should.
+          - link "More Questions & Answers" [ref=e404] [cursor=pointer]:
+            - /url: https://answers.travelchinaguide.com/tips-11279.htm
+          - generic [ref=e405]:
+            - generic [ref=e406]: Ask a Question
+            - generic [ref=e407]:
+              - generic [ref=e408]: Question Summary (100 characters)
+              - textbox [ref=e410]
+              - generic [ref=e411]: Details (optional) (2,000 characters)
+              - textbox [ref=e413]
+              - generic [ref=e414]:
+                - generic [ref=e415]:
+                  - text: Name
+                  - textbox [ref=e416]
+                - generic [ref=e417]:
+                  - text: Country
+                  - textbox [ref=e418]
+                - generic [ref=e419]:
+                  - text: Email
+                  - textbox "Your Email Address" [ref=e420]
+              - button [ref=e422] [cursor=pointer]
+      - paragraph
+  - generic [ref=e268]:
+    - link "Tripadvisor Travelers' Choice 2025" [ref=e423] [cursor=pointer]:
+      - /url: /about-us/trip-advisor-reviews.htm
+      - img "Tripadvisor Travelers' Choice 2025" [ref=e426]
+    - generic [ref=e270]:
+      - paragraph [ref=e271]: Featured On
+      - generic [ref=e427]:
+        - img "National Geographic" [ref=e429]
+        - img "The New York Times" [ref=e431]
+        - img "Lonely Planet" [ref=e433]
+        - img "The Telegraph" [ref=e435]
+        - img "USA Today" [ref=e437]
+  - generic [ref=e272]:
+    - generic [ref=e273]:
+      - link "About Us" [ref=e275] [cursor=pointer]:
+        - /url: /aboutus.htm
+      - link "Contact Us" [ref=e277] [cursor=pointer]:
+        - /url: /contact_us.htm
+      - generic [ref=e278]:
+        - link "Privacy" [ref=e279] [cursor=pointer]:
+          - /url: /privacy.htm
+        - text: "|"
+      - link "Loyalty & Referral" [ref=e281] [cursor=pointer]:
+        - /url: /loyalty-and-referral-program.htm
+      - link "Customer Service" [ref=e283] [cursor=pointer]:
+        - /url: /tour/service.htm
+      - link "Affiliate" [ref=e285] [cursor=pointer]:
+        - /url: /affiliate-program.htm
+    - generic [ref=e287]: Copyright © 1998-2026 All rights reserved.

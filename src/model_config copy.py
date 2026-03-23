@@ -166,12 +166,6 @@ class ModelConfig:
             "litellm_input_model_name": "xai/grok-code-fast-1",
         },
         # Qwen models
-        "qwen3-5-plus": {
-            "provider": "qwen",
-            "api_key_var": "DASHSCOPE_API_KEY",
-            "base_url_var": "DASHSCOPE_BASE_URL",
-            "litellm_input_model_name": "dashscope/qwen3.5-plus",
-        },
         "qwen-3-coder-plus": {
             "provider": "qwen",
             "api_key_var": "DASHSCOPE_API_KEY",

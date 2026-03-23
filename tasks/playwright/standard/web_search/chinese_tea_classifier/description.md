@@ -1,5 +1,14 @@
 # Chinese Tea Detective: v6 - Wikipedia Link Chain (20 Turns Required)
 
+## Tools
+
+IMPORTANT: The Playwright MCP server is pre-configured and already registered.
+Use the available `browser_*` tools directly.
+
+Do NOT spawn a subprocess or manually start the MCP process.
+
+---
+
 ## Task Overview
 
 Starting from https://en.wikipedia.org/wiki/Chinese_tea, navigate through Wikipedia's tea articles using ONLY page links to identify a mystery tea sample.

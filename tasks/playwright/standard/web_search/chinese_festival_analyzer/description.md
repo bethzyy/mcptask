@@ -1,4 +1,4 @@
-# Chinese Festival Navigator: v138 - Wikipedia Link-Chain Exploration
+# Chinese Festival Navigator: v139 - Wikipedia Link-Chain Exploration
 
 ## Tools
 
@@ -17,6 +17,8 @@ Identify the Chinese traditional festival that meets ALL 6 criteria for a resear
 
 **EXPLORATION REQUIREMENT**: You must explore Wikipedia by following links from one page to another. This is a link-chain exploration task - each new page should be reached by clicking links from your current page, not by direct URL navigation.
 
+**⚠️ NO PRIOR KNOWLEDGE**: All information must come from Wikipedia pages you visit. You cannot rely on your existing knowledge about Chinese festivals. Every claim must be backed by a quote from a Wikipedia page.
+
 ---
 
 ## Task Phases (CRITICAL - Follow in Order)
@@ -28,8 +30,8 @@ Identify the Chinese traditional festival that meets ALL 6 criteria for a resear
 4. Build a chain of page visits by following links (do not type URLs directly)
 5. **Record every unique page** (title + URL) - these will be output in `<page_chain>`
 
-**Goal**: Visit 15+ unique Wikipedia pages to discover candidate festivals.
-**Output**: All visited pages will be listed in `<page_chain>` tag (need ≥4 URLs to pass verification).
+**Goal**: Visit 20+ unique Wikipedia pages to discover candidate festivals.
+**Output**: All visited pages will be listed in `<page_chain>` tag (need ≥20 URLs to pass verification).
 
 ---
 

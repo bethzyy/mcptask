@@ -127,7 +127,7 @@ def main():
 
     # Load arguments and environment variables
     args = parser.parse_args()
-    load_dotenv(dotenv_path=".mcp_env", override=False)
+    load_dotenv(dotenv_path=".mcp_env", override=True)
 
     # Validate k parameter and exp-name requirement
     if args.k > 1 and args.exp_name is None:

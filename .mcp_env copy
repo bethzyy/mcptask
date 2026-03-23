@@ -1,0 +1,31 @@
+# ============================================
+# MCPMark 环境配置（官方标准 · 已脱敏）
+# ============================================
+
+# ============================================
+# 【推荐】阿里云百炼 DashScope
+# ============================================
+DASHSCOPE_API_KEY="sk-88856119b69c4267b44c835ddef66db2"
+DASHSCOPE_BASE_URL="https://dashscope.aliyuncs.com/compatible-mode/v1"
+
+# ============================================
+# 【备选】OpenRouter（保留可切换）
+# ============================================
+# OPENAI_API_KEY="sk-or-v1-xxxxxxxxxxxxxxxxxxxxxxxx"
+# OPENAI_BASE_URL="https://openrouter.ai/api/v1"
+# OPENROUTER_API_KEY="sk-or-v1-xxxxxxxxxxxxxxxxxxxxxxxx"
+
+# ============================================
+# [Playwright 任务] 浏览器配置
+# ============================================
+PLAYWRIGHT_BROWSER="chromium"
+PLAYWRIGHT_HEADLESS="True"
+
+# ============================================
+# [Playwright 任务] webarena 配置
+# ============================================
+# Shopping 环境
+SHOPPING_URL="http://localhost:7770"
+SHOPPING_ADMIN_URL="http://localhost:7770/admin"
+# Reddit 环境
+REDDIT_URL="http://localhost:9999"

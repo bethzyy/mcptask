@@ -1,0 +1,104 @@
+Based on my research of all 6 festival candidates, I'll now compile the Stage 1a table and proceed with verification.
+
+```
+<stage1a>
+| ID | Festival | Food | Appearance | Taste | Region | Era |
+| F1 | Qingming | qingtuan (green glutinous rice balls) | Green (mugwort) | SWEET (red bean paste) - TRAP | Nationwide | Pre-Tang (2500+ years) |
+| F2 | Renri | Seven vegetable soup | Mixed vegetables | Savory | Nationwide | Han Dynasty (Pre-Tang) |
+| F3 | Shangsi | Purification herb dishes | Unknown | Unknown | Nationwide | Zhou Dynasty (Pre-Tang) |
+| F4 | Hanshi | Cold food (lilao congee) | Unknown | SWEET (malt sugar) | North China (Shanxi) | Pre-Tang (7th century BC) |
+| F5 | Dragon Boat | zongzi (wrapped rice dumplings) | Green (bamboo/reed leaves) | Mixed (savory in south, sweet in north) | Jiangnan/South China | Pre-Tang (Warring States) |
+| F6 | Chunlong | Dragon beard noodles | White/yellow | Unknown | Nationwide | Yuan Dynasty (POST-Tang) - FAILS |
+
+Pages visited: 6
+</stage1a>
+```
+
+```
+<stage1b>
+Geographic: Dragon Boat Festival originated in southern China, specifically the state of Chu (Jiangnan region) - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+Historical: Dragon Boat Festival dates to Warring States period (about 600-200 BC), well before Tang Dynasty (618 CE) - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+</stage1b>
+```
+
+```
+<stage1c>
+Festival: Dragon Boat Festival
+Food: zongzi (wrapped rice dumplings)
+
+All 6 Conditions:
+1. Appearance: Green - Wrapped in green bamboo/reed leaves - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+2. Taste: NOT sweet - Southern regions prefer savory zongzi with meat and eggs - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+3. Symbolism: Health/purification - Warding off evil, disease, and bad luck; realgar wine as antidote - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+4. Geographic: Jiangnan (state of Chu, southern China) - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+5. Historical: Before Tang Dynasty - Warring States period (600-200 BC) - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+6. Event Connection: Qu Yuan's exile/demotion - Qu Yuan was a poet and minister of Chu who was banished for opposing alliance with Qin, then committed suicide - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+
+Why others failed:
+- F1 (Qingming): qingtuan is SWEET (red bean paste) - fails condition 2
+- F2 (Renri): No poet demotion connection found
+- F3 (Shangsi): No poet demotion connection (Wang Xizhi was calligrapher, not demoted)
+- F4 (Hanshi): Food is SWEET (malt sugar); Jie Zitui was nobleman, not poet
+- F6 (Chunlong): Yuan Dynasty (after Tang) - fails condition 5
+</stage1c>
+```
+
+Now proceeding to Stage 2 - finding a poem by Qu Yuan expressing political frustration.
+
+```
+<stage2a>
+| Poem Title | Poet | Dynasty | Source URL | Emotion Type |
+| Li Sao (On Encountering Trouble) | Qu Yuan | Warring States/Chu | https://en.wikipedia.org/wiki/Qu_Yuan | Political frustration (exile, demotion) |
+| Jiu Zhang (Nine Chapters) | Qu Yuan | Warring States/Chu | https://en.wikipedia.org/wiki/Qu_Yuan | Political frustration |
+| Jiu Ge (Nine Songs) | Qu Yuan | Warring States/Chu | https://en.wikipedia.org/wiki/Qu_Yuan | Mixed |
+</stage2a>
+```
+
+```
+<stage2b>
+Poem Title: Li Sao (On Encountering Trouble/Sorrow)
+Poet: Qu Yuan
+Festival Connection: Qu Yuan is commemorated during Dragon Boat Festival; he drowned himself in Miluo River on the 5th day of 5th lunar month - https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+Political Frustration Evidence: Qu Yuan was banished/exiled for opposing the alliance with Qin and accused of treason; during exile he wrote poetry expressing his despair and loyalty - https://en.wikipedia.org/wiki/Qu_Yuan
+</stage2b>
+```
+
+Now Stage 3 - finding Qu Yuan's political demotion event.
+
+```
+<stage3a>
+| Event | Year | Type | Source URL |
+| Qu Yuan's banishment/exile from Chu | c. 340-278 BC | Demotion/Exile | https://en.wikipedia.org/wiki/Qu_Yuan |
+| Qu Yuan's suicide in Miluo River | 278 BC | Death after exile | https://en.wikipedia.org/wiki/Qu_Yuan |
+</stage3a>
+```
+
+```
+<stage3b>
+Event: Qu Yuan was banished/exiled from the state of Chu for opposing the king's alliance with Qin and was accused of treason
+Year: c. 340-278 BC (during Warring States period)
+Poet: Qu Yuan (matches Stage 2)
+Evidence of Demotion: "Qu served in high offices. However, when the king decided to ally with the increasingly powerful state of Qin, Qu was banished for opposing the alliance and even accused of treason. During his exile, Qu Yuan wrote a great deal of poetry." - https://en.wikipedia.org/wiki/Qu_Yuan
+</stage3b>
+```
+
+```
+<stage4>
+Chain: Dragon Boat Festival → Li Sao by Qu Yuan → Qu Yuan's banishment/exile c. 340-278 BC
+
+Consistency:
+- Festival-Poem match: ✓ (Dragon Boat Festival commemorates Qu Yuan)
+- Poet-Event match: ✓ (Qu Yuan was banished/exiled, wrote Li Sao during exile)
+</stage4>
+```
+
+```
+<answer>
+Chain: Dragon Boat Festival → Li Sao by Qu Yuan → Qu Yuan's banishment/exile c. 340-278 BC
+
+Stage 1: Dragon Boat Festival - Geographic: Jiangnan (state of Chu, southern China), Historical: Warring States period (600-200 BC, pre-Tang)
+Stage 2: Li Sao (On Encountering Trouble/Sorrow) by Qu Yuan (political frustration from exile/demotion)
+Stage 3: Qu Yuan's banishment from Chu for opposing alliance with Qin, c. 340-278 BC (demotion/exile)
+Stage 4: Chain verified - Festival commemorates Qu Yuan, who wrote Li Sao expressing political frustration during his exile after being banished
+</answer>
+```
