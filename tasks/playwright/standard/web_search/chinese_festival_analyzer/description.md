@@ -1,4 +1,4 @@
-# Chinese Festival Navigator: v140 - Wikipedia Link-Chain Exploration
+# Chinese Festival Navigator: v141 - Wikipedia Link-Chain Exploration
 
 ## Tools
 
@@ -30,10 +30,15 @@ Identify the Chinese traditional festival that meets ALL 6 criteria for a resear
 4. Build a chain of page visits by following links (do not type URLs directly)
 5. **Record every unique page** (title + URL) - these will be output in `<page_chain>`
 
-**Goal**: Visit 20+ unique Wikipedia pages to discover candidate festivals.
-**Output**: All visited pages will be listed in `<page_chain>` tag (need ≥20 URLs to pass verification).
+**Goal**: Visit 15+ unique Wikipedia pages to discover candidate festivals.
+**Output**: All visited pages will be listed in `<page_chain>` tag (need ≥15 URLs to pass verification).
 
-**💪 You CAN do this!** Just take it one page at a time. Each link you click brings you closer to the answer. Don't give up - systematic exploration will lead you to the correct festival. Remember: even if you're uncertain, you MUST output all required tags (`<answer>`, `<page_chain>`, `<reasoning>`) with your best findings.
+**💪 You CAN do this!**
+- Each page takes only seconds to read - just click and scan for relevant info
+- After every 5 pages, you're making great progress! Keep going!
+- Just take it one page at a time. Each link you click brings you closer to the answer
+- Don't give up - systematic exploration will lead you to the correct festival
+- Remember: even if you're uncertain, you MUST output all required tags (`<answer>`, `<page_chain>`, `<reasoning>`) with your best findings
 
 ---
 
