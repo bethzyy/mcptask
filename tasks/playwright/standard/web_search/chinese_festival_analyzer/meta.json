@@ -1,9 +1,9 @@
 {
   "task_id": "chinese_festival_analyzer",
-  "task_name": "Chinese Festival Navigator v139",
+  "task_name": "Chinese Festival Navigator v140",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v139: Link-Chain Exploration - Navigate through Wikipedia to identify a Chinese traditional festival based on multiple criteria.",
+  "description": "v140: Link-Chain Exploration - Navigate through Wikipedia to identify a Chinese traditional festival based on multiple criteria.",
   "author": "mcpmark",
   "created_at": "2026-03-23",
   "difficulty": "L3",
@@ -11,7 +11,7 @@
     "link-chain",
     "wikipedia",
     "multi-criteria",
-    "v139",
+    "v140",
     "exploration"
   ],
   "mcp": [
@@ -22,6 +22,6 @@
     "stateContent": null,
     "stateUrl": null,
     "stateOriginalUrl": "https://en.wikipedia.org/wiki/List_of_festivals_in_China",
-    "version": "v139"
+    "version": "v140"
   }
 }
