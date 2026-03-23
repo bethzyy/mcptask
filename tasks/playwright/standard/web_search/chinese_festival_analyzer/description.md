@@ -1,4 +1,4 @@
-# Chinese Festival Navigator: v137 - Wikipedia Link-Chain Exploration
+# Chinese Festival Navigator: v138 - Wikipedia Link-Chain Exploration
 
 ## Tools
 
@@ -31,9 +31,23 @@ Identify the Chinese traditional festival that meets ALL 6 criteria for a resear
 **Goal**: Visit 15+ unique Wikipedia pages to discover candidate festivals.
 **Output**: All visited pages will be listed in `<page_chain>` tag (need ≥4 URLs to pass verification).
 
+---
+
+## 🚫 CRITICAL TRAPS (DO NOT SELECT)
+
+| Festival | Why Wrong |
+|----------|-----------|
+| Dragon Boat Festival | Qu Yuan **SUICIDE** by drowning |
+| Cold Food Festival | Jie Zitui **NOT A POET**, died in fire, no demotion |
+| Qingming Festival | Qingtuan is **SWEET** |
+| Lantern Festival | Yuanxiao is **SWEET** |
+| Mid-Autumn Festival | Mooncake is **SWEET** |
+
+---
+
 ### Phase 2: Verification
 For each candidate festival you discover:
-1. **🚫 CHECK TRAP TABLE FIRST**: If the festival name matches ANY festival in the "CRITICAL TRAPS" table below → **STOP IMMEDIATELY** → this festival is **DISQUALIFIED** → return to Phase 1
+1. **🚫 CHECK TRAP TABLE ABOVE**: If the festival name matches ANY festival in the TRAP table → **STOP IMMEDIATELY** → this festival is **DISQUALIFIED** → return to Phase 1
 2. Check against ALL 6 criteria (Food Color, Food Taste, Symbolism, Region, Era, Poet)
 3. **Collect evidence** for each criterion (quote + source URL) - these will be output in `<reasoning>`
 4. If ANY criterion fails → this festival is WRONG → return to Phase 1
@@ -78,18 +92,6 @@ Phase 1 (Explore) → Phase 2 (Verify) → Phase 3 (Output)
 | 4 | Region | Jiangnan OR North China Plain |
 | 5 | Era | Before Tang Dynasty (618 CE) |
 | 6 | Poet Connection | POLITICAL DEMOTION (exiled, forced out of office) - NOT suicide, NOT death by fire |
-
----
-
-## CRITICAL TRAPS (DO NOT SELECT)
-
-| Festival | Why Wrong |
-|----------|-----------|
-| Dragon Boat Festival | Qu Yuan **SUICIDE** by drowning |
-| Cold Food Festival | Jie Zitui **NOT A POET**, died in fire, no demotion |
-| Qingming Festival | Qingtuan is **SWEET** |
-| Lantern Festival | Yuanxiao is **SWEET** |
-| Mid-Autumn Festival | Mooncake is **SWEET** |
 
 ---
 
