@@ -1,4 +1,4 @@
-# Chinese Festival Navigator: v136 - Wikipedia Link-Chain Exploration
+# Chinese Festival Navigator: v137 - Wikipedia Link-Chain Exploration
 
 ## Tools
 
@@ -33,10 +33,10 @@ Identify the Chinese traditional festival that meets ALL 6 criteria for a resear
 
 ### Phase 2: Verification
 For each candidate festival you discover:
-1. Check against ALL 6 criteria (Food Color, Food Taste, Symbolism, Region, Era, Poet)
-2. **Collect evidence** for each criterion (quote + source URL) - these will be output in `<reasoning>`
-3. If ANY criterion fails → this festival is WRONG → return to Phase 1
-4. **CHECK TRAP TABLE**: If the festival name matches ANY festival in the "CRITICAL TRAPS" table below → this festival is **DISQUALIFIED** → return to Phase 1
+1. **🚫 CHECK TRAP TABLE FIRST**: If the festival name matches ANY festival in the "CRITICAL TRAPS" table below → **STOP IMMEDIATELY** → this festival is **DISQUALIFIED** → return to Phase 1
+2. Check against ALL 6 criteria (Food Color, Food Taste, Symbolism, Region, Era, Poet)
+3. **Collect evidence** for each criterion (quote + source URL) - these will be output in `<reasoning>`
+4. If ANY criterion fails → this festival is WRONG → return to Phase 1
 5. Only proceed to Phase 3 when you find a festival that passes ALL 6 criteria
 
 **Output**: Evidence for each criterion will be listed in `<reasoning>` tag (need ≥4/6 criteria to pass verification).

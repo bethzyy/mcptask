@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Verification script for v136 - Link-Chain Exploration.
+Verification script for v137 - Link-Chain Exploration.
 Checks:
 1. Correct festival selection in <answer> tag
 2. <page_chain> contains at least 4 Wikipedia URLs
@@ -166,9 +166,9 @@ def check_reasoning_evidence(text):
 
 
 def verify(wd):
-    """Main verification function - v136."""
+    """Main verification function - v137."""
     print("=" * 70)
-    print("| VERIFICATION: v136 - Link-Chain Exploration")
+    print("| VERIFICATION: v137 - Link-Chain Exploration")
     print("=" * 70)
 
     msgs = parse_messages(wd)
