@@ -1,17 +1,17 @@
 {
   "task_id": "chinese_festival_analyzer",
-  "task_name": "Chinese Festival Navigator v141",
+  "task_name": "Chinese Festival Navigator v127",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v141: Link-Chain Exploration - Navigate through Wikipedia to identify a Chinese traditional festival based on multiple criteria.",
+  "description": "v127: Link-Chain Exploration - Thorough Wikipedia exploration encouraged. Model must identify festival meeting 6 criteria while avoiding 5 traps. Only correct answer is verified.",
   "author": "mcpmark",
   "created_at": "2026-03-23",
   "difficulty": "L3",
   "tags": [
     "link-chain",
     "wikipedia",
-    "multi-criteria",
-    "v141",
+    "trap-avoidance",
+    "v127",
     "exploration"
   ],
   "mcp": [
@@ -22,6 +22,8 @@
     "stateContent": null,
     "stateUrl": null,
     "stateOriginalUrl": "https://en.wikipedia.org/wiki/List_of_festivals_in_China",
-    "version": "v141"
+    "version": "v127",
+    "correct_answers": ["shangsi", "renri"],
+    "trap_candidates": ["dragon_boat", "cold_food", "qingming", "lantern", "mid_autumn"]
   }
 }

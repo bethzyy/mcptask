@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-Verification for Chinese Tea Classification Task v6.
-Correct answer: Da Hong Pao (大红袍) - Wuyi Rock Oolong
+Verification for Chinese Tea Classification Task v22.
+Correct answer: Huangjin Gui - Golden Osmanthus
 
-v6 Design:
-- Wikipedia Link-Chain Navigation starting from Chinese_tea
-- Step-by-step output requirement (20+ turns)
-- Name trap: "Big Red Robe" sounds like Black Tea but is Oolong
+v22 Design:
+- Requires 20+ Wikipedia page visits
+- Fragrance trap: Osmanthus vs Orchid
+- Tie Guan Yin = TRAP (has orchid, not osmanthus)
+- STRICT: Must use <answer> tag (no fallback)
+- CORRECT set narrowed to unique identifiers only (removed generic "golden osmanthus")
+- Added more trap variations (tieguanyin tea, tianguanyin)
+- Extract URLs from both tool outputs AND tool call arguments
+- Fixed: Correct answer takes priority over trap mentions (model may explain reasoning)
 """
 import sys
 import json
@@ -14,57 +19,48 @@ import os
 import re
 from pathlib import Path
 
-# Correct answer: Da Hong Pao (大红袍)
-CORRECT_NAMES = {
-    "da hong pao", "大红袍", "dahongpao", "big red robe",
-    "ta hung pao", "da hong bao"
+# Correct: Huangjin Gui (only unique identifiers, avoid generic words like "golden")
+CORRECT = {
+    "huangjin gui", "huang jin gui", "huangjgui",
+    "huangjingui"
 }
 
-# Correct category: Oolong (乌龙茶)
-CORRECT_CATEGORY = {
-    "oolong", "乌龙茶", "乌龙", "wulong", "wu long",
-    "semi-oxidized", "半发酵", "rock tea", "岩茶"
+# TRAP: Tie Guan Yin (orchid, not osmanthus)
+TRAP_TIE_GUAN_YIN = {
+    "tie guan yin", "ti kuan yin", "tieguanyin",
+    "iron goddess", "iron bodhisattva", "tgy",
+    "tieguanyin tea", "tianguanyin"
 }
 
-# Trap answers - Black Teas
-TRAP_BLACK_TEAS = set([
-    "lapsang souchong", "正山小种", "jin jun mei", "金骏眉",
-    "tanyang gongfu", "坦洋工夫", "dian hong", "滇红",
-])
-
-# Phrases indicating model chose Black Tea as final answer (only in answer section)
-TRAP_ANSWER_PHRASES = [
-    "category: black tea", "category: black",
-    "type: black tea", "type: black"
-]
-
-MIN_TURNS = 20
+MIN_PAGES = 20
 
 
 def get_work_dir():
+    p = os.getenv("MCP_MESSAGES")
+    if p and Path(p).exists():
+        return Path(p).parent
+    return Path(".")
+
+
+def parse_messages(wd):
+    """Parse messages and extract text + Wikipedia URLs."""
+    f = wd / "messages.json"
+    if not f.exists():
+        return {"ok": False, "text": "", "urls": set()}
+
     try:
-        p = os.getenv("MCP_MESSAGES")
-        if p and Path(p).exists():
-            return Path(p).parent
-        return Path(".")
-    except Exception as e:
-        print(f"| [ERROR] Failed to get work dir: {e}")
-        return Path(".")
-
-
-def parse_msgs(wd):
-    try:
-        f = wd / "messages.json"
-        if not f.exists():
-            return {"ok": False, "text": "", "turns": 0}
-
         with open(f, 'r', encoding='utf-8') as file:
             data = json.load(file)
+    except (json.JSONDecodeError, IOError) as e:
+        print(f"| [ERROR] Failed to parse messages.json: {e}")
+        return {"ok": False, "text": "", "urls": set()}
 
-        text_parts = []
-        urls = []
+    text_parts = []
+    urls = set()
 
-        for m in data:
+    for m in data:
+        try:
+            # Get assistant text
             if m.get("role") == "assistant":
                 c = m.get("content", "")
                 if isinstance(c, str):
@@ -74,160 +70,127 @@ def parse_msgs(wd):
                         if isinstance(i, dict):
                             if i.get("type") in ("text", "output_text"):
                                 text_parts.append(i.get("text", ""))
-                        elif isinstance(i, str):
-                            text_parts.append(i)
 
+            # Get URLs from tool outputs
             if m.get("role") == "tool" or m.get("type") == "function_call_output":
                 content = m.get("content", "") or m.get("output", "")
                 if isinstance(content, str):
-                    found_urls = re.findall(r'https?://[^\s<>"\']+', content)
-                    urls.extend(found_urls)
+                    found = re.findall(r'https?://en\.wikipedia\.org/wiki/[^\s<>"\']+', content)
+                    urls.update(found)
 
-        full_text = " ".join(text_parts)
-        turn_markers = re.findall(r'===\s*TURN\s*\d+', full_text, re.IGNORECASE)
-        turn_count = len(turn_markers)
+            # Also extract URLs from tool call arguments (e.g., browser_navigate)
+            tool_calls = m.get("tool_calls", [])
+            if isinstance(tool_calls, list):
+                for tc in tool_calls:
+                    if isinstance(tc, dict):
+                        args = tc.get("function", {}).get("arguments", "")
+                        if isinstance(args, str):
+                            found = re.findall(r'https?://en\.wikipedia\.org/wiki/[^\s<>"\']+', args)
+                            urls.update(found)
+        except Exception as e:
+            # Skip malformed message, continue processing
+            continue
 
-        if turn_count < 5:
-            alt_turns = re.findall(r'TURN\s*\d+', full_text, re.IGNORECASE)
-            turn_count = max(turn_count, len(alt_turns))
-
-        wikipedia_urls = [u for u in urls if 'wikipedia.org' in u.lower()]
-        if turn_count < 5 and len(wikipedia_urls) > 0:
-            turn_count = len(set(wikipedia_urls))
-
-        return {"ok": True, "text": full_text, "turns": turn_count}
-    except Exception as e:
-        print(f"| [ERROR] Failed to parse messages: {e}")
-        return {"ok": False, "text": "", "turns": 0}
+    return {"ok": True, "text": " ".join(text_parts), "urls": urls}
 
 
-def parse_ans(txt):
-    r = {"f": [], "e": "", "answer_text": ""}
-    try:
-        m = re.search(r"<answer>(.+?)</answer>", txt, re.DOTALL | re.IGNORECASE)
-        if m:
-            r["answer_text"] = m.group(1).strip()
-            r["f"] = [x.strip() for x in r["answer_text"].split("\n") if x.strip()]
-
-        m = re.search(r"<reasoning>(.+?)</reasoning>", txt, re.DOTALL | re.IGNORECASE)
-        if m:
-            r["e"] = m.group(1).strip()
-
-        if not r["f"]:
-            m = re.search(r"(?:da hong pao|大红袍|dahongpao)", txt, re.IGNORECASE)
-            if m:
-                r["f"] = [m.group(0)]
-
-        if not r["e"] and txt:
-            r["e"] = txt.strip()
-    except Exception as e:
-        print(f"| [ERROR] Failed to parse answer: {e}")
-    return r
-
-
-def check_in(fests, exp):
-    for f in fests:
-        for e in exp:
-            if e in f.lower():
-                return True
-    return False
-
-
-def check_wrong(fests, wrong_set):
-    found = []
-    for f in fests:
-        f_lower = f.lower()
-        for w in wrong_set:
-            if w in f_lower:
-                found.append(f)
-                break
-    return found
+def extract_tag(text, tag):
+    """Extract content from XML-style tag."""
+    matches = re.findall(rf'<{tag}>\s*(.*?)\s*</{tag}>', text, re.DOTALL | re.I)
+    return matches[-1].strip() if matches else ""
 
 
 def verify(wd):
     print("=" * 70)
-    print("| VERIFICATION: Chinese Tea Classification (v6)")
-    print("| Correct Answer: Da Hong Pao (大红袍) - Wuyi Rock Oolong")
+    print("| VERIFICATION: Chinese Tea Classification (v22)")
+    print("| Correct: Huangjin Gui - Golden Osmanthus")
+    print("| Trap: Tie Guan Yin - ORCHID fragrance, NOT osmanthus")
+    print("| Requirement: 20+ Wikipedia pages + <answer> tag")
     print("=" * 70)
 
-    msgs = parse_msgs(wd)
+    msgs = parse_messages(wd)
     if not msgs["ok"]:
         print("| [FAILED] Could not parse messages")
         return False
 
-    turn_count = msgs["turns"]
-    print(f"| Detected turns: {turn_count}")
-    print(f"| Minimum required: {MIN_TURNS}")
+    text = msgs["text"]
+    urls = msgs["urls"]
+    text_lower = text.lower()
 
-    ans = parse_ans(msgs["text"])
-    print(f"| Answer: {ans['f']}")
-    print(f"| Reasoning: {len(ans['e'])} chars")
+    # Count unique Wikipedia pages
+    unique_pages = len(urls)
+    print(f"| [INFO] Unique Wikipedia pages visited: {unique_pages}")
+    print(f"| [INFO] Required minimum: {MIN_PAGES}")
     print("| " + "-" * 68)
 
-    reasoning_lower = ans["e"].lower()
-    answer_lower = ans["answer_text"].lower()
+    # CHECK 1: Page count
+    if unique_pages < MIN_PAGES:
+        print(f"| [FAILED] Insufficient exploration: {unique_pages} < {MIN_PAGES} pages")
+        print("|          You must visit at least 20 Wikipedia pages")
+        print("=" * 70)
+        return False
+    print(f"| [PASSED] Page count: {unique_pages} >= {MIN_PAGES}")
 
-    # CHECK 1: Did model choose Black Tea in final answer?
-    chose_black = any(phrase in answer_lower for phrase in TRAP_ANSWER_PHRASES)
-    if chose_black:
-        print("| [FAILED] Model chose Black Tea as final category!")
-        print("|          Da Hong Pao is Oolong, NOT Black Tea")
+    # Extract answer from <answer> tag
+    answer = extract_tag(text, "answer")
+    if not answer:
+        print("| [FAILED] No <answer> tag found in output")
+        print("|          You must output your answer in the format:")
+        print("|          <answer>")
+        print("|          [Tea name]")
+        print("|          </answer>")
+        print("=" * 70)
         return False
 
-    # CHECK 2: Correct tea name
-    if not check_in(ans["f"], CORRECT_NAMES):
-        print("| [FAILED] Correct tea NOT found")
-        print("|          Expected: Da Hong Pao (大红袍)")
-        print(f"|          Got: {ans['f']}")
-        return False
-    print("| [PASSED] Correct tea: Da Hong Pao")
+    answer_lower = answer.lower()
+    print(f"| [INFO] Answer: {answer[:100]}")
 
-    # CHECK 3: Correct category
-    has_oolong = check_in(ans["f"], CORRECT_CATEGORY) or any(kw in reasoning_lower for kw in CORRECT_CATEGORY)
-    if not has_oolong:
-        print("| [FAILED] Correct category NOT identified")
-        print("|          Expected: Oolong (乌龙茶)")
-        return False
-    print("| [PASSED] Correct category: Oolong")
+    # CHECK 2 & 3: Correct answer and trap detection
+    # Priority: if correct answer found, ignore trap mentions (model may explain reasoning)
+    found_correct = False
+    for correct in CORRECT:
+        if correct in answer_lower:
+            found_correct = True
+            break
 
-    # CHECK 4: No trap answers
-    wrong_found = check_wrong(ans["f"], TRAP_BLACK_TEAS)
-    if wrong_found:
-        print(f"| [FAILED] Trap answer selected: {wrong_found}")
-        return False
-    print("| [PASSED] No trap answers selected")
-
-    # CHECK 5: Turn count (information only, not verified)
-    print("| " + "-" * 68)
-    print(f"| [INFO] Turn count: {turn_count} (recommended: {MIN_TURNS}+)")
-
-    # CHECK 6: Trap explanation
-    print("| " + "-" * 68)
-    trap_explained = ("red" in reasoning_lower or "红" in ans["e"]) and \
-                     ("oolong" in reasoning_lower or "乌龙" in ans["e"])
-    if trap_explained:
-        print("| [PASSED] Trap explained")
+    if found_correct:
+        print("| [PASSED] Correct answer: Huangjin Gui")
+        # Even if trap is mentioned, we trust the correct answer is the choice
     else:
-        print("| [INFO] Could strengthen trap explanation")
+        # No correct answer found, check if trap was selected
+        for trap in TRAP_TIE_GUAN_YIN:
+            if trap in answer_lower:
+                print(f"| [FAILED] TRAP: Tie Guan Yin selected")
+                print("|          Tie Guan Yin has ORCHID fragrance")
+                print("|          The answer must have OSMANTHUS fragrance")
+                print("|          Correct: Huangjin Gui (Golden Osmanthus)")
+                print("=" * 70)
+                return False
 
+        # Neither correct nor trap found
+        print("| [FAILED] Correct answer not found")
+        print("|          Expected: Huangjin Gui")
+        print("|          The Anxi oolong with OSMANTHUS (not orchid) fragrance")
+        print("=" * 70)
+        return False
+
+    print("| [PASSED] Did NOT select Tie Guan Yin as final answer")
+
+    print("| " + "-" * 68)
+    print("| [INFO] Wikipedia pages visited: {}".format(unique_pages))
     print("=" * 70)
     print("| RESULT: SUCCESS")
-    print(f"| Model identified Da Hong Pao as Oolong in {turn_count} turns")
+    print("| Model identified Huangjin Gui with Osmanthus fragrance")
+    print("| Model correctly avoided Tie Guan Yin (orchid) trap")
     print("=" * 70)
     return True
 
 
 def main():
-    try:
-        wd = get_work_dir()
-        print(f"| Working dir: {wd}")
-        result = verify(wd)
-        sys.exit(0 if result else 1)
-    except Exception as e:
-        print(f"| [ERROR] {e}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(1)
+    wd = get_work_dir()
+    print(f"| Working dir: {wd}")
+    result = verify(wd)
+    sys.exit(0 if result else 1)
 
 
 if __name__ == "__main__":

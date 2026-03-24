@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Verification script for v141 - Link-Chain Exploration.
+Verification script for v127 - Link-Chain Exploration.
 Checks:
 1. Correct festival selection in <answer> tag
-2. <page_chain> contains at least 4 Wikipedia URLs
-3. <reasoning> contains evidence for at least 4/6 criteria
+2. No trap keywords in answer
+
+Note: Page count is only a description requirement, NOT verified here.
 """
 import sys
 import json
@@ -23,6 +24,15 @@ def extract_tag(text, tag):
 CORRECT_FESTIVALS = {
     "shangsi", "double third", "shangsi festival", "shangsi (double third)",
     "renri", "human day", "renri (human day)",
+}
+
+# Trap keywords - if these appear in the answer, it's wrong
+TRAP_KEYWORDS = {
+    "dragon boat", "duanwu", "qu yuan",
+    "cold food", "hanshi", "jie zitui",
+    "qingming", "qingtuan",
+    "lantern", "yuanxiao",
+    "mid-autumn", "mooncake",
 }
 
 
@@ -75,7 +85,11 @@ def check_festival_selection(text):
     answer_content = extract_tag(text, "answer")
 
     if answer_content:
+        # Check for trap keywords in answer
         answer_lower = answer_content.lower()
+        for trap in TRAP_KEYWORDS:
+            if trap in answer_lower:
+                return False, f"Trap detected in <answer>: selected '{trap}'"
 
         # Check for correct festival in answer
         for correct in CORRECT_FESTIVALS:
@@ -85,6 +99,7 @@ def check_festival_selection(text):
         return False, f"No valid festival found in <answer>: {answer_content[:100]}"
 
     # Fallback: Look for festival line in answer - multiple possible formats
+    text_lower = text.lower()
     festival_patterns = [
         r'Festival:\s*(.+?)(?:\n|$)',
         r'Selected Festival:\s*(.+?)(?:\n|$)',
@@ -102,6 +117,11 @@ def check_festival_selection(text):
             festival_line = re.sub(r'\s*\(.*?\)', '', festival_line)
             festival_line = festival_line.strip()
 
+            # Check for trap keywords
+            for trap in TRAP_KEYWORDS:
+                if trap in festival_line:
+                    return False, f"Trap detected: selected '{trap}'"
+
             # Check for correct festival
             for correct in CORRECT_FESTIVALS:
                 if correct in festival_line or festival_line in correct:
@@ -110,65 +130,10 @@ def check_festival_selection(text):
     return False, "No valid festival found in output"
 
 
-def count_urls_in_page_chain(text):
-    """Count URLs in <page_chain> tag."""
-    content = extract_tag(text, "page_chain")
-    if not content:
-        return 0
-    urls = re.findall(r'https?://[^\s\)\]\}]+', content)
-    return len(urls)
-
-
-def check_reasoning_evidence(text):
-    """Check if <reasoning> contains evidence for at least 4/6 criteria."""
-    content = extract_tag(text, "reasoning")
-    if not content:
-        return False, "<reasoning> tag not found"
-
-    content_lower = content.lower()
-    # More precise keywords to reduce false positives/negatives
-    criteria_keywords = {
-        "food_color": [
-            "green food", "green color", "green rice", "green cake",
-            "mugwort", "herbs", "green vegetables", "green vegetable"
-        ],
-        "food_taste": [
-            "not sweet", "savory", "bitter", "no sugar", "without sugar",
-            "unsweetened", "salty", "non-sweet", "no honey", "sugar-free",
-            "unsweet"
-        ],
-        "symbolism": [
-            "health", "purification", "warding off", "ward off",
-            "evil spirits", "cleansing", "protection", "warding evil"
-        ],
-        "region": [
-            "jiangnan", "north china plain", "southern china",
-            "yangtze river", "south of the yangtze", "yangtze delta"
-        ],
-        "era": [
-            "before tang", "pre-tang", "prior to 618", "before 618",
-            "han dynasty", "jin dynasty", "wei dynasty"
-        ],
-        "poet": [
-            "demotion", "exiled", "forced out", "political exile",
-            "banished", "demoted", "forced to leave", "removed from office"
-        ],
-    }
-
-    found = 0
-    for key, keywords in criteria_keywords.items():
-        if any(kw in content_lower for kw in keywords):
-            found += 1
-
-    if found >= 4:
-        return True, f"Found evidence for {found}/6 criteria"
-    return False, f"Only found evidence for {found}/6 criteria (need >=4)"
-
-
 def verify(wd):
-    """Main verification function - v141."""
+    """Main verification function - v127."""
     print("=" * 70)
-    print("| VERIFICATION: v141 - Link-Chain Exploration")
+    print("| VERIFICATION: v127 - Link-Chain Exploration")
     print("=" * 70)
 
     msgs = parse_messages(wd)
@@ -177,12 +142,12 @@ def verify(wd):
         return False
 
     text = msgs["text"]
-    all_passed = True
 
-    # === CHECK 1: FESTIVAL SELECTION ===
+    # === CHECK: FESTIVAL SELECTION ===
     print("| " + "-" * 68)
-    print("| CHECK 1: FESTIVAL SELECTION")
-    print("| Valid answers: Shangsi Festival, Renri")
+    print("| FESTIVAL SELECTION CHECK")
+    print("| Correct answers: Shangsi Festival, Renri")
+    print("| Traps: Dragon Boat, Cold Food, Qingming, Lantern, Mid-Autumn")
     print("| " + "-" * 68)
 
     festival_ok, festival_msg = check_festival_selection(text)
@@ -191,49 +156,19 @@ def verify(wd):
         print(f"| [PASSED] {festival_msg}")
     else:
         print(f"| [FAILED] {festival_msg}")
-        all_passed = False
-
-    # === CHECK 2: <page_chain> URL COUNT ===
-    print("| " + "-" * 68)
-    print("| CHECK 2: <page_chain> URL COUNT (>=4 required)")
-    print("| " + "-" * 68)
-
-    url_count = count_urls_in_page_chain(text)
-    page_chain_ok = url_count >= 15
-    if page_chain_ok:
-        print(f"| [PASSED] Found {url_count} URLs")
-    else:
-        print(f"| [FAILED] Only {url_count} URLs (need >=15)")
-        all_passed = False
-
-    # === CHECK 3: <reasoning> EVIDENCE ===
-    print("| " + "-" * 68)
-    print("| CHECK 3: <reasoning> EVIDENCE (>=4/6 criteria)")
-    print("| " + "-" * 68)
-
-    evidence_ok, evidence_msg = check_reasoning_evidence(text)
-    if evidence_ok:
-        print(f"| [PASSED] {evidence_msg}")
-    else:
-        print(f"| [FAILED] {evidence_msg}")
-        all_passed = False
 
     # === FINAL RESULT ===
     print("=" * 70)
 
-    if all_passed:
+    if festival_ok:
         print("| RESULT: SUCCESS [OK]")
         print("| - Festival selection: PASSED")
-        print("| - <page_chain> URLs (>=4): PASSED")
-        print("| - <reasoning> evidence (>=4/6): PASSED")
     else:
         print("| RESULT: FAILED [X]")
-        print(f"| - Festival selection: {'PASSED' if festival_ok else 'FAILED'}")
-        print(f"| - <page_chain> URLs (>=4): {'PASSED' if page_chain_ok else 'FAILED'}")
-        print(f"| - <reasoning> evidence (>=4/6): {'PASSED' if evidence_ok else 'FAILED'}")
+        print("| - Festival selection: FAILED")
     print("=" * 70)
 
-    return all_passed
+    return festival_ok
 
 
 def main():
