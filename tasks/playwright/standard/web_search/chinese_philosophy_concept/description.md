@@ -1,7 +1,7 @@
-# Chinese Philosophy Concept Detective: v6
+# Tao Te Ching Multi-Chapter Investigation (v17)
 
 ## Task
-Starting from https://en.wikipedia.org/wiki/Chinese_philosophy, find the philosophical concept that satisfies ALL of the following conditions by navigating Wikipedia.
+Find a concept that appears in **specific chapters** across the Tao Te Ching.
 
 ---
 
@@ -13,75 +13,61 @@ Do NOT spawn a subprocess or manually start the MCP process.
 
 ---
 
+## Starting Point
+You MUST begin at: https://en.wikipedia.org/wiki/Tao_Te_Ching
+
+**Navigation Rule**: Click links to navigate. Do NOT use browser_navigate to jump directly to chapter pages.
+
+---
+
 ## The Challenge
 
-Find a concept from Chinese philosophy that meets ALL 6 of these criteria:
+Find a concept that satisfies ALL 4 conditions:
 
-| # | Criterion | Description |
-|---|-----------|-------------|
-| 1 | **Time period** | First appeared during the Warring States period (475-221 BCE) |
-| 2 | **School** | Associated with Daoism (Taoism), NOT Confucianism |
-| 3 | **Textual evidence** | Mentioned in BOTH the Zhuangzi AND the Tao Te Ching |
-| 4 | **NOT about action** | NOT primarily about how to act or behave |
-| 5 | **Metaphysical** | Related to the fundamental nature of reality |
-| 6 | **Unique to Daoism** | Not shared with other philosophical traditions |
+| # | Condition | Verification Required |
+|---|-----------|----------------------|
+| 1 | Appears in **Chapter 1** | Must verify the exact chapter text |
+| 2 | Appears in **Chapter 25** | Must verify the exact chapter text |
+| 3 | Appears in **Chapter 64** | Must verify the exact chapter text |
+| 4 | Means "naturalness" or "spontaneity" | Must find definition |
 
 ---
 
-## Navigation Requirements
+## Investigation Process
 
-1. Start from the Chinese Philosophy page
-2. Navigate to the Taoism/Daoism page
-3. Identify at least 8 potential candidate concepts
-4. For each candidate, check the Zhuangzi page and Tao Te Ching page
-5. Verify each candidate against ALL 6 criteria
+### Phase 1: Find the Tao Te Ching Text
+1. Start at Wikipedia Tao Te Ching page
+2. Find a link to the full text with chapter numbers
+3. Navigate to that text source
 
-**Output your progress at each step:**
-```
-<step1>
-Candidates identified: [list of concepts]
-</step1>
+### Phase 2: Verify Chapter 1
+1. Read Chapter 1 carefully
+2. List all concepts mentioned
+3. Note which ones might mean "naturalness"
 
-<step2>
-For [concept name]:
-- Zhuangzi: found/not found
-- Tao Te Ching: found/not found
-- Criteria check: [list which criteria pass/fail]
-</step2>
-```
+### Phase 3: Verify Chapter 25
+1. Read Chapter 25 carefully
+2. Check if any concepts from Chapter 1 appear
+3. Look for the famous phrase "Dao follows X"
 
----
+### Phase 4: Verify Chapter 64
+1. Read Chapter 64 carefully
+2. Check if the candidate concept appears again
+3. Note the context of its usage
 
-## Important Considerations
-
-Many Daoist concepts share similar characteristics. Some common ones to investigate:
-
-- **Wu Wei** (non-action, effortless action)
-- **De** (virtue, power)
-- **Qi** (vital energy)
-- **Tian** (heaven)
-- **Dao** (the way)
-- **Yin-Yang** (complementary opposites)
-- **Wu Xing** (five elements)
-- **P'u** (uncarved block, simplicity)
-
-Each of these may satisfy SOME criteria but not ALL six. Only ONE concept satisfies every criterion.
-
-You must verify each candidate against ALL 6 criteria carefully. Pay special attention to:
-- Whether the concept appears in BOTH primary texts (not just one)
-- Whether the concept is unique to Daoism or shared with Confucianism
-- Whether the concept is about action/behavior vs. the nature of reality
+### Phase 5: Confirm Definition
+1. Find a Wikipedia page about the concept
+2. Verify it means "naturalness" or "spontaneity"
+3. Confirm it is a core Daoist principle
 
 ---
 
-## CRITICAL: Final Output Format
+## Output Format
 
-After your investigation, output your answer in this exact format:
+After verifying ALL 5 phases:
 
-```
 <answer>
-[Concept name in Pinyin]
+[Concept name in pinyin or Chinese]
 </answer>
-```
 
-**WARNING**: If you do not use the `<answer>` tags, your answer will be REJECTED.
+**Note**: You must verify the concept in Chapters 1, 25, AND 64 before answering.

@@ -1,7 +1,19 @@
 {
   "task_id": "triangulation_verifier",
-  "category": "web_search",
+  "task_name": "JavaScript Framework Timeline Verification",
+  "category_id": "web_search",
+  "category_name": "Web Search",
+  "description": "Verify a historian's claims about JavaScript framework release dates and chronological order using Wikipedia research and cross-page verification",
+  "author": "expert_name",
+  "created_at": "2026-03-26",
   "difficulty": "L3",
-  "version": "1",
-  "stateOriginalUrl": "https://en.wikipedia.org/wiki/Great_Wall_of_China"
+  "tags": ["search", "navigation", "multi-page navigation", "date comparison", "cross-verification", "Wikipedia", "JavaScript", "chronological order", "link-chain navigation"],
+  "mcp": ["playwright"],
+  "version": "24",
+  "meta_data": {
+    "stateType": null,
+    "stateContent": null,
+    "stateUrl": null,
+    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_web_frameworks"
+  }
 }

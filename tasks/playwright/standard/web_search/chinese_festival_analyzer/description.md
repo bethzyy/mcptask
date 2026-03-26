@@ -15,7 +15,7 @@ Identify the Chinese traditional festival that meets ALL 6 criteria for a resear
 
 **Starting Point**: https://en.wikipedia.org/wiki/List_of_festivals_in_China
 
-**EXPLORATION REQUIREMENT**: You must visit at least **15 different Wikipedia pages** by following links from one page to another. This is a link-chain exploration task - each new page should be reached by clicking links from your current page, not by direct URL navigation.
+**EXPLORATION REQUIREMENT**: You are strongly encouraged to visit **15+ different Wikipedia pages** by following links from one page to another. This is a link-chain exploration task - each new page should be reached by clicking links from your current page, not by direct URL navigation.
 
 ---
 
@@ -27,7 +27,7 @@ Identify the Chinese traditional festival that meets ALL 6 criteria for a resear
 4. **Chain**: Build a chain of page visits by following links, not by typing URLs
 5. **Record**: Keep track of every unique page you visit
 
-**Minimum**: 15 unique Wikipedia pages before providing your final answer.
+**Recommended**: 15+ unique Wikipedia pages before providing your final answer.
 
 ---
 
@@ -56,9 +56,20 @@ Identify the Chinese traditional festival that meets ALL 6 criteria for a resear
 
 ---
 
+## BEFORE You Output (MANDATORY)
+
+  Before writing `<answer>`, you MUST verify:
+  1. Your selected festival is NOT in the 'CRITICAL TRAPS' list
+  2. If it IS a trap → STOP, go back to the Starting Point page and start over
+  3. Do NOT output `<answer>` until you find a festival that is NOT a trap
+
+  ⚠️ WARNING: If you output a trap festival, you will FAIL immediately.
+
+---
+
 ## Final Answer Format
 
-After visiting 15+ Wikipedia pages, provide your answer:
+After thorough exploration, provide your answer:
 
 ```
 <answer>
@@ -66,7 +77,7 @@ After visiting 15+ Wikipedia pages, provide your answer:
 </answer>
 
 <page_chain>
-List all 15+ Wikipedia pages you visited in order:
+List all Wikipedia pages you visited in order:
 1. [Page title] - [URL]
 2. [Page title] - [URL]
 ...
@@ -91,28 +102,17 @@ Trap Avoidance: [explain why you avoided each trap]
 ## Verification
 
 Your answer will be checked for:
-1. **Correct festival** meeting all 6 conditions
-2. **Traps avoided** (Dragon Boat, Cold Food, Qingming, Lantern, Mid-Autumn)
-3. **Page chain** with 15+ unique Wikipedia pages
+1. **Correct festival** - The festival name in your `<answer>` tag must be correct
+2. **Traps avoided** - Your answer must NOT be Dragon Boat, Cold Food, Qingming, Lantern, or Mid-Autumn Festival.
+3. **Output format** - Your response should include `<answer>`, `<page_chain>` and `<reasoning>` sections
 
 ---
 
 ## Important Notes
 
 - **Link-chain navigation**: Follow links from page to page, do not type URLs directly
-- **Thorough exploration**: Visit at least 15 pages before concluding
+- **Thorough exploration**: Visit multiple pages before concluding (15+ recommended)
 - **Evidence required**: Quote actual Wikipedia content for each criterion
 - **Poet demotion vs suicide**: Demotion means forced out of office, NOT suicide
 - **Sweet vs not sweet**: Sweet foods include sugar, honey, sweet bean paste
 - **Less famous festivals**: The correct answer may not be the most famous festival
-
----
-
-## Hint
-
-The correct festival has connections to:
-- A famous Chinese poet who was **demoted** (forced out of office) but did NOT commit suicide
-- Traditional food that is **green** but **not sweet**
-- Origins **before the Tang Dynasty** (618 CE)
-
-Consider exploring less well-known festivals on the List of Festivals page.

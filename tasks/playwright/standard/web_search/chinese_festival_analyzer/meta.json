@@ -21,9 +21,6 @@
     "stateType": null,
     "stateContent": null,
     "stateUrl": null,
-    "stateOriginalUrl": "https://en.wikipedia.org/wiki/List_of_festivals_in_China",
-    "version": "v127",
-    "correct_answers": ["shangsi", "renri"],
-    "trap_candidates": ["dragon_boat", "cold_food", "qingming", "lantern", "mid_autumn"]
+    "stateOriginalUrl": "https://en.wikipedia.org/wiki/List_of_festivals_in_China"
   }
 }

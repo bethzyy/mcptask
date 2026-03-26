@@ -130,6 +130,25 @@ def check_festival_selection(text):
     return False, "No valid festival found in output"
 
 
+def check_output_format(text):
+    """Loose check for output format tags (INFO only, does not affect pass/fail)."""
+    results = {}
+
+    # Check <answer> tag
+    answer = extract_tag(text, "answer")
+    results["answer_tag"] = answer is not None
+
+    # Check <page_chain> tag
+    page_chain = extract_tag(text, "page_chain")
+    results["page_chain_tag"] = page_chain is not None
+
+    # Check <reasoning> tag
+    reasoning = extract_tag(text, "reasoning")
+    results["reasoning_tag"] = reasoning is not None
+
+    return results
+
+
 def verify(wd):
     """Main verification function - v127."""
     print("=" * 70)
@@ -143,9 +162,9 @@ def verify(wd):
 
     text = msgs["text"]
 
-    # === CHECK: FESTIVAL SELECTION ===
+    # === CHECK: FESTIVAL SELECTION (CRITICAL) ===
     print("| " + "-" * 68)
-    print("| FESTIVAL SELECTION CHECK")
+    print("| FESTIVAL SELECTION CHECK (CRITICAL)")
     print("| Correct answers: Shangsi Festival, Renri")
     print("| Traps: Dragon Boat, Cold Food, Qingming, Lantern, Mid-Autumn")
     print("| " + "-" * 68)
@@ -156,6 +175,17 @@ def verify(wd):
         print(f"| [PASSED] {festival_msg}")
     else:
         print(f"| [FAILED] {festival_msg}")
+
+    # === CHECK: OUTPUT FORMAT (INFO ONLY) ===
+    print("| " + "-" * 68)
+    print("| OUTPUT FORMAT CHECK (INFO ONLY - does not affect pass/fail)")
+    print("| " + "-" * 68)
+
+    format_results = check_output_format(text)
+
+    for tag_name, found in format_results.items():
+        status = "[OK]" if found else "[MISSING]"
+        print(f"| {status} <{tag_name.replace('_tag', '')}> tag")
 
     # === FINAL RESULT ===
     print("=" * 70)

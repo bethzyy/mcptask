@@ -1,27 +1,25 @@
 {
   "task_id": "chinese_philosophy_concept",
-  "task_name": "Chinese Philosophy Concept Classification",
+  "task_name": "Daoist Concept Verification",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v6: Fixed TRAP_TIAN false positives, added 'wu' to TRAP_WU_WEI, aligned candidate list. 6 criteria with subtle distinctions. Find Daoist metaphysical concept from Warring States. CORRECT: Ziran. TRAPS: Wu Wei, De, Qi, Tian, Yin-Yang, P'u. STRICT <answer> tag format.",
+  "description": "v12: Changed from 'find one concept' to 'compare 5 fixed concepts'. Task: Identify the PRIMARILY metaphysical concept among Wu Wei, Ziran, Pu, Xu, Rou. 4-stage process: Initial Research (10+ pages), Textual Verification (Dao De Jing + Zhuangzi), Classification Analysis, Final Determination. CORRECT: Ziran. TRAPS: Wu Wei (action), Pu (simplicity), Xu (emptiness), Rou (softness).",
   "author": "mcpmark",
-  "created_at": "2026-03-24",
+  "created_at": "2026-03-26",
   "difficulty": "L3",
   "tags": [
-    "wikipedia-link-chain",
-    "multi-step",
+    "wikipedia",
+    "multi-stage",
+    "comparison-task",
     "daoist-philosophy",
-    "warring-states",
+    "metaphysical-vs-practical",
+    "fixed-candidates",
     "ziran",
     "wu-wei-trap",
-    "de-trap",
-    "qi-trap",
-    "tian-trap",
-    "yinyang-trap",
     "pu-trap",
-    "multi-condition",
-    "strict-answer-format",
-    "v6"
+    "xu-trap",
+    "rou-trap",
+    "v12"
   ],
   "mcp": [
     "playwright"
@@ -30,6 +28,6 @@
     "stateType": null,
     "stateContent": null,
     "stateUrl": null,
-    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Chinese_philosophy"
+    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Daoism"
   }
 }
