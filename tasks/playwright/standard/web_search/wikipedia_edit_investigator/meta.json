@@ -1,0 +1,34 @@
+{
+  "task_id": "wikipedia_edit_investigator",
+  "task_name": "Wikipedia Edit History Investigation",
+  "category_id": "web_search",
+  "category_name": "Web Search",
+  "description": "v86: Investigate THREE content pieces (oxidation + tea roller machines + drying/firing) on Tea_processing page. Find ORIGINAL editors using WikiBlame, visit their user pages, check reliability (blocks/warnings), verify they are DIFFERENT people, avoid four traps. Requires 20+ turns and checkpoints. All editors MUST be different.",
+  "author": "mcpmark",
+  "created_at": "2026-03-26",
+  "difficulty": "L3",
+  "tags": [
+    "wikipedia-history",
+    "version-comparison",
+    "editor-investigation",
+    "credibility-assessment",
+    "multi-target",
+    "cross-reference",
+    "wikiblame",
+    "trap-avoidance",
+    "original-author",
+    "different-editors",
+    "reliability-check",
+    "checkpoint-mechanism",
+    "v86"
+  ],
+  "mcp": [
+    "playwright"
+  ],
+  "meta_data": {
+    "stateType": null,
+    "stateContent": null,
+    "stateUrl": null,
+    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Tea_processing"
+  }
+}
