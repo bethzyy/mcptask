@@ -446,40 +446,52 @@ def check_cross_verification(text):
                         "source": source[:60],
                     })
 
-    # v24: If not all tools found via XML, check text for Evidence Sources section
+    # v24: Check for "### Evidence Sources:" section with markdown list
+    # Pattern: - **ToolName**: https://wikipedia.org/wiki/...
     if len(tools_with_evidence) < 6:
-        # Look for "Evidence Sources:" or similar patterns
-        evidence_section_match = re.search(r'(?:Evidence|Sources?):?\s*\n([\s\S]*?)(?:\n\n|##|$)', search_text, re.I)
-        if evidence_section_match:
-            evidence_section = evidence_section_match.group(1)
-
-            # Check for tool names with Wikipedia URLs
-            tool_url_patterns = [
-                (r'React[^a-zA-Z]*https?://[a-z]+\.wikipedia\.org/wiki/React', 'react'),
-                (r'Gulp[^a-zA-Z]*https?://[a-z]+\.wikipedia\.org/wiki/Gulp', 'gulp'),
-                (r'Browserify[^a-zA-Z]*https?://[a-z]+\.wikipedia\.org/wiki/Browserify', 'browserify'),
-                (r'Webpack[^a-zA-Z]*https?://[a-z]+\.wikipedia\.org/wiki/Webpack', 'webpack'),
-                (r'Vue\.?js[^a-zA-Z]*https?://[a-z]+\.wikipedia\.org/wiki/Vue', 'vue.js'),
-                (r'Svelte[^a-zA-Z]*https?://[a-z]+\.wikipedia\.org/wiki/Svelte', 'svelte'),
-            ]
-
-            for pattern, tool_name in tool_url_patterns:
-                if re.search(pattern, evidence_section, re.I):
-                    tools_with_evidence.add(tool_name)
-
-    # v24: Also check for "### Evidence Sources:" section with markdown list
-    if len(tools_with_evidence) < 6:
-        # Look for "- **ToolName**: URL" pattern
+        # Look for "- **ToolName**: URL" pattern in full text
         evidence_list_patterns = [
             (r'-\s*\*\*React\*\*.*?wikipedia\.org/wiki/React', 'react'),
-            (r'-\s*\*\*Gulp\.?js\*\*.*?wikipedia\.org/wiki/Gulp', 'gulp'),
+            (r'-\s*\*\*Gulp\.?js?\*\*.*?wikipedia\.org/wiki/Gulp', 'gulp'),
             (r'-\s*\*\*Browserify\*\*.*?wikipedia\.org/wiki/Browserify', 'browserify'),
             (r'-\s*\*\*Webpack\*\*.*?wikipedia\.org/wiki/Webpack', 'webpack'),
-            (r'-\s*\*\*Vue\.?js\*\*.*?wikipedia\.org/wiki/Vue', 'vue.js'),
+            (r'-\s*\*\*Vue\.?js?\*\*.*?wikipedia\.org/wiki/Vue', 'vue.js'),
             (r'-\s*\*\*Svelte\*\*.*?wikipedia\.org/wiki/Svelte', 'svelte'),
         ]
 
         for pattern, tool_name in evidence_list_patterns:
+            if re.search(pattern, search_text, re.I):
+                tools_with_evidence.add(tool_name)
+
+    # v24: Also check for table format: | Tool | Wikipedia Page | ... |
+    if len(tools_with_evidence) < 6:
+        # Look for markdown table with tool names and Wikipedia URLs
+        table_patterns = [
+            (r'\|\s*React\s*\|.*wikipedia\.org/wiki/React', 'react'),
+            (r'\|\s*Gulp\.?js?\s*\|.*wikipedia\.org/wiki/Gulp', 'gulp'),
+            (r'\|\s*Browserify\s*\|.*wikipedia\.org/wiki/Browserify', 'browserify'),
+            (r'\|\s*Webpack\s*\|.*wikipedia\.org/wiki/Webpack', 'webpack'),
+            (r'\|\s*Vue\.?js?\s*\|.*wikipedia\.org/wiki/Vue', 'vue.js'),
+            (r'\|\s*Svelte\s*\|.*wikipedia\.org/wiki/Svelte', 'svelte'),
+        ]
+
+        for pattern, tool_name in table_patterns:
+            if re.search(pattern, search_text, re.I):
+                tools_with_evidence.add(tool_name)
+
+    # v24: Also check for any mention of tool with Wikipedia URL
+    if len(tools_with_evidence) < 6:
+        # Look for tool name followed by Wikipedia URL anywhere in text
+        tool_url_patterns = [
+            (r'React[^a-zA-Z0-9].*?wikipedia\.org/wiki/React', 'react'),
+            (r'Gulp[^a-zA-Z0-9].*?wikipedia\.org/wiki/Gulp', 'gulp'),
+            (r'Browserify[^a-zA-Z0-9].*?wikipedia\.org/wiki/Browserify', 'browserify'),
+            (r'Webpack[^a-zA-Z0-9].*?wikipedia\.org/wiki/Webpack', 'webpack'),
+            (r'Vue\.?js?[^a-zA-Z0-9].*?wikipedia\.org/wiki/Vue', 'vue.js'),
+            (r'Svelte[^a-zA-Z0-9].*?wikipedia\.org/wiki/Svelte', 'svelte'),
+        ]
+
+        for pattern, tool_name in tool_url_patterns:
             if re.search(pattern, search_text, re.I):
                 tools_with_evidence.add(tool_name)
 
