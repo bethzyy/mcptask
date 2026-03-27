@@ -1,25 +1,28 @@
 {
   "task_id": "chinese_philosophy_concept",
-  "task_name": "Daoist Concept Verification",
+  "task_name": "Daoist Concept Investigation",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v12: Changed from 'find one concept' to 'compare 5 fixed concepts'. Task: Identify the PRIMARILY metaphysical concept among Wu Wei, Ziran, Pu, Xu, Rou. 4-stage process: Initial Research (10+ pages), Textual Verification (Dao De Jing + Zhuangzi), Classification Analysis, Final Determination. CORRECT: Ziran. TRAPS: Wu Wei (action), Pu (simplicity), Xu (emptiness), Rou (softness).",
+  "description": "v42: Simplified verification. 10 candidates, 5 conditions. No forced page count, no forced site visits, no forced output format.",
   "author": "mcpmark",
   "created_at": "2026-03-26",
   "difficulty": "L3",
   "tags": [
     "wikipedia",
-    "multi-stage",
-    "comparison-task",
+    "stanford-encyclopedia",
+    "multi-site",
     "daoist-philosophy",
-    "metaphysical-vs-practical",
-    "fixed-candidates",
-    "ziran",
-    "wu-wei-trap",
-    "pu-trap",
-    "xu-trap",
-    "rou-trap",
-    "v12"
+    "multi-constraint-filtering",
+    "state-vs-action",
+    "xu",
+    "obscure-answer",
+    "historical-figure",
+    "ttc-chapter",
+    "no-hints",
+    "chain-navigation",
+    "cross-reference",
+    "simplified-verification",
+    "v42"
   ],
   "mcp": [
     "playwright"
@@ -28,6 +31,6 @@
     "stateType": null,
     "stateContent": null,
     "stateUrl": null,
-    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Daoism"
+    "stateOriginalUrl": "https://en.wikipedia.org/wiki/Taoism"
   }
 }
