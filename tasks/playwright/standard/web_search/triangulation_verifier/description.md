@@ -74,19 +74,23 @@ From this page, click on each framework's link to navigate to its Wikipedia page
 
 ***
 
-## INVESTIGATION PROCESS
+## What You Need to Find
 
-For each framework, follow this process:
+For each framework, determine:
+- **Original Author**: Who FIRST added the "Initial release" information (not recent editors!)
+- **Date Added**: When the information was first added
+- **Author Credibility**: Is the editor a reliable source?
 
-1. **Navigate** to the framework's Wikipedia page (click link from comparison page)
-2. **Click "View history"** to access edit history
-3. **Use "Find addition/removal" tool** to search for "Initial release" or "released"
-4. **Select "From earliest"** to search from the oldest edits
-5. **Click the result** to view the diff where content was added
-6. **Identify** who added the initial release information
-7. **Click the username** to view their user page
-8. **Assess** their credibility (edit count, account age, topic expertise)
-9. **Record** all findings in your investigation log
+## How to Investigate
+
+Wikipedia provides tools to investigate edit history:
+- The **"View history"** tab shows all past revisions of a page
+- The **"Find addition/removal"** tool can locate when specific content was added
+- **User pages** show information about each editor
+
+You must use these tools to trace back to the ORIGINAL author who first added the "Initial release" information.
+
+**Record your investigation process** - which pages you visited and what you found
 
 ***
 

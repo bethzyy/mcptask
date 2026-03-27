@@ -6,7 +6,7 @@ Task: Investigate Wikipedia edit history to find original authors who added
 "Initial release" information for 3 JavaScript frameworks.
 
 Key Verification Points:
-1. Page count >= 9 (3 framework pages + 3 history pages + 3 diff pages + user pages)
+1. Page count >= 8 (3 framework pages + 3 history pages + 3 diff pages + user pages)
 2. History feature used (action=history pages)
 3. Diff pages viewed (diff= in URL)
 4. User pages visited (User: namespace)
@@ -22,7 +22,7 @@ v41 changes:
 - Added investigation log requirement
 - Added trap detection for wrong editor types
 - Reduced to 3 frameworks (React, Vue.js, Angular) for 600s timeout
-- MIN_PAGE_COUNT = 9 (balanced for 600s timeout)
+- MIN_PAGE_COUNT = 8 (balanced for 600s timeout)
 """
 import sys
 import json
@@ -327,7 +327,7 @@ def verify(wd):
 
     # Step 1: Check page count
     print("|")
-    print("| [CHECK 1] Page Count (minimum 15)")
+    print("| [CHECK 1] Page Count (minimum 8)")
 
     unique_count, total_wiki = check_page_count(urls)
     if unique_count < MIN_PAGE_COUNT:
