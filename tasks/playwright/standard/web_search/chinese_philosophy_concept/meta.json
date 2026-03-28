@@ -3,7 +3,7 @@
   "task_name": "Daoist Concept Investigation",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v42: Simplified verification. 10 candidates, 5 conditions. No forced page count, no forced site visits, no forced output format.",
+  "description": "v49: CRITICAL FIX - Correct answer priority principle (check correct before traps), removed generic words from CORRECT/TRAP sets.",
   "author": "mcpmark",
   "created_at": "2026-03-26",
   "difficulty": "L3",
@@ -18,11 +18,17 @@
     "obscure-answer",
     "historical-figure",
     "ttc-chapter",
+    "evidence-quote",
     "no-hints",
     "chain-navigation",
     "cross-reference",
-    "simplified-verification",
-    "v42"
+    "category-navigation",
+    "tab-switching",
+    "sorting",
+    "pagination",
+    "table-of-contents",
+    "enforced-interaction",
+    "v49"
   ],
   "mcp": [
     "playwright"
