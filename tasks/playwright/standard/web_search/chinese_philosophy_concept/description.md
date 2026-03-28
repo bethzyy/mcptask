@@ -1,4 +1,4 @@
-# Daoist State Concept Investigation (v49)
+# Daoist State Concept Investigation (v50)
 
 ## Task
 Find a Daoist philosophical concept that satisfies **ALL** conditions below by navigating through Wikipedia categories and Stanford Encyclopedia's structured content.
@@ -28,48 +28,28 @@ Find a Daoist philosophical concept that satisfies **ALL** conditions below by n
 
 ---
 
-## Interactive Investigation Process (MANDATORY)
+## Investigation Process (REQUIRED)
 
-### Phase 1: Wikipedia Category Deep Dive (REQUIRED)
-
+### Step 1: Wikipedia Category Navigation
 1. Navigate to: `https://en.wikipedia.org/wiki/Category:Daoist_concepts`
-2. Browse **at least 3 different subcategories** (e.g., "Daoist philosophical concepts", "Taoist cosmology", "Daoist meditation")
-3. Use **alphabetical sorting** to browse concepts by first letter
-4. Use **pagination** ("next page" / "previous page") to navigate through multiple pages in each subcategory
-5. Click on individual concept pages from the category listings
-6. **Record** which concepts you found in each subcategory
+2. Browse subcategories and concept pages
+3. Record your navigation path
 
-### Phase 2: SEP Section-by-Section Analysis (REQUIRED)
+### Step 2: SEP Table of Contents Navigation
+1. Navigate to: `https://plato.stanford.edu/entries/taoism/` or `https://plato.stanford.edu/entries/daoism/`
+2. Use the Table of Contents to visit different sections
+3. Record which sections you used
 
-1. Navigate to: `https://plato.stanford.edu/entries/taoism/`
-2. Use the **Table of Contents** (left sidebar) to visit **at least 3 different sections**:
-   - Section on fundamental concepts
-   - Section on the Tao Te Ching
-   - Section on historical development
-3. Click cross-reference links (blue underlined text) to explore related entries
-4. **Record** key information from each section
-
-### Phase 3: Cross-Reference Verification (REQUIRED)
-
-1. For **EACH candidate concept**, create a comparison table between Wikipedia and SEP
-2. Verify condition satisfaction **one by one** for each candidate
-3. **Document why** each rejected candidate fails specific conditions
-
-### Phase 4: Final Verification (REQUIRED)
-
-1. Re-read the correct concept's Wikipedia page
-2. Re-read the relevant SEP section
-3. Confirm all 5 conditions are truly satisfied before submitting
+### Step 3: Verify Each Candidate
+For each of the 8 candidate concepts, check all 5 conditions carefully. Only ONE concept passes all conditions.
 
 ---
 
 ## Important Notes
 
-- **Only ONE concept passes ALL five conditions** - you must investigate carefully
-- You **MUST** use the category navigation, TOC navigation, and tab switching as described
-- Direct search bypass of the interactive process is not allowed
+- **Only ONE concept passes ALL five conditions** - investigate carefully
 - Many concepts look similar but fail one or more conditions
-- Take your time to verify each condition carefully for each candidate
+- Take your time to verify each condition for each candidate
 
 ---
 
@@ -89,24 +69,24 @@ Find a Daoist philosophical concept that satisfies **ALL** conditions below by n
 </ttc_chapter>
 
 <evidence_quote>
-[REQUIRED: Quote the original text from Tao Te Ching that mentions this concept]
+[Quote the original text from Tao Te Ching that mentions this concept]
 Example: "The Tao is like a well: used but never used up. It is like the eternal void: filled with infinite possibilities."
 </evidence_quote>
 
 <category_navigation>
-[REQUIRED: List the Wikipedia category path you followed]
+[List the Wikipedia category path you followed]
 Format: "Category:Daoist_concepts → [Subcategory1] → [Subcategory2] → [Concept Page]"
 Example: "Category:Daoist_concepts → Daoist philosophical concepts → Xu (Daoism)"
 </category_navigation>
 
 <toc_sections_used>
-[REQUIRED: List at least 3 SEP TOC sections you navigated to]
+[List at least 3 SEP TOC sections you navigated to]
 Format: "Section1, Section2, Section3"
 Example: "The Daodejing, Fundamental Concepts, The Meaning of Dao"
 </toc_sections_used>
 
 <pages_browsed>
-[REQUIRED: How many category pages did you browse using pagination?]
+[How many category pages did you browse?]
 Format: "[Number] pages"
 Example: "3 pages"
 </pages_browsed>

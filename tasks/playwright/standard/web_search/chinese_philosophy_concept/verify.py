@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-Verification for Daoist Concept Investigation (v49).
+Verification for Daoist Concept Investigation (v50).
 Correct answer: Xu (虚) - Emptiness/Void - State concept, personal cultivation
+
+v50 Changes:
+- Simplified description.md: removed unverifiable requirements (Phase 3 comparison table, etc.)
+- Aligned description.md REQUIREMENTS with verify.py checks
+- Description now only requires what verify.py actually validates
 
 v49 Changes:
 - CRITICAL FIX: Correct answer priority principle (check correct answer BEFORE traps)
@@ -272,7 +277,7 @@ def count_tool_interactions(tool_calls, text):
 
 def verify(wd):
     print("=" * 70)
-    print("| VERIFICATION: Daoist Concept Investigation (v49)")
+    print("| VERIFICATION: Daoist Concept Investigation (v50)")
     print("|")
     print("| Criteria:")
     print("|   1. Nature: STATE (describes how things ARE)")

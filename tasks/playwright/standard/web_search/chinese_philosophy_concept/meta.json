@@ -3,7 +3,7 @@
   "task_name": "Daoist Concept Investigation",
   "category_id": "web_search",
   "category_name": "Web Search",
-  "description": "v49: CRITICAL FIX - Correct answer priority principle (check correct before traps), removed generic words from CORRECT/TRAP sets.",
+  "description": "v50: Simplified description - removed unverifiable requirements, aligned REQUIREMENTS with verify.py checks.",
   "author": "mcpmark",
   "created_at": "2026-03-26",
   "difficulty": "L3",
@@ -28,7 +28,7 @@
     "pagination",
     "table-of-contents",
     "enforced-interaction",
-    "v49"
+    "v50"
   ],
   "mcp": [
     "playwright"
