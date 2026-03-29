@@ -1,28 +1,21 @@
 #!/usr/bin/env python3
 """
-Verification for JavaScript Framework History Investigator (v41).
+Verification for JavaScript Framework History Investigator (v59).
 
 Task: Investigate Wikipedia edit history to find original authors who added
-"Initial release" information for 3 JavaScript frameworks.
+"Initial release" information for 4 JavaScript frameworks,
+and determine which framework's Initial release was added FIRST chronologically.
 
-Key Verification Points:
-1. Page count >= 8 (3 framework pages + 3 history pages + 3 diff pages + user pages)
-2. History feature used (action=history pages)
-3. Diff pages viewed (diff= in URL)
-4. User pages visited (User: namespace)
-5. All 3 frameworks investigated
-6. Investigation log present
-7. Trap detection: original authors vs recent/high-frequency/admin editors
+v59 changes (Increased Difficulty with More Traps):
+- Reduced from 5 to 4 frameworks (removed Solid.js)
+- Total: 4 frameworks × 2 + 2 final = 10 fields (complies with red line)
+- NEW TRAP: Chronological order validation (first_framework must be earliest)
+- NEW TRAP: Known wrong authors detection
+- NEW TRAP: Date range validation (2013-2020)
+- NEW TRAP: Suspicious pattern detection (all same author/date)
+- Improved is_bot_or_ip detection to avoid false positives
 
-v41 changes:
-- Complete redesign: date verification -> edit history investigation
-- Added history page detection
-- Added diff page detection
-- Added user page detection
-- Added investigation log requirement
-- Added trap detection for wrong editor types
-- Reduced to 3 frameworks (React, Vue.js, Angular) for 600s timeout
-- MIN_PAGE_COUNT = 8 (balanced for 600s timeout)
+Key principle: verify.py 只检查"最终答案 + 关键动作证据"
 """
 import sys
 import json
@@ -30,17 +23,37 @@ import os
 import re
 from pathlib import Path
 
-# Required frameworks to investigate (v41: reduced to 3 for 600s timeout)
-REQUIRED_FRAMEWORKS = ["react", "vue", "angular"]
+# Required frameworks to investigate (4 frameworks = 10 fields, complies with red line)
+REQUIRED_FRAMEWORKS = ["react", "vue", "angular", "svelte"]
 
-# Minimum pages to visit (v41: 3 frameworks, 600s timeout, external tool is slow)
-MIN_PAGE_COUNT = 8
+# Known wrong authors that models commonly mistake as correct
+# These are common placeholder names, company names, or obviously wrong answers
+KNOWN_WRONG_AUTHORS = {
+    # Placeholder patterns
+    'unknown', 'n/a', 'none', 'todo', 'tbd', 'test', 'example',
+    # Company names (not individual Wikipedia editors)
+    'facebook', 'google', 'microsoft', 'amazon', 'apple', 'netflix',
+    # Generic terms
+    'wikipedia', 'wikimedia', 'admin', 'administrator', 'moderator',
+    'editor', 'contributor', 'user', 'anonymous', 'guest',
+    # Framework creators (not Wikipedia editors)
+    'dan abramov', 'jordan walke', 'evan you', 'misko hevery',
+    'rich harris', 'ryan carniato',
+    # Common mistakes
+    'react team', 'vue team', 'angular team', 'svelte team',
+    'original author', 'first editor', 'the author',
+}
 
-# Wikipedia URL patterns
+# Valid date range for Initial release info being added to Wikipedia
+# These frameworks were created 2013-2019, so Initial release info
+# should have been added between 2013-2020
+MIN_VALID_DATE = "2013-01-01"
+MAX_VALID_DATE = "2020-12-31"
+
+# Wikipedia URL patterns (for minimal evidence check)
 WIKIPEDIA_PATTERN = re.compile(r'https?://[a-z]+\.wikipedia\.org/', re.I)
 HISTORY_PATTERN = re.compile(r'action=history', re.I)
-DIFF_PATTERN = re.compile(r'diff=', re.I)
-USER_PAGE_PATTERN = re.compile(r'/wiki/User:', re.I)
+DIFF_PATTERN = re.compile(r'diff=\d+|oldid=\d+', re.I)
 PAGE_URL_PATTERN = re.compile(r'Page URL:\s*(https?://[^\s]+)', re.I)
 
 
@@ -125,193 +138,315 @@ def extract_urls_from_tool_calls(tool_calls):
     return urls
 
 
-def check_page_count(urls):
-    """Check if minimum page count is met."""
-    # Filter Wikipedia URLs only
-    wiki_urls = [u for u in urls if WIKIPEDIA_PATTERN.search(u)]
-
-    # Normalize and count unique pages
-    unique_pages = set()
-    for url in wiki_urls:
-        # Normalize URL by removing query params for page counting
-        base_url = re.sub(r'[?&].*', '', url)
-        unique_pages.add(base_url.lower())
-
-    return len(unique_pages), len(wiki_urls)
-
-
-def check_history_feature_used(urls):
-    """Check if View History feature was used."""
+def check_history_evidence(urls):
+    """Minimal evidence check: did model visit at least one history page?"""
     history_urls = [u for u in urls if HISTORY_PATTERN.search(u)]
-    return len(history_urls), history_urls
+    return len(history_urls) > 0, len(history_urls)
 
 
-def check_diff_pages_viewed(urls):
-    """Check if diff pages were viewed."""
+def check_diff_evidence(urls):
+    """Check if model viewed at least one diff page."""
     diff_urls = [u for u in urls if DIFF_PATTERN.search(u)]
-    return len(diff_urls), diff_urls
+    return len(diff_urls) > 0, len(diff_urls)
 
 
-def check_user_pages_visited(urls):
-    """Check if user pages were visited."""
-    user_urls = [u for u in urls if USER_PAGE_PATTERN.search(u)]
-    return len(user_urls), user_urls
+def normalize_framework_name(name):
+    """Normalize framework name to match REQUIRED_FRAMEWORKS format."""
+    name_lower = name.lower()
+    name_lower = name_lower.replace('.js', '').replace('.', '')
+    mapping = {
+        'vuejs': 'vue',
+        'vue': 'vue',
+        'react': 'react',
+        'angular': 'angular',
+        'svelte': 'svelte',
+    }
+    return mapping.get(name_lower, name_lower)
 
 
-def check_all_frameworks_investigated(text):
-    """Check if all 3 frameworks are mentioned with investigation details."""
-    text_lower = text.lower()
-
-    frameworks_found = []
-    for framework in REQUIRED_FRAMEWORKS:
-        # Check if framework is mentioned with history-related context
-        patterns = [
-            rf'{framework}.*?(history|edit|revision|author|contributor)',
-            rf'(history|edit|revision|author|contributor).*?{framework}',
-            rf'<framework[^>]*name\s*=\s*["\']?{framework}',
-        ]
-
-        for pattern in patterns:
-            if re.search(pattern, text_lower, re.I):
-                frameworks_found.append(framework)
-                break
-
-    missing = [f for f in REQUIRED_FRAMEWORKS if f not in frameworks_found]
-    return len(frameworks_found), missing
+def validate_date_format(date_str):
+    """Check if date is in YYYY-MM-DD format."""
+    if not date_str:
+        return False
+    pattern = r'^\d{4}-\d{2}-\d{2}$'
+    return bool(re.match(pattern, date_str.strip()))
 
 
-def check_investigation_log(text):
-    """Check if investigation log is present and contains entries."""
-    # Look for investigation_log tag
-    log_match = re.search(r'<investigation_log>\s*(.*?)\s*</investigation_log>', text, re.DOTALL | re.I)
+def is_bot_or_ip(username):
+    """Check if username looks like a bot or IP address.
 
-    if not log_match:
-        # Also check for alternative formats
-        log_patterns = [
-            r'investigation\s*log[:\s]+(.*?)(?=\n\n|\n<|$)',
-            r'\*\*investigation\s*log\*\*[:\s]+(.*?)(?=\n\n|\n\*\*|$)',
-        ]
+    IMPORTANT: Use precise matching to avoid false positives on real usernames.
+    A real username like "RobotLover" or "AutoSales" should NOT be flagged.
+    """
+    if not username:
+        return False
+    username_lower = username.lower().strip()
 
-        for pattern in log_patterns:
-            match = re.search(pattern, text, re.DOTALL | re.I)
-            if match:
-                log_content = match.group(1)
-                entries = re.findall(r'[-*]\s*.+', log_content)
-                return {"ok": True, "entries": len(entries), "content": log_content[:200]}
+    # Common Wikipedia bot suffixes/prefixes (case-insensitive exact match)
+    # Only flag if username ends with "bot" or starts with common bot prefixes
+    bot_suffixes = ['bot', 'BOT']
+    for suffix in bot_suffixes:
+        if username.endswith(suffix) and len(username) > 3:
+            # Check it's actually a bot pattern, not a word ending in "bot"
+            # e.g., "ClueBot" is a bot, "RobotLover" might not be
+            # Additional check: common bot naming patterns
+            if re.search(r'(?:bot\d*$|bot[_-]|[_-]bot$)', username_lower):
+                return True
+            # If username is exactly "XxxBot" pattern (capital B), likely a bot
+            if re.match(r'^[A-Z][a-z]*Bot$', username):
+                return True
 
-        return {"ok": False, "entries": 0, "content": ""}
+    # Explicit bot prefixes commonly used on Wikipedia
+    bot_prefixes = ['bot-', 'Bot-', 'auto-', 'Auto-', 'sock-']
+    for prefix in bot_prefixes:
+        if username.startswith(prefix):
+            return True
 
-    log_content = log_match.group(1)
-    # Count entries (lines starting with - or *)
-    entries = re.findall(r'[-*]\s*.+', log_content)
+    # IP address pattern: must be a complete IPv4 address
+    # Pattern: xxx.xxx.xxx.xxx or xxx.xxx.xxx (partial)
+    if re.match(r'^\d{1,3}\.\d{1,3}\.\d{1,3}(\.\d{1,3})?$', username):
+        return True
 
-    return {"ok": True, "entries": len(entries), "content": log_content[:200]}
+    # Common bot name patterns on Wikipedia
+    bot_name_patterns = [
+        r'^ClueBot', r'^XLinkBot', r'^Cyberbot', r'^AnomieBOT',
+        r'^Materialscientist', r'^RjwilmsiBot', r'^Yobot', r'^Addbot',
+        r'^Legobot', r'^Snotbot', r'^MediaWiki',
+    ]
+    for pattern in bot_name_patterns:
+        if re.match(pattern, username, re.I):
+            return True
+
+    return False
 
 
-def check_original_authors_identified(text):
-    """Check if original authors are identified for each framework."""
-    text_lower = text.lower()
+def extract_framework_data(text):
+    """Extract all framework data from the output using XML tag format.
 
+    v58: 4 frameworks investigation (10 fields, complies with red line).
+    """
     results = {}
 
-    # Look for original_author tags
-    author_matches = re.findall(
-        r'<framework[^>]*name\s*=\s*["\']?(\w+)["\']?[^>]*>.*?<original_author>\s*(.*?)\s*</original_author>',
-        text, re.DOTALL | re.I
-    )
+    # Initialize results structure for all required frameworks
+    for fw in REQUIRED_FRAMEWORKS:
+        results[fw] = {
+            'author': None,
+            'date': None,
+        }
 
-    for framework, author in author_matches:
-        framework_lower = framework.lower()
-        if framework_lower in REQUIRED_FRAMEWORKS or framework_lower.replace('.', '') in REQUIRED_FRAMEWORKS:
-            # Normalize framework name
-            normalized = framework_lower.replace('.', '')
-            results[normalized] = author.strip()
+    # Extract <answer> block
+    answer_match = re.search(r'<answer>\s*(.*?)\s*</answer>', text, re.DOTALL | re.I)
+    if not answer_match:
+        return results
 
-    # Alternative: look for "original author" mentions near framework names
-    for framework in REQUIRED_FRAMEWORKS:
-        if framework not in results and framework in text_lower:
-            # Look for author patterns near framework mention
-            pattern = rf'{framework}[^.]*?(original\s+author|author[^.]*?added)[^.]*?[:\s]+([A-Za-z0-9_-]+)'
-            match = re.search(pattern, text_lower)
-            if match:
-                results[framework] = match.group(2)
+    answer_content = answer_match.group(1)
+
+    # Define XML tag mapping for v58: tag name -> (framework, attribute)
+    # 4 frameworks × 2 fields + 2 final = 10 fields total
+    tag_mapping = {
+        # React
+        'react_author': ('react', 'author'),
+        'react_date': ('react', 'date'),
+        # Vue
+        'vue_author': ('vue', 'author'),
+        'vue_date': ('vue', 'date'),
+        # Angular
+        'angular_author': ('angular', 'author'),
+        'angular_date': ('angular', 'date'),
+        # Svelte
+        'svelte_author': ('svelte', 'author'),
+        'svelte_date': ('svelte', 'date'),
+    }
+
+    # Parse XML tags
+    for tag_name, (framework, attr) in tag_mapping.items():
+        # Pattern: <tag>value</tag>
+        pattern = rf'<{tag_name}>\s*(.*?)\s*</{tag_name}>'
+        match = re.search(pattern, answer_content, re.DOTALL | re.I)
+        if match:
+            value = match.group(1).strip()
+            results[framework][attr] = value
 
     return results
 
 
-def check_dates_added(text):
-    """Check if dates are identified for when info was added."""
-    text_lower = text.lower()
+def extract_final_answer(text):
+    """Extract the final answer from the output using XML tag format.
 
-    dates_found = {}
+    v58: first_framework + first_date (for Initial release).
+    """
+    # Extract <answer> block
+    answer_match = re.search(r'<answer>\s*(.*?)\s*</answer>', text, re.DOTALL | re.I)
 
-    # Look for date_added tags
-    date_matches = re.findall(
-        r'<framework[^>]*name\s*=\s*["\']?(\w+)["\']?[^>]*>.*?<date_added>\s*(.*?)\s*</date_added>',
-        text, re.DOTALL | re.I
-    )
+    result = {
+        'framework': None,
+        'date': None
+    }
 
-    for framework, date in date_matches:
-        framework_lower = framework.lower().replace('.', '')
-        if framework_lower in REQUIRED_FRAMEWORKS:
-            dates_found[framework_lower] = date.strip()
+    if answer_match:
+        answer_content = answer_match.group(1)
 
-    return dates_found
+        # Extract final answer
+        framework_match = re.search(r'<first_framework>\s*(.+?)\s*</first_framework>', answer_content, re.DOTALL | re.I)
+        date_match = re.search(r'<first_date>\s*(\d{4}-\d{2}-\d{2})\s*</first_date>', answer_content, re.I)
 
+        if framework_match:
+            framework_text = framework_match.group(1).strip().lower()
+            for fw in REQUIRED_FRAMEWORKS:
+                if re.search(rf'\b{re.escape(fw)}\b', framework_text, re.I):
+                    result['framework'] = fw
+                    result['date'] = date_match.group(1) if date_match else None
+                    break
 
-def check_user_verified(text):
-    """Check if user pages were verified."""
-    text_lower = text.lower()
-
-    verified_count = 0
-
-    # Look for user_verified tags with YES
-    yes_matches = re.findall(r'<user_verified>\s*(YES)\s*</user_verified>', text, re.I)
-    verified_count = len(yes_matches)
-
-    # Also check for credibility notes
-    credibility_matches = re.findall(r'<credibility_notes>\s*(.+?)\s*</credibility_notes>', text, re.DOTALL | re.I)
-    credibility_count = len([m for m in credibility_matches if m.strip()])
-
-    return verified_count, credibility_count
+    return result
 
 
-def check_final_answer(text):
-    """Check if final answer is present."""
-    # Look for final_answer tag
-    match = re.search(r'<final_answer>\s*(.*?)\s*</final_answer>', text, re.DOTALL | re.I)
+def check_trap_answers(framework_data):
+    """Check for common trap answers (obviously wrong patterns).
 
-    if match:
-        answer = match.group(1).strip()
-        # Check which framework is mentioned
-        for framework in REQUIRED_FRAMEWORKS:
-            if framework.lower() in answer.lower():
-                return {"ok": True, "answer": framework, "full_answer": answer[:100]}
+    IMPORTANT: Use EXACT matching to avoid false positives on real usernames.
+    """
+    traps_found = []
 
-        return {"ok": True, "answer": "unknown", "full_answer": answer[:100]}
+    # Exact trap words that are clearly placeholders, not real usernames
+    EXACT_TRAP_WORDS = {
+        'unknown', 'n/a', 'none', 'todo', 'tbd',
+        '[username]', '[author]', '[name]', '...',
+        'anonymous', 'anonymous user', 'unknown user',
+        'wikipedia', 'wikipedia user', 'admin', 'administrator',
+        'moderator', 'system', 'auto',
+    }
 
-    # Alternative: look for "final answer" or "conclusion"
-    alt_patterns = [
-        r'(?:final\s+answer|conclusion)[:\s]+(.{10,100})',
-        r'(?:framework[^.]*?first|first[^.]*?framework)[:\s]+(\w+)',
-    ]
+    for framework, data in framework_data.items():
+        # Check author
+        author = data.get('author', '') or ''
+        author_lower = author.lower().strip()
 
-    for pattern in alt_patterns:
-        match = re.search(pattern, text, re.I)
-        if match:
-            answer = match.group(1).strip()
-            for framework in REQUIRED_FRAMEWORKS:
-                if framework.lower() in answer.lower():
-                    return {"ok": True, "answer": framework, "full_answer": answer[:100]}
+        if not author:
+            traps_found.append(f"{framework}: Empty author")
+        elif author_lower in EXACT_TRAP_WORDS:
+            traps_found.append(f"{framework}: Placeholder author '{author}'")
+        elif author.startswith('[') and author.endswith(']'):
+            traps_found.append(f"{framework}: Bracketed placeholder '{author}'")
+        elif len(author) <= 3 and not author.replace('_', '').replace('-', '').isalnum():
+            traps_found.append(f"{framework}: Suspicious short author '{author}'")
+        elif is_bot_or_ip(author):
+            traps_found.append(f"{framework}: Bot/IP address detected '{author}'")
 
-    return {"ok": False, "answer": "", "full_answer": ""}
+    return traps_found
+
+
+def check_known_wrong_authors(framework_data):
+    """Check if any author matches known wrong answers."""
+    wrong_authors = []
+
+    for framework, data in framework_data.items():
+        author = data.get('author', '') or ''
+        author_lower = author.lower().strip()
+
+        if author_lower in KNOWN_WRONG_AUTHORS:
+            wrong_authors.append(f"{framework}: Known wrong author '{author}'")
+        # Also check if author contains company/framework names
+        for wrong in ['facebook', 'google', 'microsoft', 'react team', 'vue team', 'angular team']:
+            if wrong in author_lower:
+                wrong_authors.append(f"{framework}: Contains wrong term '{wrong}' in '{author}'")
+
+    return wrong_authors
+
+
+def check_date_range(framework_data):
+    """Check if dates are within reasonable range (2013-2020)."""
+    invalid_dates = []
+
+    for framework, data in framework_data.items():
+        date = data.get('date', '') or ''
+        if not date:
+            continue
+
+        try:
+            # Compare as strings (YYYY-MM-DD format)
+            if date < MIN_VALID_DATE:
+                invalid_dates.append(f"{framework}: Date {date} is too early (before {MIN_VALID_DATE})")
+            elif date > MAX_VALID_DATE:
+                invalid_dates.append(f"{framework}: Date {date} is too late (after {MAX_VALID_DATE})")
+        except Exception:
+            pass  # Format already validated elsewhere
+
+    return invalid_dates
+
+
+def check_chronological_order(framework_data, final_answer):
+    """Check if first_framework has the earliest date among all frameworks.
+
+    This is a CRITICAL trap: models often pick a random framework without
+    actually comparing dates across all frameworks.
+    """
+    if not final_answer or not final_answer.get('framework'):
+        return ["Final answer missing framework"]
+
+    if not final_answer.get('date'):
+        return ["Final answer missing date - cannot verify chronological order"]
+
+    first_framework = final_answer['framework']
+    first_date = final_answer['date']
+
+    # Collect all framework dates
+    all_dates = {}
+    for framework, data in framework_data.items():
+        date = data.get('date')
+        if date:
+            all_dates[framework] = date
+
+    if len(all_dates) < len(REQUIRED_FRAMEWORKS):
+        return [f"Missing dates for some frameworks, cannot verify chronological order"]
+
+    # Check if first_framework has the earliest date
+    earliest_framework = min(all_dates.keys(), key=lambda k: all_dates[k])
+    earliest_date = all_dates[earliest_framework]
+
+    # If there's a tie (multiple frameworks with same earliest date), it's acceptable
+    # as long as first_framework is one of them
+    frameworks_with_earliest = [fw for fw, dt in all_dates.items() if dt == earliest_date]
+
+    if first_framework not in frameworks_with_earliest:
+        return [
+            f"Chronological order violation: {first_framework} has date {first_date}, "
+            f"but {earliest_framework} has earlier date {earliest_date}"
+        ]
+
+    return []
+
+
+def check_suspicious_patterns(framework_data):
+    """Check for suspicious patterns like all same author or all same date."""
+    patterns = []
+
+    # Collect authors and dates
+    authors = [data.get('author', '') for data in framework_data.values() if data.get('author')]
+    dates = [data.get('date', '') for data in framework_data.values() if data.get('date')]
+
+    # Check if all authors are the same (suspicious)
+    if len(authors) == len(REQUIRED_FRAMEWORKS):
+        unique_authors = set(a.lower().strip() for a in authors)
+        if len(unique_authors) == 1:
+            patterns.append(f"All frameworks have same author '{authors[0]}' - suspicious pattern")
+
+    # Check if all dates are the same (very suspicious - unlikely coincidence)
+    if len(dates) == len(REQUIRED_FRAMEWORKS):
+        unique_dates = set(dates)
+        if len(unique_dates) == 1:
+            patterns.append(f"All frameworks have same date '{dates[0]}' - very suspicious pattern")
+
+    return patterns
 
 
 def verify(wd):
     print("=" * 70)
-    print("| VERIFICATION: JavaScript Framework History Investigator (v41)")
-    print("| Task: Investigate Wikipedia edit history for 3 frameworks")
-    print("| Required: 8+ pages, history feature, diff pages, user pages")
+    print("| VERIFICATION: JavaScript Framework History Investigator (v59)")
+    print("| Focus: Single-field investigation (Initial Release only)")
+    print("| Frameworks: 4 (React, Vue, Angular, Svelte)")
+    print("| Format: 10 XML tags (complies with red line)")
+    print("| Traps: Chronological order, Wrong authors, Date range, Patterns")
     print("=" * 70)
 
     msgs = parse_messages(wd)
@@ -323,152 +458,220 @@ def verify(wd):
     tool_calls = msgs["tool_calls"]
 
     # Extract all URLs
-    urls = extract_urls_from_tool_calls(tool_calls)
-
-    # Step 1: Check page count
-    print("|")
-    print("| [CHECK 1] Page Count (minimum 8)")
-
-    unique_count, total_wiki = check_page_count(urls)
-    if unique_count < MIN_PAGE_COUNT:
-        print(f"| [FAILED] Only {unique_count} unique Wikipedia pages visited")
-        print(f"|          Minimum required: {MIN_PAGE_COUNT}")
-        print("|          Model must investigate more thoroughly")
-        print("=" * 70)
+    try:
+        urls = extract_urls_from_tool_calls(tool_calls)
+    except Exception as e:
+        print(f"| [ERROR] Failed to extract URLs: {e}")
         return False
-    else:
-        print(f"| [OK] Page count: {unique_count} unique pages ({total_wiki} total Wikipedia URLs)")
 
-    # Step 2: Check history feature used
+    # CHECK 1: Minimal evidence of history investigation
     print("|")
-    print("| [CHECK 2] View History Feature Used")
+    print("| [CHECK 1] History Investigation Evidence")
 
-    history_count, history_urls = check_history_feature_used(urls)
-    if history_count < 3:
-        print(f"| [FAILED] Only {history_count} history pages visited")
-        print("|          Need to use View History for all 3 frameworks")
+    has_history, history_count = check_history_evidence(urls)
+    if not has_history:
+        print(f"| [FAILED] History pages visited: {history_count} (expected >=1)")
+        print("|          Model must use View history to find original authors")
         print("=" * 70)
         return False
     else:
         print(f"| [OK] History pages visited: {history_count}")
 
-    # Step 3: Check diff pages viewed
+    # CHECK 2: Evidence of viewing diff pages
     print("|")
-    print("| [CHECK 3] Diff Pages Viewed")
+    print("| [CHECK 2] Diff Pages Viewed")
 
-    diff_count, diff_urls = check_diff_pages_viewed(urls)
-    if diff_count < 3:
-        print(f"| [FAILED] Only {diff_count} diff pages viewed")
-        print("|          Need to view actual changes for all 3 frameworks")
+    has_diff, diff_count = check_diff_evidence(urls)
+    if not has_diff:
+        print(f"| [FAILED] Diff pages viewed: {diff_count} (expected >=1)")
+        print("|          Model must view diff pages to confirm original authors")
         print("=" * 70)
         return False
     else:
         print(f"| [OK] Diff pages viewed: {diff_count}")
 
-    # Step 4: Check user pages visited
+    # CHECK 3: Extract framework data and verify all authors identified
     print("|")
-    print("| [CHECK 4] User Pages Visited")
+    print("| [CHECK 3] All Initial Release Authors Identified")
 
-    user_count, user_urls = check_user_pages_visited(urls)
-    if user_count < 3:
-        print(f"| [FAILED] Only {user_count} user pages visited")
-        print("|          Need to verify contributor credibility for all frameworks")
+    try:
+        framework_data = extract_framework_data(text)
+    except Exception as e:
+        print(f"| [ERROR] Failed to extract framework data: {e}")
+        return False
+
+    # Check which frameworks are missing author data
+    missing_authors = []
+    for framework in REQUIRED_FRAMEWORKS:
+        author = framework_data.get(framework, {}).get('author')
+        if not author:
+            missing_authors.append(framework)
+
+    if missing_authors:
+        print(f"| [FAILED] Missing Initial Release authors for: {missing_authors}")
+        print("|          Must identify original author for each framework's Initial release")
         print("=" * 70)
         return False
     else:
-        print(f"| [OK] User pages visited: {user_count}")
+        print(f"| [OK] All 4 frameworks have author data:")
+        for fw in REQUIRED_FRAMEWORKS:
+            author = framework_data[fw].get('author', 'N/A')
+            print(f"|       {fw}: {author[:40]}...")
 
-    # Step 5: Check all frameworks investigated
+    # CHECK 4: Dates in valid format
     print("|")
-    print("| [CHECK 5] All Frameworks Investigated")
+    print("| [CHECK 4] Dates in Valid Format (YYYY-MM-DD)")
 
-    frameworks_found, missing = check_all_frameworks_investigated(text)
-    if missing:
-        print(f"| [FAILED] Missing frameworks: {missing}")
-        print("|          Model MUST investigate all 3 frameworks")
+    invalid_dates = []
+    for framework in REQUIRED_FRAMEWORKS:
+        if framework in framework_data:
+            date = framework_data[framework].get('date')
+            if not validate_date_format(date):
+                invalid_dates.append(f"{framework}: '{date}'")
+
+    if invalid_dates:
+        print(f"| [FAILED] Invalid date format for: {invalid_dates}")
+        print("|          Dates must be in YYYY-MM-DD format")
         print("=" * 70)
         return False
     else:
-        print(f"| [OK] All 3 frameworks investigated")
+        print(f"| [OK] All dates in valid format:")
+        for fw in REQUIRED_FRAMEWORKS:
+            date = framework_data[fw].get('date', 'N/A')
+            print(f"|       {fw}: {date}")
 
-    # Step 6: Check investigation log
+    # CHECK 5: Trap detection
     print("|")
-    print("| [CHECK 6] Investigation Log Present")
+    print("| [CHECK 5] Trap Detection")
 
-    log_check = check_investigation_log(text)
-    if not log_check["ok"]:
-        print("| [FAILED] No investigation log found")
-        print("|          Must include <investigation_log> with entries")
-        print("=" * 70)
-        return False
-    elif log_check["entries"] < 4:
-        print(f"| [FAILED] Investigation log too short: {log_check['entries']} entries")
-        print("|          Need at least 4 entries (1 per framework minimum)")
-        print("=" * 70)
-        return False
-    else:
-        print(f"| [OK] Investigation log found: {log_check['entries']} entries")
-
-    # Step 7: Check original authors identified
-    print("|")
-    print("| [CHECK 7] Original Authors Identified")
-
-    authors = check_original_authors_identified(text)
-    if len(authors) < 3:
-        print(f"| [FAILED] Only {len(authors)}/3 frameworks have identified authors")
-        print("|          Must identify original author for each framework")
+    traps = check_trap_answers(framework_data)
+    if traps:
+        print(f"| [FAILED] Trap answers detected:")
+        for trap in traps:
+            print(f"|         - {trap}")
+        print("|          These look like placeholder, bot, or IP-based answers, not real usernames")
         print("=" * 70)
         return False
     else:
-        print(f"| [OK] Authors identified for all frameworks")
-        for fw, author in authors.items():
-            print(f"|       {fw}: {author[:30]}...")
+        print(f"| [OK] No basic trap patterns detected")
 
-    # Step 8: Check dates added
+    # CHECK 5.5: Known wrong authors
     print("|")
-    print("| [CHECK 8] Dates Added Identified")
+    print("| [CHECK 5.5] Known Wrong Authors Detection")
 
-    dates = check_dates_added(text)
-    if len(dates) < 3:
-        print(f"| [WARN] Only {len(dates)}/3 frameworks have identified dates")
-        print("|        Dates are recommended for complete verification")
+    wrong_authors = check_known_wrong_authors(framework_data)
+    if wrong_authors:
+        print(f"| [FAILED] Known wrong authors detected:")
+        for wa in wrong_authors:
+            print(f"|         - {wa}")
+        print("|          These are commonly mistaken answers, not real Wikipedia editors")
+        print("=" * 70)
+        return False
     else:
-        print(f"| [OK] Dates identified for all frameworks")
+        print(f"| [OK] No known wrong authors detected")
 
-    # Step 9: Check user verification
+    # CHECK 5.6: Date range validation
     print("|")
-    print("| [CHECK 9] User Verification")
+    print("| [CHECK 5.6] Date Range Validation (2013-2020)")
 
-    verified_count, credibility_count = check_user_verified(text)
-    if verified_count < 3:
-        print(f"| [WARN] Only {verified_count}/3 users verified")
-        print("|        Should verify user credibility for all frameworks")
+    invalid_dates = check_date_range(framework_data)
+    if invalid_dates:
+        print(f"| [FAILED] Dates outside valid range:")
+        for d in invalid_dates:
+            print(f"|         - {d}")
+        print("|          Initial release info should have been added between 2013-2020")
+        print("=" * 70)
+        return False
     else:
-        print(f"| [OK] Users verified: {verified_count}/3")
+        print(f"| [OK] All dates within valid range")
 
-    # Step 10: Check final answer
+    # CHECK 6: Final answer present
     print("|")
-    print("| [CHECK 10] Final Answer Present")
+    print("| [CHECK 6] Final Answer Present")
 
-    answer_check = check_final_answer(text)
-    if not answer_check["ok"]:
+    try:
+        final_answer = extract_final_answer(text)
+    except Exception as e:
+        print(f"| [ERROR] Failed to extract final answer: {e}")
+        return False
+
+    if not final_answer.get('framework'):
         print("| [FAILED] No final answer found")
-        print("|          Must include <final_answer> identifying which framework's info was added first")
+        print("|          Must include first_framework and first_date in <answer>")
+        print("=" * 70)
+        return False
+    elif final_answer['framework'] not in REQUIRED_FRAMEWORKS:
+        print(f"| [FAILED] Final answer framework not recognized: {final_answer['framework']}")
+        print("|          Must be one of: React, Vue, Angular, Svelte")
         print("=" * 70)
         return False
     else:
-        print(f"| [OK] Final answer: {answer_check['answer']}")
-        print(f"|       Full: {answer_check['full_answer'][:50]}...")
+        print(f"| [OK] Final answer: {final_answer['framework']}")
+        if final_answer['date']:
+            print(f"|       Date: {final_answer['date']}")
+
+    # CHECK 7: Final answer consistency
+    print("|")
+    print("| [CHECK 7] Final Answer Consistency")
+
+    if final_answer and final_answer['framework'] in framework_data:
+        answer_framework = final_answer['framework']
+        answer_date = final_answer['date']
+        framework_date = framework_data[answer_framework].get('date')
+
+        # Check: if framework_date exists but answer_date is missing/invalid, fail
+        if framework_date and not answer_date:
+            print(f"| [FAILED] Final answer missing valid date")
+            print(f"|          {answer_framework}'s date is {framework_date}, but final answer date is missing or invalid")
+            print("=" * 70)
+            return False
+        elif answer_date and framework_date and answer_date != framework_date:
+            print(f"| [FAILED] Final answer date ({answer_date}) doesn't match {answer_framework}'s date ({framework_date})")
+            print("=" * 70)
+            return False
+        else:
+            print(f"| [OK] Final answer is consistent")
+
+    # CHECK 8: Chronological order validation (CRITICAL TRAP)
+    print("|")
+    print("| [CHECK 8] Chronological Order Validation (CRITICAL)")
+
+    chrono_errors = check_chronological_order(framework_data, final_answer)
+    if chrono_errors:
+        print(f"| [FAILED] Chronological order violation:")
+        for err in chrono_errors:
+            print(f"|         - {err}")
+        print("|          The first_framework must have the EARLIEST date among all frameworks")
+        print("|          This trap catches models that don't properly compare dates")
+        print("=" * 70)
+        return False
+    else:
+        print(f"| [OK] Chronological order is correct")
+        print(f"|       {final_answer['framework']} has the earliest date: {final_answer['date']}")
+
+    # CHECK 9: Suspicious pattern detection
+    print("|")
+    print("| [CHECK 9] Suspicious Pattern Detection")
+
+    patterns = check_suspicious_patterns(framework_data)
+    if patterns:
+        print(f"| [FAILED] Suspicious patterns detected:")
+        for p in patterns:
+            print(f"|         - {p}")
+        print("|          This suggests the model didn't actually investigate each framework")
+        print("=" * 70)
+        return False
+    else:
+        print(f"| [OK] No suspicious patterns detected")
 
     # Success!
     print("|")
-    print(f"| [PASSED] All verification checks passed!")
-    print(f"|          Pages visited: {unique_count}")
-    print(f"|          History pages: {history_count}")
-    print(f"|          Diff pages: {diff_count}")
-    print(f"|          User pages: {user_count}")
-    print(f"|          Log entries: {log_check['entries']}")
-    print(f"|          Authors identified: {len(authors)}/3")
+    print(f"| [PASSED] All 9 verification checks passed!")
+    print(f"|          Frameworks: {len(framework_data)}/4")
+    print(f"|          Authors: All identified and valid")
+    print(f"|          Dates: All valid format and range")
+    print(f"|          Chronological Order: Verified")
+    print(f"|          Final Answer: {final_answer['framework']} ({final_answer['date']})")
     print("=" * 70)
     print("| RESULT: SUCCESS")
     print("=" * 70)
